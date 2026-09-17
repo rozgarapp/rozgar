@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Noto+Sans+Telugu:wght@500;600;700&family=Noto+Sans+Devanagari:wght@500;600;700&family=Noto+Sans+Arabic:wght@500;600;700&display=swap');
+
+.rz-wordmark-multi {
+    font-family: 'Noto Sans Telugu', 'Noto Sans Devanagari', 'Noto Sans Arabic', 'Noto Naskh Arabic', system-ui, sans-serif;
+    font-weight: 600;
+    color: #52B788;
+}
+.rz-wordmark-urdu {
+    font-family: 'Noto Sans Arabic', 'Noto Naskh Arabic', system-ui, sans-serif;
+    direction: rtl;
+    unicode-bidi: isolate;
+    display: inline-block;
+}
+
+/* Animated reveal */
+@keyframes rzFadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.rz-anim-word {
+    opacity: 0;
+    animation: rzFadeIn 300ms ease-out forwards;
+}
+.rz-anim-word.d1 { animation-delay: 0ms; }
+.rz-anim-word.d2 { animation-delay: 400ms; }
+.rz-anim-word.d3 { animation-delay: 800ms; }
+.rz-anim-word.d4 { animation-delay: 1200ms; }
+
+/* Locale-swap smooth transition */
+.rz-brand-swap { transition: opacity 200ms ease, transform 200ms ease; }
+
+/* Splash */
+@keyframes rzSplashFade {
+    0% { opacity: 0; }
+    10% { opacity: 1; }
+    85% { opacity: 1; }
+    100% { opacity: 0; visibility: hidden; }
+}
+.rz-splash {
+    position: fixed;
+    inset: 0;
+    background: #1B4332;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    animation: rzSplashFade 1800ms ease-out forwards;
+    pointer-events: none;
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --rz-green: #1B4332;
+    --rz-green-light: #2D6A4F;
+    --rz-green-hover: #143225;
+    --rz-slate: #2C3E50;
+    --rz-slate-light: #34495E;
+}
+
+html, body, #root {
+    margin: 0;
+    min-height: 100%;
+    background: #F8FAFC;
+    color: #0F172A;
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+body[dir="rtl"] {
+    font-family: 'Noto Naskh Arabic', 'Inter', system-ui, sans-serif;
+}
+
+h1, h2, h3, h4, .heading {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    letter-spacing: -0.02em;
+}
+
+@layer base {
+    :root {
+        --background: 0 0% 100%;
+        --foreground: 210 24% 12%;
+        --card: 0 0% 100%;
+        --card-foreground: 210 24% 12%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 210 24% 12%;
+        --primary: 154 43% 18%;
+        --primary-foreground: 0 0% 98%;
+        --secondary: 210 20% 96%;
+        --secondary-foreground: 210 24% 12%;
+        --muted: 210 20% 96%;
+        --muted-foreground: 215 16% 47%;
+        --accent: 210 20% 96%;
+        --accent-foreground: 210 24% 12%;
+        --destructive: 0 84% 60%;
+        --destructive-foreground: 0 0% 98%;
+        --border: 214 32% 91%;
+        --input: 214 32% 91%;
+        --ring: 154 43% 18%;
+        --radius: 0.75rem;
+    }
+}
+
+@layer base {
+    * { @apply border-border; }
+    body { @apply bg-background text-foreground; }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: #F1F5F9; }
+::-webkit-scrollbar-thumb { background: #94A3B8; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #64748B; }
+
+.rz-hero-grid {
+    background-image: linear-gradient(rgba(27,67,50,0.04) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(27,67,50,0.04) 1px, transparent 1px);
+    background-size: 32px 32px;
+}
+
+.rz-card-shadow {
+    box-shadow: 0 1px 3px rgba(15,23,42,0.06), 0 4px 12px rgba(15,23,42,0.04);
+}
+
+.rz-card-shadow:hover {
+    box-shadow: 0 4px 10px rgba(15,23,42,0.08), 0 12px 24px rgba(15,23,42,0.06);
+}
+
+.masked-phone {
+    filter: blur(4px);
+    user-select: none;
+    letter-spacing: 2px;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.fade-in-up { animation: fadeInUp 0.4s ease-out both; }
+
+/* Fix urdu numerals appearance */
+body[dir="rtl"] .ltr-num { direction: ltr; unicode-bidi: isolate; }

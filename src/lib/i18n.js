@@ -1,0 +1,201 @@
+// Rozgar i18n - EN, TE, HI, UR (with RTL)
+export const LANGS = [
+  { code: "EN", label: "English" },
+  { code: "TE", label: "తెలుగు" },
+  { code: "HI", label: "हिन्दी" },
+  { code: "UR", label: "اردو" },
+];
+
+export const RTL_LANGS = ["UR"];
+
+const T = {
+  brand: { EN: "Rozgar", TE: "రోజ్‌గార్", HI: "रोज़गार", UR: "روزگار" },
+  tagline: {
+    EN: "Telangana's trusted trade worker marketplace",
+    TE: "తెలంగాణ యొక్క నమ్మకమైన కార్మిక మార్కెట్‌ప్లేస్",
+    HI: "तेलंगाना का भरोसेमंद कारीगर बाज़ार",
+    UR: "تلنگانہ کا قابل اعتماد ہنر مند مزدور بازار",
+  },
+  find_workers: { EN: "Find Workers", TE: "కార్మికులను వెతకండి", HI: "कारीगर खोजें", UR: "کارکن تلاش کریں" },
+  browse_jobs: { EN: "Browse Jobs", TE: "ఉద్యోగాలు చూడండి", HI: "नौकरियां देखें", UR: "ملازمتیں دیکھیں" },
+  login: { EN: "Login", TE: "లాగిన్", HI: "लॉगिन", UR: "لاگ ان" },
+  signup: { EN: "Sign Up", TE: "సైన్ అప్", HI: "साइन अप", UR: "سائن اپ" },
+  logout: { EN: "Logout", TE: "లాగ్అవుట్", HI: "लॉगआउट", UR: "لاگ آؤٹ" },
+  email: { EN: "Email", TE: "ఇమెయిల్", HI: "ईमेल", UR: "ای میل" },
+  password: { EN: "Password", TE: "పాస్‌వర్డ్", HI: "पासवर्ड", UR: "پاس ورڈ" },
+  name: { EN: "Full Name", TE: "పూర్తి పేరు", HI: "पूरा नाम", UR: "پورا نام" },
+  phone: { EN: "Phone", TE: "ఫోన్", HI: "फ़ोन", UR: "فون" },
+  i_am: { EN: "I am a", TE: "నేను", HI: "मैं हूँ", UR: "میں ہوں" },
+  worker: { EN: "Worker / Trade Person", TE: "కార్మికుడు", HI: "कारीगर", UR: "کارکن" },
+  employer: { EN: "Employer / Contractor", TE: "కాంట్రాక్టర్", HI: "ठेकेदार", UR: "ٹھیکیدار" },
+  available: { EN: "Available Today", TE: "నేడు అందుబాటులో", HI: "आज उपलब्ध", UR: "آج دستیاب" },
+  busy: { EN: "Busy", TE: "బిజీ", HI: "व्यस्त", UR: "مصروف" },
+  daily_rate: { EN: "Daily Rate", TE: "రోజువారీ రేటు", HI: "दैनिक दर", UR: "روزانہ ریٹ" },
+  district: { EN: "District", TE: "జిల్లా", HI: "ज़िला", UR: "ضلع" },
+  unlock_contact: { EN: "Unlock Contact", TE: "సంప్రదింపు వివరాలు", HI: "संपर्क अनलॉक", UR: "رابطہ کھولیں" },
+  view_profile: { EN: "View Profile", TE: "ప్రొఫైల్ చూడండి", HI: "प्रोफ़ाइल देखें", UR: "پروفائل دیکھیں" },
+  categories: { EN: "Trade Categories", TE: "వాణిజ్య వర్గాలు", HI: "ट्रेड श्रेणियां", UR: "تجارتی زمرے" },
+  featured_workers: { EN: "Featured Workers", TE: "ఫీచర్డ్ కార్మికులు", HI: "फ़ीचर्ड कारीगर", UR: "نمایاں کارکن" },
+  post_job: { EN: "Post a Job", TE: "ఉద్యోగం పోస్ట్ చేయండి", HI: "नौकरी पोस्ट करें", UR: "ملازمت پوسٹ کریں" },
+  my_dashboard: { EN: "Dashboard", TE: "డాష్‌బోర్డ్", HI: "डैशबोर्ड", UR: "ڈیش بورڈ" },
+  apply: { EN: "Apply", TE: "దరఖాస్తు", HI: "आवेदन करें", UR: "درخواست دیں" },
+  cover_note: { EN: "Cover Note", TE: "కవర్ నోట్", HI: "कवर नोट", UR: "کور نوٹ" },
+  submit: { EN: "Submit", TE: "సమర్పించండి", HI: "जमा करें", UR: "جمع کریں" },
+  cancel: { EN: "Cancel", TE: "రద్దు", HI: "रद्द", UR: "منسوخ" },
+  chat: { EN: "Chat", TE: "చాట్", HI: "चैट", UR: "بات چیت" },
+  all_categories: { EN: "All Categories", TE: "అన్ని వర్గాలు", HI: "सभी श्रेणियां", UR: "تمام زمرے" },
+  all_districts: { EN: "All Districts", TE: "అన్ని జిల్లాలు", HI: "सभी ज़िले", UR: "تمام اضلاع" },
+  workers: { EN: "Workers", TE: "కార్మికులు", HI: "कारीगर", UR: "کارکن" },
+  jobs: { EN: "Jobs", TE: "ఉద్యోగాలు", HI: "नौकरियां", UR: "ملازمتیں" },
+  home: { EN: "Home", TE: "హోమ్", HI: "होम", UR: "گھر" },
+  profile: { EN: "Profile", TE: "ప్రొఫైల్", HI: "प्रोफ़ाइल", UR: "پروفائل" },
+  hero_cta: {
+    EN: "Skilled workers, fair rates, verified reviews — all across Telangana.",
+    TE: "నైపుణ్యం గల కార్మికులు, న్యాయమైన రేట్లు — తెలంగాణ అంతటా.",
+    HI: "कुशल कारीगर, उचित दरें — पूरे तेलंगाना में।",
+    UR: "ماہر کارکن، مناسب ریٹ — پورے تلنگانہ میں۔",
+  },
+  continue_google: { EN: "Continue with Google", TE: "గూగుల్‌తో కొనసాగించండి", HI: "गूगल से जारी रखें", UR: "گوگل کے ساتھ جاری رکھیں" },
+  or: { EN: "or", TE: "లేదా", HI: "या", UR: "یا" },
+  applications: { EN: "Applications", TE: "దరఖాస్తులు", HI: "आवेदन", UR: "درخواستیں" },
+  my_applications: { EN: "My Applications", TE: "నా దరఖాస్తులు", HI: "मेरे आवेदन", UR: "میری درخواستیں" },
+  my_jobs: { EN: "My Jobs", TE: "నా ఉద్యోగాలు", HI: "मेरी नौकरियां", UR: "میری ملازمتیں" },
+  send: { EN: "Send", TE: "పంపండి", HI: "भेजें", UR: "بھیجیں" },
+  type_message: { EN: "Type a message...", TE: "సందేశం టైప్ చేయండి...", HI: "संदेश टाइप करें...", UR: "پیغام لکھیں..." },
+  support: { EN: "Support", TE: "మద్దతు", HI: "सहायता", UR: "معاونت" },
+  need_help: { EN: "Need help?", TE: "సహాయం కావాలా?", HI: "मदद चाहिए?", UR: "مدد چاہیے؟" },
+  support_greet: { EN: "Hi {name}! I'm Rozgar Assistant. How can I help you today?", TE: "హాయ్ {name}! నేను రోజ్‌గార్ అసిస్టెంట్.", HI: "नमस्ते {name}! मैं रोज़गार असिस्टेंट हूँ।", UR: "ہیلو {name}! میں روزگار اسسٹنٹ ہوں۔" },
+  support_ask_lang: { EN: "Please describe your issue in English, Telugu, Hindi, or Urdu.", TE: "దయచేసి మీ సమస్యను వివరించండి.", HI: "कृपया अपनी समस्या बताएं।", UR: "براہ کرم اپنا مسئلہ بیان کریں۔" },
+  support_pick: { EN: "Or pick a category:", TE: "లేదా వర్గం ఎంచుకోండి:", HI: "या श्रेणी चुनें:", UR: "یا زمرہ منتخب کریں:" },
+  cat_bug: { EN: "App Bug / Technical Issue", TE: "యాప్ బగ్", HI: "ऐप बग", UR: "ایپ بگ" },
+  cat_payment: { EN: "Payment Problem", TE: "చెల్లింపు సమస్య", HI: "भुगतान समस्या", UR: "ادائیگی کا مسئلہ" },
+  cat_complaint: { EN: "Worker / Employer Complaint", TE: "ఫిర్యాదు", HI: "शिकायत", UR: "شکایت" },
+  cat_other: { EN: "Other", TE: "ఇతర", HI: "अन्य", UR: "دیگر" },
+  ticket_raised: { EN: "Your ticket has been raised. Our team will respond within 24 hours.", TE: "మీ టిక్కెట్ నమోదైంది.", HI: "आपका टिकट दर्ज हो गया है।", UR: "آپ کا ٹکٹ درج ہو گیا ہے۔" },
+  faq_unlock: { EN: "Unlock via 30-second ad (free) or ₹30 UPI/Razorpay (instant).", TE: "30 సెకన్ల ప్రకటన (ఉచితం) లేదా ₹30 UPI ద్వారా అన్‌లాక్ చేయండి.", HI: "30 सेकंड विज्ञापन (मुफ्त) या ₹30 UPI से अनलॉक करें।", UR: "30 سیکنڈ اشتہار (مفت) یا ₹30 UPI سے کھولیں۔" },
+  faq_payment: { EN: "Please share your Razorpay Payment ID; a ticket is being logged.", TE: "మీ Razorpay Payment ID పంచుకోండి.", HI: "अपना Razorpay Payment ID साझा करें।", UR: "اپنا Razorpay Payment ID شیئر کریں۔" },
+  faq_noshow: { EN: "A complaint is being logged. Please share worker name, job title, and date.", TE: "ఫిర్యాదు నమోదవుతోంది.", HI: "शिकायत दर्ज की जा रही है।", UR: "شکایت درج کی جا رہی ہے۔" },
+  bot_typing: { EN: "Rozgar Assistant is typing…", TE: "టైప్ చేస్తోంది…", HI: "टाइप कर रहा है…", UR: "لکھ رہا ہے…" },
+  otp_title: { EN: "Verify your mobile", TE: "మొబైల్ ధృవీకరించండి", HI: "मोबाइल सत्यापित करें", UR: "موبائل تصدیق کریں" },
+  otp_desc: { EN: "One-time check to protect workers. Session verified for 24 hours.", TE: "24 గంటలు ధృవీకరించబడుతుంది.", HI: "24 घंटे के लिए सत्यापित।", UR: "24 گھنٹے کے لیے تصدیق شدہ۔" },
+  otp_send: { EN: "Send OTP", TE: "OTP పంపండి", HI: "OTP भेजें", UR: "OTP بھیجیں" },
+  otp_verify: { EN: "Verify", TE: "ధృవీకరించండి", HI: "सत्यापित करें", UR: "تصدیق کریں" },
+  otp_mobile_label: { EN: "Indian mobile number", TE: "భారత మొబైల్", HI: "भारतीय मोबाइल नंबर", UR: "بھارتی موبائل نمبر" },
+  protected_number: { EN: "Protected Number", TE: "రక్షిత నంబర్", HI: "संरक्षित नंबर", UR: "محفوظ نمبر" },
+  verified_employer: { EN: "Verified Employer", TE: "ధృవీకరించబడిన యజమాని", HI: "सत्यापित नियोक्ता", UR: "تصدیق شدہ آجر" },
+  verify_mobile: { EN: "Verify mobile", TE: "మొబైల్ ధృవీకరించండి", HI: "मोबाइल सत्यापित करें", UR: "موبائل تصدیق کریں" },
+  search_placeholder: { EN: "Search by trade, name or skill…", TE: "వెతకండి…", HI: "खोजें…", UR: "تلاش کریں…" },
+  ai_match: { EN: "AI Job Matcher", TE: "AI ఉద్యోగ మ్యాచర్", HI: "AI जॉब मैचर", UR: "AI ملازمت میچر" },
+  ai_greet_worker: { EN: "Hi {name}! e.g. 'electrical jobs in Hyderabad'.", TE: "హాయ్ {name}!", HI: "नमस्ते {name}!", UR: "ہیلو {name}!" },
+  ai_greet_employer: { EN: "Hi {name}! e.g. 'plumber in Mahbubnagar'.", TE: "హాయ్ {name}!", HI: "नमस्ते {name}!", UR: "ہیلو {name}!" },
+  ai_found_workers: { EN: "Found {n} workers", TE: "{n} కార్మికులు", HI: "{n} कारीगर", UR: "{n} کارکن" },
+  ai_found_jobs: { EN: "Found {n} jobs", TE: "{n} ఉద్యోగాలు", HI: "{n} नौकरियां", UR: "{n} ملازمتیں" },
+  ai_no_match: { EN: "No matches. Try another district or trade.", TE: "ఏమీ దొరకలేదు.", HI: "कुछ नहीं मिला।", UR: "کچھ نہیں ملا۔" },
+  menu: { EN: "Menu", TE: "మెను", HI: "मेन्यू", UR: "مینو" },
+  skilled: { EN: "Skilled", TE: "నిపుణుడు", HI: "कुशल", UR: "ماہر" },
+  unskilled: { EN: "Unskilled", TE: "అనిపుణుడు", HI: "अकुशल", UR: "غیر ماہر" },
+  all_workers: { EN: "All Workers", TE: "అన్ని", HI: "सभी", UR: "تمام" },
+};
+
+export function t(key, lang = "EN") {
+  const v = T[key];
+  if (!v) return key;
+  return v[lang] || v.EN || key;
+}
+
+// 9 Categories with LIGHT pastel palette (bg + border)
+export const CATEGORIES = [
+  { key: "construction", skilled: true, color: "#FF6B35", bg: "#FFF3EC", border: "#FFCBA4",
+    label: { EN: "Construction & Building", TE: "నిర్మాణం", HI: "निर्माण", UR: "تعمیرات" },
+    trades: [
+      ["Mason/Bricklayer","🧱"],["Carpenter","🪚"],["Plumber","🔧"],["Electrician","⚡"],
+      ["Painter","🎨"],["Welder","🔥"],["Fabricator","⚙️"],["Steel Fixer","🏗️"],
+      ["Tile Setter","🪟"],["Scaffolder","🪜"],
+      ["Waterproofing Worker","💧"],["False Ceiling Fixer","🔩"],["Marble/Granite Fitter","🪨"],
+      ["Glass & Glazing Worker","🪟"],["Shuttering Carpenter","🪵"],["Demolition Worker","🪓"],
+      ["Road Layer/Paver","🛣️"],["Crane Operator","🏗️"],["Concrete Mixer Operator","🔄"],["Bar Bender","💪"],
+    ]},
+  { key: "industrial", skilled: true, color: "#1565C0", bg: "#EBF5FB", border: "#AED6F1",
+    label: { EN: "Industrial & Mechanical", TE: "పారిశ్రామిక", HI: "औद्योगिक", UR: "صنعتی" },
+    trades: [
+      ["Fitter","🔩"],["Machinist","🛠️"],["Turner","🔄"],
+      ["Automobile Technician","🚗"],["CNC Operator","💻"],
+      ["Diesel Mechanic","🔧"],["Pump Operator","💦"],["Compressor Operator","🌀"],
+      ["Forklift Operator","🏭"],["Lathe Operator","⚙️"],["Sheet Metal Worker","🔨"],
+      ["Boiler Operator","♨️"],["Generator Technician","⚡"],["AC Mechanic","❄️"],["Refrigeration Technician","🧊"],
+    ]},
+  { key: "electrical", skilled: true, color: "#F9A825", bg: "#FFFBEA", border: "#FFE082",
+    label: { EN: "Electrical & Electronics", TE: "విద్యుత్", HI: "इलेक्ट्रिकल", UR: "برقی" },
+    trades: [
+      ["Industrial Electrician","⚡"],["Domestic Electrician","🏠"],
+      ["Wireman","🔌"],["Electronics Technician","📱"],
+      ["Solar Panel Installer","☀️"],["CCTV Installer","📷"],["Fire Alarm Technician","🚨"],
+      ["Data Cable Technician","🖥️"],["Lift/Elevator Technician","🛗"],["UPS Technician","🔋"],
+      ["Motor Winding Technician","⚡"],["Panel Board Wireman","🔌"],
+    ]},
+  { key: "domestic", skilled: true, color: "#2E7D32", bg: "#F0FAF4", border: "#A8DABC",
+    label: { EN: "Domestic & Services", TE: "గృహ సేవలు", HI: "घरेलू सेवाएं", UR: "گھریلو خدمات" },
+    trades: [
+      ["Cook/Chef","👨‍🍳"],["Housekeeping Staff","🏠"],["Driver","🚗"],["Beautician","💇"],["Tailor","🧵"],
+      ["Baby Caretaker/Nanny","👶"],["Elder Care Attendant","👴"],["Laundry/Dhobi Worker","👕"],
+      ["Gardener/Mali","🌱"],["Pest Control Worker","🪲"],["Swimming Pool Cleaner","🏊"],
+      ["Car Washer/Detailer","🚿"],["Watchman/Security Guard","🛡️"],["Peon/Office Boy","📋"],["Pantry Boy","☕"],
+    ]},
+  { key: "agriculture", skilled: true, color: "#8B5A2B", bg: "#FDF3E7", border: "#EDBB99",
+    label: { EN: "Agriculture & Farm Work", TE: "వ్యవసాయం", HI: "कृषि", UR: "زراعت" },
+    trades: [
+      ["Farm Laborer","🌾"],["Irrigation Worker","💧"],["Harvesting Worker","🌿"],
+      ["Tractor Operator","🚜"],["Greenhouse Worker","🪴"],["Poultry Farm Worker","🐔"],
+      ["Dairy Farm Worker","🐄"],["Horticulture Worker","🌺"],["Nursery Worker","🪴"],["Seed Sowing Worker","🌱"],
+    ]},
+  { key: "logistics", skilled: true, color: "#7D3C98", bg: "#F5EEF8", border: "#D7BDE2",
+    label: { EN: "Logistics & Delivery", TE: "డెలివరీ", HI: "लॉजिस्टिक्स", UR: "لاجسٹکس" },
+    trades: [
+      ["Delivery Boy 2-Wheeler","🛵"],["Delivery Boy 4-Wheeler","🚐"],["Warehouse Worker","📦"],
+      ["Loading/Unloading Labor","💪"],["Packing Worker","📫"],["Courier Boy","🏍️"],
+      ["E-Commerce Delivery Agent","📲"],["Cold Storage Worker","🧊"],["Inventory Helper","📋"],["Dispatch Boy","🚚"],
+    ]},
+  { key: "beauty", skilled: true, color: "#C2185B", bg: "#FFF0F5", border: "#F8BBD9",
+    label: { EN: "Beauty & Wellness", TE: "అందం మరియు వెల్‌నెస్", HI: "ब्यूटी & वेलनेस", UR: "خوبصورتی و صحت" },
+    trades: [
+      ["Mehendi Artist","🎨"],["Makeup Artist","💄"],["Spa Therapist","💆"],
+      ["Yoga Instructor","🧘"],["Gym Trainer","💪"],["Hair Stylist","✂️"],
+      ["Nail Technician","💅"],["Waxing Specialist","🌸"],["Facial Therapist","🧖"],["Massage Therapist","💆"],
+    ]},
+  { key: "healthcare", skilled: true, color: "#C0392B", bg: "#FEF9F9", border: "#FADBD8",
+    label: { EN: "Healthcare Support", TE: "ఆరోగ్య మద్దతు", HI: "स्वास्थ्य", UR: "صحت" },
+    trades: [
+      ["Hospital Attendant/Ward Boy","🏥"],["Home Nurse","👩‍⚕️"],["Medical Equipment Technician","🩺"],
+      ["Ambulance Driver","🚑"],["Pharmacy Helper","💊"],["Lab Technician Assistant","🔬"],
+      ["Physiotherapy Assistant","🦽"],["Dental Assistant","🦷"],["Dialysis Technician","💉"],["Blood Sample Collector","🩸"],
+    ]},
+  { key: "unskilled", skilled: false, color: "#6C757D", bg: "#F8F9FA", border: "#DEE2E6",
+    label: { EN: "Unskilled & General Labor", TE: "సాధారణ కార్మిక", HI: "अकुशल श्रम", UR: "عام مزدور" },
+    trades: [
+      ["General Helper/Mazdoor","👷"],["Dig & Trench Worker","⛏️"],["Sand/Gravel Loader","🪣"],
+      ["Brick Carrier","🧱"],["Cement Mixer Helper","🔄"],["Garbage Collector","🗑️"],
+      ["Street Sweeper","🧹"],["Construction Site Cleaner","🧽"],["Event Setup Helper","🎪"],
+      ["Chair/Tent Arrangement Worker","⛺"],["Marriage Event Helper","💍"],["Moving/Shifting Helper","📦"],
+      ["Painting Helper","🖌️"],["Railway Track Helper","🛤️"],["Dhol/Band Worker","🥁"],
+    ]},
+];
+
+export const DISTRICTS = [
+  "Adilabad","Bhadradri Kothagudem","Hyderabad","Jagtial","Jangaon",
+  "Jayashankar Bhupalpally","Jogulamba Gadwal","Kamareddy","Karimnagar",
+  "Khammam","Kumuram Bheem Asifabad","Mahabubabad","Mahabubnagar",
+  "Mancherial","Medak","Medchal-Malkajgiri","Mulugu","Nagarkurnool",
+  "Nalgonda","Narayanpet","Nirmal","Nizamabad","Peddapalli",
+  "Rajanna Sircilla","Ranga Reddy","Sangareddy","Siddipet","Suryapet",
+  "Vikarabad","Wanaparthy","Warangal","Hanamkonda","Yadadri Bhuvanagiri",
+];
+
+export const CATEGORY_MAP = Object.fromEntries(CATEGORIES.map(c => [c.key, c]));
+
+export const FEMALE_TRADES = new Set([
+  "Beautician","Baby Caretaker/Nanny","Elder Care Attendant","Housekeeping Staff",
+  "Mehendi Artist","Makeup Artist","Spa Therapist","Nail Technician",
+  "Waxing Specialist","Facial Therapist","Massage Therapist","Home Nurse",
+]);
+
+export const TOTAL_TRADES = CATEGORIES.reduce((n, c) => n + c.trades.length, 0);
