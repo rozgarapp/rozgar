@@ -29,7 +29,7 @@ db = client[os.environ['DB_NAME']]
 JWT_ALGORITHM = "HS256"
 JWT_SECRET = os.environ["JWT_SECRET"]
 
-app = FastAPI()
+app = FastAPI(lifespan=lifespan)
 api = APIRouter(prefix="/api")
 
 # ---------------- Helpers ----------------
@@ -901,9 +901,13 @@ async def seed_data():
             })
         logger.info("Seeded 12 jobs")
 
-@app.on_event("startup")
-async def startup():
+from contextlib import asynccontextmanager
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
     await seed_data()
+    yield
+    client.close()
 
 # Include router
 app.include_router(api)
@@ -915,7 +919,3 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-@app.on_event("shutdown")
-async def shutdown():
-    client.close()
