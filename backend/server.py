@@ -1,5 +1,6 @@
 from dotenv import load_dotenv
 from pathlib import Path
+from contextlib import asynccontextmanager
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
@@ -29,15 +30,6 @@ db = client[os.environ['DB_NAME']]
 JWT_ALGORITHM = "HS256"
 JWT_SECRET = os.environ["JWT_SECRET"]
 
-from contextlib import asynccontextmanager
-
-@asynccontextmanager
-async def lifespan(app: FastAPI):
-    await seed_data()
-    yield
-    client.close()
-
-app = FastAPI(lifespan=lifespan)
 api = APIRouter(prefix="/api")
 
 # ---------------- Helpers ----------------
@@ -908,8 +900,24 @@ async def seed_data():
                 "created_at": datetime.now(timezone.utc).isoformat(),
             })
         logger.info("Seeded 12 jobs")
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    await seed_data()
+    yield
+    client.close()
 
+app = FastAPI(lifespan=lifespan)
 # Include router
+app.include_router(api)
+# Include router and create app
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    await seed_data()
+    yield
+    client.close()
+
+app = FastAPI(lifespan=lifespan)
+
 app.include_router(api)
 
 app.add_middleware(
@@ -919,3 +927,4 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
