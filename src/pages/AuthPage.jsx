@@ -9,7 +9,6 @@ import { toast } from "sonner";
 import { fmtDetail } from "../lib/api";
 import { t } from "../lib/i18n";
 
-// REMINDER: DO NOT HARDCODE THE URL, OR ADD ANY FALLBACKS OR REDIRECT URLS, THIS BREAKS THE AUTH
 function googleLogin() {
   const redirectUrl = window.location.origin + "/dashboard";
   window.location.href = `https://auth.emergentagent.com/?redirect=${encodeURIComponent(redirectUrl)}`;
@@ -21,11 +20,16 @@ export default function AuthPage({ mode = "login" }) {
   const isSignup = mode === "signup";
   const [form, setForm] = useState({ email: "", password: "", name: "", phone: "", role: "worker" });
   const [busy, setBusy] = useState(false);
+  const [agreed, setAgreed] = useState(false);
 
   const set = (k, v) => setForm(f => ({ ...f, [k]: v }));
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    if (isSignup && !agreed) {
+      toast.error("Please agree to the Terms & Conditions and Privacy Policy to continue.");
+      return;
+    }
     setBusy(true);
     try {
       if (isSignup) { localStorage.setItem("rz_role", form.role); await register(form); }
@@ -96,7 +100,36 @@ export default function AuthPage({ mode = "login" }) {
               <Label className="text-sm">{t("password", lang)}</Label>
               <Input required type="password" data-testid="auth-password" value={form.password} onChange={(e) => set("password", e.target.value)} className="mt-1" />
             </div>
-            <Button type="submit" disabled={busy} className="w-full h-11 bg-[#1B4332] hover:bg-[#143225] text-white" data-testid="auth-submit">
+
+            {isSignup && (
+              <div className="flex items-start gap-3 p-3 bg-slate-50 rounded-xl border border-slate-200">
+                <input
+                  type="checkbox"
+                  id="agree-terms"
+                  checked={agreed}
+                  onChange={(e) => setAgreed(e.target.checked)}
+                  className="mt-0.5 w-4 h-4 accent-[#1B4332] cursor-pointer flex-shrink-0"
+                />
+                <label htmlFor="agree-terms" className="text-xs text-slate-600 cursor-pointer leading-relaxed">
+                  I agree to the{" "}
+                  <Link to="/terms" className="text-[#1B4332] font-semibold underline" target="_blank">
+                    Terms & Conditions
+                  </Link>{" "}
+                  and{" "}
+                  <Link to="/privacy" className="text-[#1B4332] font-semibold underline" target="_blank">
+                    Privacy Policy
+                  </Link>{" "}
+                  of Rozgar Platform
+                </label>
+              </div>
+            )}
+
+            <Button
+              type="submit"
+              disabled={busy || (isSignup && !agreed)}
+              className="w-full h-11 bg-[#1B4332] hover:bg-[#143225] text-white disabled:opacity-50 disabled:cursor-not-allowed"
+              data-testid="auth-submit"
+            >
               {busy ? "Please wait…" : isSignup ? t("signup", lang) : t("login", lang)}
             </Button>
           </form>
