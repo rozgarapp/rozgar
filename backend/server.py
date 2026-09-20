@@ -128,7 +128,7 @@ class SettingsIn(BaseModel):
     exotel_sid: Optional[str] = ""
     twilio_sid: Optional[str] = ""
     twilio_auth_token: Optional[str] = ""
-    proxy_call_categories: Optional[List[str]] = None  # list of category keys enabled
+    proxy_call_categories: Optional[List[str]] = None
 
 class OtpRequestIn(BaseModel):
     phone: str
@@ -142,7 +142,7 @@ class ProxyCallIn(BaseModel):
 
 class VoiceTicketIn(BaseModel):
     issue_category: Literal["bug", "payment", "complaint", "other"]
-    audio_data_url: str  # data:audio/webm;base64,...
+    audio_data_url: str
     language: Optional[str] = "EN"
     duration_secs: Optional[int] = 0
 
@@ -151,7 +151,7 @@ class BoostIn(BaseModel):
 
 class PaymentVerifyIn(BaseModel):
     purpose: Literal["unlock", "boost_district", "boost_statewide", "premium"]
-    reference_id: Optional[str] = ""  # worker_id or job_id
+    reference_id: Optional[str] = ""
     razorpay_payment_id: Optional[str] = ""
     razorpay_order_id: Optional[str] = ""
 
@@ -177,7 +177,6 @@ async def register(data: RegisterIn, response: Response):
         "created_at": datetime.now(timezone.utc).isoformat(),
     }
     await db.users.insert_one(doc)
-    # if worker role, create worker profile
     if data.role == "worker":
         await db.workers.insert_one({
             "worker_id": f"w_{uuid.uuid4().hex[:10]}",
@@ -205,7 +204,6 @@ async def login(data: LoginIn, response: Response):
 
 @api.post("/auth/google/session")
 async def google_session(data: SessionIn, response: Response):
-    """Process session_id from Emergent Google Auth."""
     try:
         async with httpx.AsyncClient(timeout=15) as hc:
             r = await hc.get(
@@ -298,9 +296,8 @@ async def get_worker(worker_id: str):
 async def update_my_worker(data: WorkerIn, user=Depends(get_current_user)):
     if user["role"] != "worker":
         raise HTTPException(403, "Not a worker account")
-    emoji_map = TRADE_EMOJI
     upd = data.model_dump()
-    upd["emoji"] = emoji_map.get(data.trade, "🛠️")
+    upd["emoji"] = TRADE_EMOJI.get(data.trade, "🛠️")
     await db.workers.update_one({"user_id": user["user_id"]}, {"$set": upd})
     return await db.workers.find_one({"user_id": user["user_id"]}, {"_id": 0})
 
@@ -313,7 +310,6 @@ async def get_my_worker(user=Depends(get_current_user)):
 
 @api.post("/workers/{worker_id}/unlock")
 async def unlock_contact(worker_id: str, method: str = "ad", user=Depends(get_current_user)):
-    # Enforce OTP for employers
     if user["role"] == "employer":
         u = await db.users.find_one({"user_id": user["user_id"]}, {"_id": 0})
         verified = bool(u.get("otp_verified")) and (u.get("otp_expires_at", "") > datetime.now(timezone.utc).isoformat())
@@ -384,14 +380,13 @@ async def update_settings(data: SettingsIn, user=Depends(get_current_user)):
     if user["email"].lower() != os.environ.get("ADMIN_EMAIL", "").lower():
         raise HTTPException(403, "Admin only")
     payload = data.model_dump(exclude_unset=True)
-    # Drop empty-string values so PUT doesn't wipe existing IDs
     payload = {k: v for k, v in payload.items() if v not in ("", None)}
     if payload:
         await db.settings.update_one({"_id": "app"}, {"$set": payload}, upsert=True)
     return {"ok": True}
 
-# ---------------- Payments (Razorpay simulated) ----------------
-PRICES = {"unlock": 3000, "boost_district": 9900, "boost_statewide": 29900, "premium": 9900}  # paise
+# ---------------- Payments ----------------
+PRICES = {"unlock": 3000, "boost_district": 9900, "boost_statewide": 29900, "premium": 9900}
 
 @api.post("/payments/order")
 async def create_order(data: PaymentVerifyIn, user=Depends(get_current_user)):
@@ -410,7 +405,6 @@ async def create_order(data: PaymentVerifyIn, user=Depends(get_current_user)):
 
 @api.post("/payments/verify")
 async def verify_payment(data: PaymentVerifyIn, user=Depends(get_current_user)):
-    # Simulated verification; in production, verify HMAC signature.
     await db.orders.update_one({"order_id": data.razorpay_order_id, "user_id": user["user_id"]},
         {"$set": {"status": "paid", "payment_id": data.razorpay_payment_id,
                   "paid_at": datetime.now(timezone.utc).isoformat()}})
@@ -449,11 +443,10 @@ async def worker_analytics(user=Depends(get_current_user)):
             "profile_unlocks": unlocks, "total_applications": apps,
             "premium_expires_at": w.get("premium_expires_at")}
 
-# ---------------- OTP + Proxy Call + Privacy ----------------
+# ---------------- OTP ----------------
 import random as _rand
 
 def _mask_phone(phone: str) -> str:
-    """Return a display-safe format like +91-XXXXX-XXXXX"""
     digits = "".join(ch for ch in (phone or "") if ch.isdigit())[-10:]
     if len(digits) < 10:
         return "+91-XXXXX-XXXXX"
@@ -468,7 +461,6 @@ async def otp_request(data: OtpRequestIn, user=Depends(get_current_user)):
                   "expires_at": (datetime.now(timezone.utc) + timedelta(minutes=10)).isoformat()}},
         upsert=True,
     )
-    # In dev we return the code; in production replace with SMS gateway send.
     logger.info(f"OTP for {data.phone}: {code}")
     return {"ok": True, "dev_code": code, "phone": data.phone,
             "message": "OTP sent (dev mode — code included in response)"}
@@ -517,7 +509,6 @@ async def proxy_call(data: ProxyCallIn, user=Depends(get_current_user)):
         "timestamp": datetime.now(timezone.utc).isoformat(),
     }
     await db.contact_privacy_logs.insert_one(log)
-    # Simulated proxy number — in production, request Exotel/Twilio bridge here
     proxy_number = f"+91-80-4718-{_rand.randint(1000, 9999)}"
     await db.contact_privacy_logs.update_one({"log_id": log["log_id"]},
         {"$set": {"proxy_call_status": "connected", "proxy_number": proxy_number}})
@@ -539,7 +530,6 @@ async def list_privacy_logs(district: Optional[str] = None, date_from: Optional[
     docs = await db.contact_privacy_logs.find(q, {"_id": 0}).sort("timestamp", -1).to_list(1000)
     return docs
 
-# Voice-note support tickets
 @api.post("/support/tickets/voice")
 async def create_voice_ticket(data: VoiceTicketIn, user=Depends(get_current_user)):
     doc = {
@@ -555,7 +545,6 @@ async def create_voice_ticket(data: VoiceTicketIn, user=Depends(get_current_user
     await db.support_tickets.insert_one(doc)
     return {k: v for k, v in doc.items() if k not in ("_id", "audio_data_url")}
 
-# ---------------- Support Tickets ----------------
 @api.post("/support/tickets")
 async def create_ticket(data: SupportTicketIn, user=Depends(get_current_user)):
     doc = {
@@ -602,7 +591,6 @@ async def list_jobs(category: Optional[str] = None, district: Optional[str] = No
     q = {}
     if category: q["category"] = category
     if district:
-        # Statewide boosted jobs should appear in every district feed
         q["$or"] = [{"district": district},
                     {"boost_type": "statewide", "boost_expires_at": {"$gt": now}}]
     docs = await db.jobs.find(q, {"_id": 0}).to_list(500)
@@ -740,47 +728,38 @@ async def list_threads(user=Depends(get_current_user)):
         })
     return out
 
-# ---------------- Seed ----------------
+# ---------------- Seed Data ----------------
 TRADE_EMOJI = {
-    # Construction & Building
     "Mason/Bricklayer": "🧱", "Carpenter": "🪚", "Plumber": "🔧", "Electrician": "⚡",
     "Painter": "🎨", "Welder": "🔥", "Fabricator": "⚙️", "Steel Fixer": "🏗️",
-    "Tile Setter": "🪟", "Scaffolder": "🪜",
-    "Waterproofing Worker": "💧", "False Ceiling Fixer": "🔩", "Marble/Granite Fitter": "🪨",
+    "Tile Setter": "🪟", "Scaffolder": "🪜", "Waterproofing Worker": "💧",
+    "False Ceiling Fixer": "🔩", "Marble/Granite Fitter": "🪨",
     "Glass & Glazing Worker": "🪟", "Shuttering Carpenter": "🪵", "Demolition Worker": "🪓",
     "Road Layer/Paver": "🛣️", "Crane Operator": "🏗️", "Concrete Mixer Operator": "🔄", "Bar Bender": "💪",
-    # Industrial & Mechanical
     "Fitter": "🔩", "Machinist": "🛠️", "Turner": "🔄", "Automobile Technician": "🚗", "CNC Operator": "💻",
     "Diesel Mechanic": "🔧", "Pump Operator": "💦", "Compressor Operator": "🌀",
     "Forklift Operator": "🏭", "Lathe Operator": "⚙️", "Sheet Metal Worker": "🔨",
     "Boiler Operator": "♨️", "Generator Technician": "⚡", "AC Mechanic": "❄️", "Refrigeration Technician": "🧊",
-    # Electrical & Electronics
     "Industrial Electrician": "⚡", "Domestic Electrician": "🏠", "Wireman": "🔌", "Electronics Technician": "📱",
     "Solar Panel Installer": "☀️", "CCTV Installer": "📷", "Fire Alarm Technician": "🚨",
     "Data Cable Technician": "🖥️", "Lift/Elevator Technician": "🛗", "UPS Technician": "🔋",
     "Motor Winding Technician": "⚡", "Panel Board Wireman": "🔌",
-    # Domestic & Services
     "Cook/Chef": "👨‍🍳", "Housekeeping Staff": "🏠", "Driver": "🚗", "Beautician": "💇", "Tailor": "🧵",
     "Baby Caretaker/Nanny": "👶", "Elder Care Attendant": "👴", "Laundry/Dhobi Worker": "👕",
     "Gardener/Mali": "🌱", "Pest Control Worker": "🪲", "Swimming Pool Cleaner": "🏊",
     "Car Washer/Detailer": "🚿", "Watchman/Security Guard": "🛡️", "Peon/Office Boy": "📋", "Pantry Boy": "☕",
-    # Agriculture
     "Farm Laborer": "🌾", "Irrigation Worker": "💧", "Harvesting Worker": "🌿",
     "Tractor Operator": "🚜", "Greenhouse Worker": "🪴", "Poultry Farm Worker": "🐔",
     "Dairy Farm Worker": "🐄", "Horticulture Worker": "🌺", "Nursery Worker": "🪴", "Seed Sowing Worker": "🌱",
-    # Logistics
     "Delivery Boy 2-Wheeler": "🛵", "Delivery Boy 4-Wheeler": "🚐", "Warehouse Worker": "📦",
     "Loading/Unloading Labor": "💪", "Packing Worker": "📫", "Courier Boy": "🏍️",
     "E-Commerce Delivery Agent": "📲", "Cold Storage Worker": "🧊", "Inventory Helper": "📋", "Dispatch Boy": "🚚",
-    # Beauty & Wellness
     "Mehendi Artist": "🎨", "Makeup Artist": "💄", "Spa Therapist": "💆",
     "Yoga Instructor": "🧘", "Gym Trainer": "💪", "Hair Stylist": "✂️",
     "Nail Technician": "💅", "Waxing Specialist": "🌸", "Facial Therapist": "🧖", "Massage Therapist": "💆",
-    # Healthcare
     "Hospital Attendant/Ward Boy": "🏥", "Home Nurse": "👩‍⚕️", "Medical Equipment Technician": "🩺",
     "Ambulance Driver": "🚑", "Pharmacy Helper": "💊", "Lab Technician Assistant": "🔬",
     "Physiotherapy Assistant": "🦽", "Dental Assistant": "🦷", "Dialysis Technician": "💉", "Blood Sample Collector": "🩸",
-    # Unskilled & General
     "General Helper/Mazdoor": "👷", "Dig & Trench Worker": "⛏️", "Sand/Gravel Loader": "🪣",
     "Brick Carrier": "🧱", "Cement Mixer Helper": "🔄", "Garbage Collector": "🗑️",
     "Street Sweeper": "🧹", "Construction Site Cleaner": "🧽", "Event Setup Helper": "🎪",
@@ -826,8 +805,6 @@ async def seed_data():
     await db.jobs.create_index("job_id", unique=True)
     await db.users.create_index("email", unique=True)
     await db.users.create_index("user_id", unique=True)
-
-    # Seed admin
     admin_email = os.environ.get("ADMIN_EMAIL", "admin@example.com").lower()
     admin_password = os.environ.get("ADMIN_PASSWORD", "admin123")
     if not await db.users.find_one({"email": admin_email}):
@@ -840,13 +817,10 @@ async def seed_data():
         })
         logger.info(f"Seeded admin: {admin_email}")
     else:
-        # Update password hash if it changed
         existing = await db.users.find_one({"email": admin_email})
         if not verify_password(admin_password, existing.get("password_hash", "")):
             await db.users.update_one({"email": admin_email},
                 {"$set": {"password_hash": hash_password(admin_password)}})
-
-    # Seed workers
     if await db.workers.count_documents({"seed": True}) < 40:
         await db.workers.delete_many({"seed": True})
         random.seed(42)
@@ -874,8 +848,6 @@ async def seed_data():
                 "created_at": datetime.now(timezone.utc).isoformat(),
             })
         logger.info("Seeded 45 workers across 9 categories")
-
-    # Seed jobs
     if await db.jobs.count_documents({}) < 10:
         await db.jobs.delete_many({"seed": True})
         random.seed(99)
@@ -900,16 +872,8 @@ async def seed_data():
                 "created_at": datetime.now(timezone.utc).isoformat(),
             })
         logger.info("Seeded 12 jobs")
-@asynccontextmanager
-async def lifespan(app: FastAPI):
-    await seed_data()
-    yield
-    client.close()
 
-app = FastAPI(lifespan=lifespan)
-# Include router
-app.include_router(api)
-# Include router and create app
+# ---------------- App Creation (MUST be after seed_data) ----------------
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     await seed_data()
@@ -927,4 +891,3 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
