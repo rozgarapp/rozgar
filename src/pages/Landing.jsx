@@ -134,7 +134,7 @@ export default function Landing() {
         </div>
       </section>
 
-      <<footer className="bg-[#0D1B1E] text-slate-300 py-8">
+      <footer className="bg-[#0D1B1E] text-slate-300 py-8">
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div className="flex flex-col sm:flex-row items-center justify-between gap-3 mb-4">
       <div className="flex items-center gap-2">
@@ -144,22 +144,15 @@ export default function Landing() {
       <div className="text-xs text-slate-400">© 2026 Rozgar. Built for Telangana workers.</div>
     </div>
     <div className="border-t border-slate-700 pt-4 flex flex-wrap justify-center gap-4">
-      {[
-        { to: "/terms", label: "Terms & Conditions" },
-        { to: "/privacy", label: "Privacy Policy" },
-        { to: "/refund", label: "Refund Policy" },
-        { to: "/about", label: "About Us" },
-        { to: "/contact", label: "Contact" },
-        { to: "/faq", label: "FAQ" },
-      ].map((l) => (
-        <a key={l.to} href={l.to} className="text-xs text-slate-400 hover:text-white transition-colors">
-          {l.label}
-        </a>
-      ))}
+      <a href="/terms" className="text-xs text-slate-400 hover:text-white transition-colors">Terms & Conditions</a>
+      <a href="/privacy" className="text-xs text-slate-400 hover:text-white transition-colors">Privacy Policy</a>
+      <a href="/refund" className="text-xs text-slate-400 hover:text-white transition-colors">Refund Policy</a>
+      <a href="/about" className="text-xs text-slate-400 hover:text-white transition-colors">About Us</a>
+      <a href="/contact" className="text-xs text-slate-400 hover:text-white transition-colors">Contact</a>
+      <a href="/faq" className="text-xs text-slate-400 hover:text-white transition-colors">FAQ</a>
     </div>
     <div className="text-center mt-3 text-xs text-slate-500">
       Operated by Mohammed Shamsh Tabrez · Hyderabad, Telangana
     </div>
   </div>
 </footer>
-}
