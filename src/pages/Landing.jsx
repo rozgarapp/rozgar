@@ -144,15 +144,19 @@ export default function Landing() {
       <div className="text-xs text-slate-400">© 2026 Rozgar. Built for Telangana workers.</div>
     </div>
     <div className="border-t border-slate-700 pt-4 flex flex-wrap justify-center gap-4">
-      <a href="/terms" className="text-xs text-slate-400 hover:text-white transition-colors">Terms & Conditions</a>
-      <a href="/privacy" className="text-xs text-slate-400 hover:text-white transition-colors">Privacy Policy</a>
-      <a href="/refund" className="text-xs text-slate-400 hover:text-white transition-colors">Refund Policy</a>
-      <a href="/about" className="text-xs text-slate-400 hover:text-white transition-colors">About Us</a>
-      <a href="/contact" className="text-xs text-slate-400 hover:text-white transition-colors">Contact</a>
-      <a href="/faq" className="text-xs text-slate-400 hover:text-white transition-colors">FAQ</a>
+      <a href="/terms" className="text-xs text-slate-400 hover:text-white">Terms & Conditions</a>
+      <a href="/privacy" className="text-xs text-slate-400 hover:text-white">Privacy Policy</a>
+      <a href="/refund" className="text-xs text-slate-400 hover:text-white">Refund Policy</a>
+      <a href="/about" className="text-xs text-slate-400 hover:text-white">About Us</a>
+      <a href="/contact" className="text-xs text-slate-400 hover:text-white">Contact</a>
+      <a href="/faq" className="text-xs text-slate-400 hover:text-white">FAQ</a>
     </div>
     <div className="text-center mt-3 text-xs text-slate-500">
       Operated by Mohammed Shamsh Tabrez · Hyderabad, Telangana
     </div>
   </div>
 </footer>
+<AdBanner position="bottom" />
+    </div>
+  );
+      }
