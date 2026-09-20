@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import CategorySection from "../components/CategorySection";
 import WorkerCard from "../components/WorkerCard";
@@ -134,16 +134,32 @@ export default function Landing() {
         </div>
       </section>
 
-      <footer className="bg-[#0D1B1E] text-slate-300 py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-white text-[#1B4332] flex items-center justify-center font-extrabold">R</div>
-            <span className="font-bold text-white">{t("brand", lang)}</span>
-          </div>
-          <div className="text-xs text-slate-400">© 2026 Rozgar. Built for Telangana workers.</div>
-        </div>
-      </footer>
-      <AdBanner position="bottom" />
+      <<footer className="bg-[#0D1B1E] text-slate-300 py-8">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="flex flex-col sm:flex-row items-center justify-between gap-3 mb-4">
+      <div className="flex items-center gap-2">
+        <div className="w-8 h-8 rounded-lg bg-white text-[#1B4332] flex items-center justify-center font-extrabold">R</div>
+        <span className="font-bold text-white">{t("brand", lang)}</span>
+      </div>
+      <div className="text-xs text-slate-400">© 2026 Rozgar. Built for Telangana workers.</div>
     </div>
-  );
+    <div className="border-t border-slate-700 pt-4 flex flex-wrap justify-center gap-4">
+      {[
+        { to: "/terms", label: "Terms & Conditions" },
+        { to: "/privacy", label: "Privacy Policy" },
+        { to: "/refund", label: "Refund Policy" },
+        { to: "/about", label: "About Us" },
+        { to: "/contact", label: "Contact" },
+        { to: "/faq", label: "FAQ" },
+      ].map((l) => (
+        <a key={l.to} href={l.to} className="text-xs text-slate-400 hover:text-white transition-colors">
+          {l.label}
+        </a>
+      ))}
+    </div>
+    <div className="text-center mt-3 text-xs text-slate-500">
+      Operated by Mohammed Shamsh Tabrez · Hyderabad, Telangana
+    </div>
+  </div>
+</footer>
 }
