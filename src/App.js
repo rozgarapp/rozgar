@@ -11,6 +11,13 @@ import ChatPage from "./pages/ChatPage";
 import AuthPage from "./pages/AuthPage";
 import AuthCallback from "./pages/AuthCallback";
 import AdminSettings from "./pages/AdminSettings";
+import Terms from "./pages/Terms";
+import Privacy from "./pages/Privacy";
+import Refund from "./pages/Refund";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import Faq from "./pages/Faq";
+import Footer from "./components/Footer";
 import SupportWidget from "./components/SupportWidget";
 import MatchBot from "./components/MatchBot";
 import SplashScreen from "./components/SplashScreen";
@@ -20,19 +27,28 @@ function AppRouter() {
   const location = useLocation();
   if (location.hash?.includes("session_id=")) return <AuthCallback />;
   return (
-    <Routes>
-      <Route path="/" element={<Landing />} />
-      <Route path="/workers" element={<WorkersDirectory />} />
-      <Route path="/workers/:id" element={<WorkerProfile />} />
-      <Route path="/jobs" element={<JobsPage />} />
-      <Route path="/post-job" element={<PostJob />} />
-      <Route path="/dashboard" element={<Dashboard />} />
-      <Route path="/chat" element={<ChatPage />} />
-      <Route path="/chat/:userId" element={<ChatPage />} />
-      <Route path="/login" element={<AuthPage mode="login" />} />
-      <Route path="/signup" element={<AuthPage mode="signup" />} />
-      <Route path="/admin" element={<AdminSettings />} />
-    </Routes>
+    <>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/workers" element={<WorkersDirectory />} />
+        <Route path="/workers/:id" element={<WorkerProfile />} />
+        <Route path="/jobs" element={<JobsPage />} />
+        <Route path="/post-job" element={<PostJob />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/chat" element={<ChatPage />} />
+        <Route path="/chat/:userId" element={<ChatPage />} />
+        <Route path="/login" element={<AuthPage mode="login" />} />
+        <Route path="/signup" element={<AuthPage mode="signup" />} />
+        <Route path="/admin" element={<AdminSettings />} />
+        <Route path="/terms" element={<Terms />} />
+        <Route path="/privacy" element={<Privacy />} />
+        <Route path="/refund" element={<Refund />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/faq" element={<Faq />} />
+      </Routes>
+      <Footer />
+    </>
   );
 }
 
