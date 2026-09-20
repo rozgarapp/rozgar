@@ -1,26 +1,14 @@
 import { Link } from "react-router-dom";
-import { useApp } from "../context/AppContext";
-
-const langTagline = {
-  EN: { main: "Rozgar", rest: " · ఉపాధి · रोजगार · روزگار" },
-  TE: { main: "ఉపాధి", rest: " · Rozgar · रोजगार · روزگار" },
-  HI: { main: "रोजगार", rest: " · Rozgar · ఉపాధి · روزگار" },
-  UR: { main: "روزگار", rest: " · Rozgar · ఉపాధి · रोजगार" },
-};
 
 export default function Footer() {
-  const { lang } = useApp();
-  const tagline = langTagline[lang] || langTagline["EN"];
-
   return (
     <footer className="mt-auto w-full" style={{ background: "#1B4332", color: "#D1FAE5" }}>
       <div className="max-w-5xl mx-auto px-4 py-10">
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-3">
 
           <div>
-            <p className="text-lg font-bold mb-1 transition-all duration-200" style={{ color: "#fff" }}>
-              <span style={{ fontSize: "1.2em" }}>{tagline.main}</span>
-              <span className="text-green-300 text-sm font-normal">{tagline.rest}</span>
+            <p className="text-lg font-bold mb-1" style={{ color: "#fff" }}>
+              Rozgar
             </p>
             <p className="text-xs text-green-300 leading-relaxed mt-2">
               Connecting skilled workers with employers across Telangana.
@@ -32,35 +20,23 @@ export default function Footer() {
           <div>
             <p className="text-xs font-semibold text-green-200 uppercase tracking-wider mb-3">Platform</p>
             <div className="flex flex-col gap-2">
-              {[
-                { to: "/workers", label: "Browse Workers" },
-                { to: "/jobs", label: "Browse Jobs" },
-                { to: "/post-job", label: "Post a Job" },
-                { to: "/login", label: "Login" },
-                { to: "/signup", label: "Sign Up" },
-              ].map((l) => (
-                <Link key={l.to} to={l.to} className="text-xs text-green-300 hover:text-white transition-colors duration-150">
-                  {l.label}
-                </Link>
-              ))}
+              <Link to="/workers" className="text-xs text-green-300 hover:text-white">Browse Workers</Link>
+              <Link to="/jobs" className="text-xs text-green-300 hover:text-white">Browse Jobs</Link>
+              <Link to="/post-job" className="text-xs text-green-300 hover:text-white">Post a Job</Link>
+              <Link to="/login" className="text-xs text-green-300 hover:text-white">Login</Link>
+              <Link to="/signup" className="text-xs text-green-300 hover:text-white">Sign Up</Link>
             </div>
           </div>
 
           <div>
             <p className="text-xs font-semibold text-green-200 uppercase tracking-wider mb-3">Legal & Support</p>
             <div className="flex flex-col gap-2">
-              {[
-                { to: "/terms", label: "Terms & Conditions" },
-                { to: "/privacy", label: "Privacy Policy" },
-                { to: "/refund", label: "Refund Policy" },
-                { to: "/about", label: "About Us" },
-                { to: "/contact", label: "Contact Us" },
-                { to: "/faq", label: "FAQ" },
-              ].map((l) => (
-                <Link key={l.to} to={l.to} className="text-xs text-green-300 hover:text-white transition-colors duration-150">
-                  {l.label}
-                </Link>
-              ))}
+              <Link to="/terms" className="text-xs text-green-300 hover:text-white">Terms & Conditions</Link>
+              <Link to="/privacy" className="text-xs text-green-300 hover:text-white">Privacy Policy</Link>
+              <Link to="/refund" className="text-xs text-green-300 hover:text-white">Refund Policy</Link>
+              <Link to="/about" className="text-xs text-green-300 hover:text-white">About Us</Link>
+              <Link to="/contact" className="text-xs text-green-300 hover:text-white">Contact Us</Link>
+              <Link to="/faq" className="text-xs text-green-300 hover:text-white">FAQ</Link>
             </div>
           </div>
         </div>
