@@ -4,6 +4,7 @@ import CategorySection from "../components/CategorySection";
 import WorkerCard from "../components/WorkerCard";
 import AdBanner from "../components/AdBanner";
 import { Button } from "../components/ui/button";
+import { useEffect, useState } from "react";
 import { useApp } from "../context/AppContext";
 import { t, TOTAL_TRADES } from "../lib/i18n";
 import api from "../lib/api";
@@ -159,4 +160,4 @@ export default function Landing() {
 <AdBanner position="bottom" />
     </div>
   );
-      }
+}
