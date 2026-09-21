@@ -72,7 +72,7 @@ export default function Navbar() {
                   <Menu className="w-5 h-5" />
                 </button>
               </SheetTrigger>
-              <SheetContent side="start" className="w-72 p-0">
+              <SheetContent side="left" className="w-72 p-0">
                 <SheetHeader className="px-5 py-4 border-b">
                   <SheetTitle className="flex items-center gap-2">
                     <div className="w-8 h-8 rounded-lg bg-[#1B4332] text-white flex items-center justify-center font-extrabold">R</div>
