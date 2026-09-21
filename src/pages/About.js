@@ -74,11 +74,7 @@ export default function About() {
         <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-6">
           <h2 className="text-base font-semibold mb-3" style={{ color: "#1B4332" }}>📖 Our Story</h2>
           <p className="text-gray-600 text-sm leading-relaxed">
-            Rozgar was founded in 2026 by Mohammed Shamsh Tabrez, a civil engineer based in
-            Hyderabad, Telangana, with over 16 years of experience in the UAE and Indian
-            construction industry. Having worked closely with skilled workers throughout his career,
-            he understood firsthand how difficult it was for talented tradespeople to get
-            discovered by the right employers.
+            Rozgar was founded in 2026 to solve a problem faced across industries: talented tradespeople struggling to get discovered by the right employers. Rozgar connects skilled workers with employers, making it easier for great talent to be found.
           </p>
           <p className="text-gray-600 text-sm leading-relaxed mt-3">
             The vision was straightforward: build a platform that works for the worker — not just
