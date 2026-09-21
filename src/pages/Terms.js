@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const sections = [
   {
     title: "1. About Rozgar Platform",
-    content: `Rozgar is an online platform connecting workers and employers across Telangana and India. The platform is operated by , Hyderabad, Telangana, India. Email: rozgarapp2026@gmail.com. By accessing or using Rozgar, you agree to be bound by these Terms & Conditions.`,
+    content: `Rozgar is an online platform connecting workers and employers across Telangana and India. The platform is operated remotely. Email: rozgarapp2026@gmail.com. By accessing or using Rozgar, you agree to be bound by these Terms & Conditions.`,
   },
   {
     title: "2. Eligibility",
@@ -56,7 +56,7 @@ const sections = [
   },
   {
     title: "14. Platform Data Accuracy",
-    content: `Platform statistics including number of workers, trades, and districts are updated periodically. Data shown as of September 15, 2026 includes 117+ trades across 33 districts of Telangana in 4 languages. Rozgar does not guarantee real-time accuracy of these figures.`,
+    content: `Platform statistics including number of workers, trades, and languages are updated periodically and may vary as the platform grows. Rozgar does not guarantee real-time accuracy of these figures.`,
   },
   {
     title: "15. Governing Law",
