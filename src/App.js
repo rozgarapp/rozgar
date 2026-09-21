@@ -17,7 +17,7 @@ import Refund from "./pages/Refund.js";
 import About from "./pages/About.js";
 import Contact from "./pages/Contact.js";
 import Faq from "./pages/Faq.js";
-import Navbar from "./components/Navbar.js";
+import Navbar from "./components/Navbar";
 import Footer from "./components/Footer.js";
 import SupportWidget from "./components/SupportWidget";
 import MatchBot from "./components/MatchBot";
