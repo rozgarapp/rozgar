@@ -21,12 +21,15 @@ export default function Footer() {
         <div className="max-w-5xl mx-auto px-4 py-8">
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
             <div>
-              <p className="text-base font-bold mb-1" style={{ color: "#fff" }}>
+              <Link
+                to="/"
+                className="text-base font-bold mb-1 block hover:opacity-90 transition-opacity w-fit"
+                style={{ color: "#fff" }}
+              >
                 Rozgar · ఉపాధి · रोजगार · روزگار
-              </p>
+              </Link>
               <p className="text-xs text-green-300 leading-relaxed mt-2">
-                Connecting skilled workers with employers across Telangana.
-                across all trades · 4 languages.
+                Connecting skilled workers with employers across Telangana in 4 languages.
               </p>
             </div>
             <div>
