@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 const stats = [
   { number: "117+", label: "Trades & Skills" },
-  { number: "33", label: "Districts Covered" },
   { number: "4", label: "Languages" },
   { number: "2026", label: "Founded" },
 ];
@@ -11,7 +10,7 @@ const stats = [
 const trades = [
   "Mason", "Carpenter", "Electrician", "Plumber", "Painter",
   "Welder", "Tiler", "Driver", "Cook", "Tailor",
-  "AC Technician", "Security Guard", "Cleaner", "Helper", "Gardner",
+  "AC Technician", "Security Guard", "Cleaner", "Helper", "Gardener",
 ];
 
 const languages = [
@@ -19,13 +18,6 @@ const languages = [
   { name: "Telugu", native: "తెలుగు" },
   { name: "Hindi", native: "हिंदी" },
   { name: "Urdu", native: "اردو" },
-];
-
-const timeline = [
-  { year: "2025", text: "Idea born — a simple platform to connect skilled workers in Telangana with local employers" },
-  { year: "Early 2026", text: "Development begins — built with React, FastAPI, and MongoDB" },
-  { year: "Mid 2026", text: "Beta launch with 117+ trades across 33 districts of Telangana" },
-  { year: "Sep 2026", text: "Official launch — available in 4 languages: English, Telugu, Hindi, Urdu" },
 ];
 
 export default function About() {
@@ -47,7 +39,7 @@ export default function About() {
       </div>
 
       <div className="max-w-3xl mx-auto px-4 py-10">
-        <div className="grid grid-cols-2 gap-4 mb-8 sm:grid-cols-4">
+        <div className="grid grid-cols-2 gap-4 mb-8 sm:grid-cols-3">
           {stats.map((s, i) => (
             <div key={i} className="bg-white rounded-xl border border-gray-100 shadow-sm p-4 text-center">
               <p className="text-2xl font-bold" style={{ color: "#1B4332" }}>{s.number}</p>
@@ -80,14 +72,6 @@ export default function About() {
             in English, but in Telugu, Hindi, and Urdu too. A platform where a skilled worker 
             can be found by an employer in minutes, not days.
           </p>
-          <div className="mt-6 border-l-2 pl-4" style={{ borderColor: "#1B4332" }}>
-            {timeline.map((t, i) => (
-              <div key={i} className="mb-4 last:mb-0">
-                <p className="text-xs font-semibold" style={{ color: "#1B4332" }}>{t.year}</p>
-                <p className="text-xs text-gray-500 leading-relaxed mt-1">{t.text}</p>
-              </div>
-            ))}
-          </div>
         </div>
 
         <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-6">
@@ -95,7 +79,7 @@ export default function About() {
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
             {[
               { icon: "👷", title: "Worker Profiles", desc: "Workers create free profiles showcasing their trade, experience, location and availability" },
-              { icon: "🏢", title: "Job Listings", desc: "Employers post jobs and find the right worker from 117+ trades across 33 districts" },
+              { icon: "🏢", title: "Job Listings", desc: "Employers post jobs and find the right worker from 117+ trades across Telangana" },
               { icon: "📞", title: "Contact Unlock", desc: "Employers pay just ₹30 to unlock a worker's contact — no subscriptions needed" },
               { icon: "🤖", title: "MatchBot", desc: "AI-powered matching to suggest the best workers for each job requirement" },
               { icon: "💬", title: "In-App Chat", desc: "Direct messaging between workers and employers within the platform" },
@@ -154,7 +138,6 @@ export default function About() {
             📧&nbsp;
             <a href="mailto:rozgarapp2026@gmail.com" style={{ color: "#1B4332" }} className="underline">
               rozgarapp2026@gmail.com
-            </a>
             </a>
           </p>
         </div>
