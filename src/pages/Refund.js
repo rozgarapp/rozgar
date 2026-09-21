@@ -56,7 +56,7 @@ export default function Refund() {
         <h1 className="text-3xl font-bold text-white mb-2">Refund Policy</h1>
         <p className="text-green-200 text-sm">Effective Date: September 15, 2026</p>
         <p className="text-green-300 text-xs mt-1">
-          Operated by Mohammed Shamsh Tabrez · rozgarapp2026@gmail.com
+          Operated by  rozgarapp2026@gmail.com
         </p>
       </div>
 
@@ -107,7 +107,7 @@ export default function Refund() {
 
         <div className="text-center mt-6 pb-6">
           <p className="text-xs text-gray-400">© Copyright 2026 Rozgar Platform · All rights reserved</p>
-          <p className="text-xs text-gray-400 mt-1">Rozgar ఉపాధి रोजगार روزగار</p>
+          <p className="text-xs text-gray-400 mt-1">Rozgar ఉపాధి रोजगार روزگار</p>
           <div className="flex justify-center gap-4 mt-3 flex-wrap">
             {[
               { to: "/terms", label: "Terms & Conditions" },
