@@ -51,8 +51,7 @@ export default function Landing() {
                     {tile.emoji}
                   </div>
                   <div className="mt-2 text-[10px] font-bold" style={{ color: "#1B4332" }}>{tile.trade}</div>
-                  <div className="text-[9px]" style={{ color: "#2D6A4F" }}>₹{tile.rate}/day</div>
-                </div>
+                  </div>
               ))}
             </div>
             <div className="mt-6 hidden sm:flex bg-white rounded-2xl p-4 rz-card-shadow items-center gap-3 max-w-fit">
