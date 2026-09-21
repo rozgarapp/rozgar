@@ -26,7 +26,7 @@ export default function Footer() {
               </p>
               <p className="text-xs text-green-300 leading-relaxed mt-2">
                 Connecting skilled workers with employers across Telangana.
-                117+ trades · 33 districts · 4 languages.
+                across all trades · 4 languages.
               </p>
             </div>
             <div>
