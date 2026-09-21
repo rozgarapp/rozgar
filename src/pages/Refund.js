@@ -10,7 +10,7 @@ const sections = [
   {
     title: "2. Job Boost — Non-Refundable After Activation",
     icon: "🚀",
-    content: `Job boost fees paid to promote a job listing to the top of search results are non-refundable once the boost has been activated.\n\nIf a boost is purchased but not yet activated, please contact us within 24 hours at mdstabrez1@gmail.com for a possible refund consideration.`,
+    content: `Job boost fees paid to promote a job listing to the top of search results are non-refundable once the boost has been activated.\n\nIf a boost is purchased but not yet activated, please contact us within 24 hours at rozgarapp2026@gmail.com for a possible refund consideration.`,
   },
   {
     title: "3. Premium Listing — No Pro-Rata Refund",
@@ -20,12 +20,12 @@ const sections = [
   {
     title: "4. Failed Payment — Full Refund Within 7 Days",
     icon: "💳",
-    content: `If a payment is debited from your account but the corresponding service is NOT activated on Rozgar (e.g. contact not unlocked, boost not applied), you are entitled to a full refund.\n\nRefund will be processed within 7 working days to the original payment method.\n\nTo claim a failed payment refund, email mdstabrez1@gmail.com with:\n• Your registered email or mobile number\n• Transaction ID or UPI reference number\n• Date and amount of payment\n• Screenshot of payment confirmation (if available)`,
+    content: `If a payment is debited from your account but the corresponding service is NOT activated on Rozgar (e.g. contact not unlocked, boost not applied), you are entitled to a full refund.\n\nRefund will be processed within 7 working days to the original payment method.\n\nTo claim a failed payment refund, email rozgarapp2026@gmail.com with:\n• Your registered email or mobile number\n• Transaction ID or UPI reference number\n• Date and amount of payment\n• Screenshot of payment confirmation (if available)`,
   },
   {
     title: "5. Duplicate Payment",
     icon: "🔁",
-    content: `If you are charged twice for the same service due to a technical error, the duplicate charge will be refunded in full within 7 working days.\n\nPlease email mdstabrez1@gmail.com with both transaction IDs to report a duplicate payment.`,
+    content: `If you are charged twice for the same service due to a technical error, the duplicate charge will be refunded in full within 7 working days.\n\nPlease email rozgarapp2026@gmail.com with both transaction IDs to report a duplicate payment.`,
   },
   {
     title: "6. Refund Process",
@@ -35,12 +35,12 @@ const sections = [
   {
     title: "7. How to Request a Refund",
     icon: "📧",
-    content: `To request a refund, email us at mdstabrez1@gmail.com with the subject line: "Refund Request — [Your Name]"\n\nInclude in your email:\n• Registered email or mobile number\n• Nature of the payment (contact unlock / job boost / premium)\n• Transaction ID\n• Reason for refund request\n\nWe will respond within 2 working days.`,
+    content: `To request a refund, email us at rozgarapp2026@gmail.com with the subject line: "Refund Request — [Your Name]"\n\nInclude in your email:\n• Registered email or mobile number\n• Nature of the payment (contact unlock / job boost / premium)\n• Transaction ID\n• Reason for refund request\n\nWe will respond within 2 working days.`,
   },
   {
     title: "8. Disputes",
     icon: "⚖️",
-    content: `If you believe a refund has been wrongly denied, you may escalate the matter by emailing mdstabrez1@gmail.com with "Refund Dispute" in the subject line.\n\nAll disputes are subject to the Terms & Conditions and the jurisdiction of courts in Hyderabad, Telangana, India.`,
+    content: `If you believe a refund has been wrongly denied, you may escalate the matter by emailing rozgarapp2026@gmail.com with "Refund Dispute" in the subject line.\n\nAll disputes are subject to the Terms & Conditions and the jurisdiction of courts in Hyderabad, Telangana, India.`,
   },
 ];
 
@@ -56,7 +56,7 @@ export default function Refund() {
         <h1 className="text-3xl font-bold text-white mb-2">Refund Policy</h1>
         <p className="text-green-200 text-sm">Effective Date: September 15, 2026</p>
         <p className="text-green-300 text-xs mt-1">
-          Operated by Mohammed Shamsh Tabrez · mdstabrez1@gmail.com
+          Operated by Mohammed Shamsh Tabrez · rozgarapp2026@gmail.com
         </p>
       </div>
 
@@ -78,7 +78,7 @@ export default function Refund() {
           <p className="text-gray-600 text-sm leading-relaxed">
             Rozgar aims to be transparent about all fees and refunds. Please read this policy
             carefully before making any payment on our platform. For any payment issues,
-            contact us at <strong>mdstabrez1@gmail.com</strong>.
+            contact us at <strong>rozgarapp2026@gmail.com</strong>.
           </p>
         </div>
 
@@ -98,8 +98,8 @@ export default function Refund() {
           <p className="text-sm font-semibold mb-1" style={{ color: "#1B4332" }}>Need help with a payment?</p>
           <p className="text-xs text-gray-600">
             Email us at{" "}
-            <a href="mailto:mdstabrez1@gmail.com" className="underline font-medium" style={{ color: "#1B4332" }}>
-              mdstabrez1@gmail.com
+            <a href="mailto:rozgarapp2026@gmail.com" className="underline font-medium" style={{ color: "#1B4332" }}>
+              rozgarapp2026@gmail.com
             </a>{" "}
             — we respond within 2 working days.
           </p>
