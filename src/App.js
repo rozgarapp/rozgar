@@ -17,6 +17,7 @@ import Refund from "./pages/Refund.js";
 import About from "./pages/About.js";
 import Contact from "./pages/Contact.js";
 import Faq from "./pages/Faq.js";
+import Navbar from "./components/Navbar.js";
 import Footer from "./components/Footer.js";
 import SupportWidget from "./components/SupportWidget";
 import MatchBot from "./components/MatchBot";
@@ -28,6 +29,7 @@ function AppRouter() {
   if (location.hash?.includes("session_id=")) return <AuthCallback />;
   return (
     <>
+      <Navbar />
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/workers" element={<WorkersDirectory />} />
