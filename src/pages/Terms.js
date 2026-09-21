@@ -72,7 +72,7 @@ const sections = [
   },
   {
     title: "18. Contact Information",
-    content: `For any questions, concerns, or legal notices regarding these Terms & Conditions, please contact:\n\n\nOperator, Rozgar Platform\nHyderabad, Telangana, India\nEmail: rozgarapp2026@gmail.com`,
+    content: ``For any questions or concerns regarding these Terms & Conditions, please contact:\n\n\nRozgar Platform\nEmail: rozgarapp2026@gmail.com`,
   },
 ];
 
