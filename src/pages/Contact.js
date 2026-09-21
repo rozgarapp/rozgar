@@ -29,7 +29,7 @@ export default function Contact() {
       const body = encodeURIComponent(
         `Name: ${form.name}\nEmail: ${form.email}\n\nMessage:\n${form.message}`
       );
-      window.location.href = `mailto:mdstabrez1@gmail.com?subject=${subject}&body=${body}`;
+      window.location.href = `mailto:rozgarapp2026@gmail.com?subject=${subject}&body=${body}`;
       setSubmitted(true);
     } catch {
       setError("Something went wrong. Please email us directly.");
@@ -48,7 +48,7 @@ export default function Contact() {
       <div className="max-w-3xl mx-auto px-4 py-10">
         <div className="grid grid-cols-1 gap-4 mb-8 sm:grid-cols-3">
           {[
-            { icon: "📧", title: "Email Us", value: "mdstabrez1@gmail.com", sub: "We reply within 2 working days", href: "mailto:mdstabrez1@gmail.com" },
+            { icon: "📧", title: "Email Us", value: "rozgarapp2026@gmail.com", sub: "We reply within 2 working days", href: "mailto:rozgarapp2026@gmail.com" },
             { icon: "📍", title: "Location", value: "Hyderabad, Telangana", sub: "India", href: null },
             { icon: "🕐", title: "Response Time", value: "Within 2 days", sub: "Mon – Sat", href: null },
           ].map((item, i) => (
@@ -73,7 +73,7 @@ export default function Contact() {
               <p className="text-sm font-semibold mb-1" style={{ color: "#1B4332" }}>Your email app should have opened!</p>
               <p className="text-xs text-gray-500">
                 If it didn't open, email us directly at{" "}
-                <a href="mailto:mdstabrez1@gmail.com" className="underline" style={{ color: "#1B4332" }}>mdstabrez1@gmail.com</a>
+                <a href="mailto:rozgarapp2026@gmail.com" className="underline" style={{ color: "#1B4332" }}>rozgarapp2026@gmail.com</a>
               </p>
               <button
                 onClick={() => { setSubmitted(false); setForm({ name: "", email: "", subject: "", message: "" }); }}
