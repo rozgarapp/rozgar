@@ -135,28 +135,7 @@ export default function Landing() {
         </div>
       </section>
 
-      <footer className="bg-[#0D1B1E] text-slate-300 py-8">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div className="flex flex-col sm:flex-row items-center justify-between gap-3 mb-4">
-      <div className="flex items-center gap-2">
-        <div className="w-8 h-8 rounded-lg bg-white text-[#1B4332] flex items-center justify-center font-extrabold">R</div>
-        <span className="font-bold text-white">{t("brand", lang)}</span>
-      </div>
-      <div className="text-xs text-slate-400">© 2026 Rozgar. Built for Telangana workers.</div>
-    </div>
-    <div className="border-t border-slate-700 pt-4 flex flex-wrap justify-center gap-4">
-      <a href="/terms" className="text-xs text-slate-400 hover:text-white">Terms & Conditions</a>
-      <a href="/privacy" className="text-xs text-slate-400 hover:text-white">Privacy Policy</a>
-      <a href="/refund" className="text-xs text-slate-400 hover:text-white">Refund Policy</a>
-      <a href="/about" className="text-xs text-slate-400 hover:text-white">About Us</a>
-      <a href="/contact" className="text-xs text-slate-400 hover:text-white">Contact</a>
-      <a href="/faq" className="text-xs text-slate-400 hover:text-white">FAQ</a>
-    </div>
-    <div className="text-center mt-3 text-xs text-slate-500">
-      Operated by Mohammed Shamsh Tabrez · Hyderabad, Telangana
-    </div>
-  </div>
-</footer>
+      
 <AdBanner position="bottom" />
     </div>
   );
