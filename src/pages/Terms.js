@@ -36,7 +36,7 @@ const sections = [
   },
   {
     title: "9. Intellectual Property",
-    content: `All content on Rozgar including text, logos, design, and code is the intellectual property of  unless otherwise stated. Users may not reproduce, distribute, or create derivative works from Rozgar content without written permission. The name "Rozgar" and its multilingual variants — ఉపాధి, रोजगार, روزگار — are trademarks of the platform.`,
+    content: `All content on Rozgar including text, logos, design, and code is the intellectual property of Rozgar Platform unless otherwise stated. Users may not reproduce, distribute, or create derivative works from Rozgar content without written permission. The name "Rozgar" and its multilingual variants — ఉపాధి, रोजगार, روزگار — are trademarks of the platform.`,
   },
   {
     title: "10. Limitation of Liability",
@@ -72,7 +72,7 @@ const sections = [
   },
   {
     title: "18. Contact Information",
-    content: ``For any questions or concerns regarding these Terms & Conditions, please contact:\n\n\nRozgar Platform\nEmail: rozgarapp2026@gmail.com`,
+    content: `For any questions or concerns regarding these Terms & Conditions, please contact:\n\n\nRozgar Platform\nEmail: rozgarapp2026@gmail.com`,
   },
 ];
 
@@ -89,7 +89,7 @@ export default function Terms() {
         <h1 className="text-3xl font-bold text-white mb-2">Terms & Conditions</h1>
         <p className="text-green-200 text-sm">Effective Date: September 15, 2026</p>
         <p className="text-green-300 text-xs mt-1">
-          Operated by  · rozgarapp2026@gmail.com
+          rozgarapp2026@gmail.com
         </p>
       </div>
 
