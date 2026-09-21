@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const sections = [
   {
     title: "1. About Rozgar Platform",
-    content: `Rozgar is an online platform connecting workers and employers across Telangana and India. The platform is operated by Mohammed Shamsh Tabrez, Hyderabad, Telangana, India. Email: mdstabrez1@gmail.com. By accessing or using Rozgar, you agree to be bound by these Terms & Conditions.`,
+    content: `Rozgar is an online platform connecting workers and employers across Telangana and India. The platform is operated by , Hyderabad, Telangana, India. Email: rozgarapp2026@gmail.com. By accessing or using Rozgar, you agree to be bound by these Terms & Conditions.`,
   },
   {
     title: "2. Eligibility",
@@ -24,7 +24,7 @@ const sections = [
   },
   {
     title: "6. Payments & Refunds",
-    content: `All payments on Rozgar are processed securely. Contact unlock fees of ₹30 are non-refundable once the contact is revealed. Job boost and premium listing fees are non-refundable after activation. In the event of a failed payment where the amount is debited but the service is not activated, a full refund will be processed within 7 working days. For refund requests, email mdstabrez1@gmail.com with your transaction details.`,
+    content: `All payments on Rozgar are processed securely. Contact unlock fees of ₹30 are non-refundable once the contact is revealed. Job boost and premium listing fees are non-refundable after activation. In the event of a failed payment where the amount is debited but the service is not activated, a full refund will be processed within 7 working days. For refund requests, email rozgarapp2026@gmail.com with your transaction details.`,
   },
   {
     title: "7. Prohibited Activities",
@@ -36,7 +36,7 @@ const sections = [
   },
   {
     title: "9. Intellectual Property",
-    content: `All content on Rozgar including text, logos, design, and code is the intellectual property of Mohammed Shamsh Tabrez unless otherwise stated. Users may not reproduce, distribute, or create derivative works from Rozgar content without written permission. The name "Rozgar" and its multilingual variants — ఉపాధి, रोजगार, روزگار — are trademarks of the platform.`,
+    content: `All content on Rozgar including text, logos, design, and code is the intellectual property of  unless otherwise stated. Users may not reproduce, distribute, or create derivative works from Rozgar content without written permission. The name "Rozgar" and its multilingual variants — ఉపాధి, रोजगार, روزگار — are trademarks of the platform.`,
   },
   {
     title: "10. Limitation of Liability",
@@ -52,7 +52,7 @@ const sections = [
   },
   {
     title: "13. Termination",
-    content: `Rozgar reserves the right to suspend or terminate any user account at any time for violation of these Terms, fraudulent activity, or any other reason deemed appropriate by the platform. Users may also delete their accounts at any time by contacting mdstabrez1@gmail.com.`,
+    content: `Rozgar reserves the right to suspend or terminate any user account at any time for violation of these Terms, fraudulent activity, or any other reason deemed appropriate by the platform. Users may also delete their accounts at any time by contacting rozgarapp2026@gmail.com.`,
   },
   {
     title: "14. Platform Data Accuracy",
@@ -72,7 +72,7 @@ const sections = [
   },
   {
     title: "18. Contact Information",
-    content: `For any questions, concerns, or legal notices regarding these Terms & Conditions, please contact:\n\nMohammed Shamsh Tabrez\nOperator, Rozgar Platform\nHyderabad, Telangana, India\nEmail: mdstabrez1@gmail.com`,
+    content: `For any questions, concerns, or legal notices regarding these Terms & Conditions, please contact:\n\n\nOperator, Rozgar Platform\nHyderabad, Telangana, India\nEmail: rozgarapp2026@gmail.com`,
   },
 ];
 
@@ -89,7 +89,7 @@ export default function Terms() {
         <h1 className="text-3xl font-bold text-white mb-2">Terms & Conditions</h1>
         <p className="text-green-200 text-sm">Effective Date: September 15, 2026</p>
         <p className="text-green-300 text-xs mt-1">
-          Operated by Mohammed Shamsh Tabrez · mdstabrez1@gmail.com
+          Operated by  · rozgarapp2026@gmail.com
         </p>
       </div>
 
