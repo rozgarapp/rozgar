@@ -45,25 +45,23 @@ export default function Contact() {
         <p className="text-green-200 text-sm">We're here to help — reach out anytime</p>
       </div>
 
-      <div className="max-w-3xl mx-auto px-4 py-10">
-        <div className="grid grid-cols-1 gap-4 mb-8 sm:grid-cols-3">
-          {[
-            { icon: "📧", title: "Email Us", value: "rozgarapp2026@gmail.com", sub: "We reply within 2 working days", href: "mailto:rozgarapp2026@gmail.com" },
-            { icon: "📍", title: "Location", value: "Hyderabad, Telangana", sub: "India", href: null },
-            { icon: "🕐", title: "Response Time", value: "Within 2 days", sub: "Mon – Sat", href: null },
-          ].map((item, i) => (
-            <div key={i} className="bg-white rounded-xl border border-gray-100 shadow-sm p-4 text-center">
-              <div className="text-2xl mb-2">{item.icon}</div>
-              <p className="text-xs text-gray-500 mb-1">{item.title}</p>
-              {item.href ? (
-                <a href={item.href} className="text-sm font-semibold underline block" style={{ color: "#1B4332" }}>{item.value}</a>
-              ) : (
-                <p className="text-sm font-semibold" style={{ color: "#1B4332" }}>{item.value}</p>
-              )}
-              <p className="text-xs text-gray-400 mt-1">{item.sub}</p>
-            </div>
-          ))}
-        </div>
+      <div className="grid grid-cols-1 gap-4 mb-8 sm:grid-cols-2">
+  {[
+    { icon: "📧", title: "Email Us", value: "rozgarapp2026@gmail.com", sub: "We reply within 2 working days", href: "mailto:rozgarapp2026@gmail.com" },
+    { icon: "🕐", title: "Response Time", value: "Within 2 days", sub: "Mon – Sat", href: null },
+  ].map((item, i) => (
+    <div key={i} className="bg-white rounded-xl border border-gray-100 shadow-sm p-4 text-center">
+      <div className="text-2xl mb-2">{item.icon}</div>
+      <p className="text-xs text-gray-500 mb-1">{item.title}</p>
+      {item.href ? (
+        <a href={item.href} className="text-sm font-semibold underline block" style={{ color: "#1B4332" }}>{item.value}</a>
+      ) : (
+        <p className="text-sm font-semibold" style={{ color: "#1B4332" }}>{item.value}</p>
+      )}
+      <p className="text-xs text-gray-400 mt-1">{item.sub}</p>
+    </div>
+  ))}
+</div>
 
         <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-6">
           <h2 className="text-base font-semibold mb-4" style={{ color: "#1B4332" }}>✉️ Send Us a Message</h2>
