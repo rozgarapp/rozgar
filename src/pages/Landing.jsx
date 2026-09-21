@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Navbar from "../components/Navbar";
+
 import CategorySection from "../components/CategorySection";
 import WorkerCard from "../components/WorkerCard";
 import AdBanner from "../components/AdBanner";
@@ -31,7 +31,7 @@ export default function Landing() {
 
   return (
     <div className="min-h-screen pb-24 md:pb-16">
-      <Navbar />
+    
 
       {/* Hero — flat illustration, no photo */}
       <section className="relative overflow-hidden" style={{ backgroundColor: "#F0FAF4" }}>
