@@ -9,7 +9,7 @@ const workerFaqs = [
   { q: "Will my phone number be visible to everyone?", a: "No. Your contact details are hidden by default. An employer must pay ₹30 to unlock your contact. You agreed to this possibility when you registered. You can delete your profile at any time to remove yourself." },
   { q: "How do I get hired faster?", a: "Complete your profile fully — add a photo, list all your skills, write a short description of your experience, and keep your availability status updated. Active profiles appear higher in search." },
   { q: "Can I use Rozgar in Telugu, Hindi, or Urdu?", a: "Yes. Rozgar supports 4 languages — English, Telugu (తెలుగు), Hindi (हिंदी), and Urdu (اردو). Use the language selector in the top navigation bar to switch." },
-  { q: "How do I delete my account?", a: "Email us at mdstabrez1@gmail.com with your registered email or mobile number and request account deletion. We will delete your account and data within 7 working days." },
+  { q: "How do I delete my account?", a: "Email us at rozgarapp2026@gmail.com with your registered email or mobile number and request account deletion. We will delete your account and data within 7 working days." },
   { q: "What trades are available on Rozgar?", a: "Rozgar covers 117+ trades including Mason, Carpenter, Electrician, Plumber, Painter, Welder, Tiler, Driver, Cook, Tailor, AC Technician, Security Guard, Cleaner, Helper, Gardner, and many more." },
   { q: "Which districts does Rozgar cover?", a: "Rozgar covers all 33 districts of Telangana including Hyderabad, Warangal, Nizamabad, Karimnagar, Khammam, Adilabad, Nalgonda, Medak, and all others." },
 ];
@@ -23,7 +23,7 @@ const employerFaqs = [
   { q: "What is a Premium Listing?", a: "A Premium Listing gives your employer profile a featured badge and higher placement in search results for a fixed period (30 or 90 days). This helps attract better workers faster." },
   { q: "How do I pay for contact unlock or job boost?", a: "Rozgar accepts UPI, net banking, and debit/credit cards. All payments are processed securely. You will receive a confirmation after each successful payment." },
   { q: "What if a worker does not respond after I unlock their contact?", a: "Rozgar connects you with workers but cannot guarantee their availability or response. If a worker is unavailable, you can unlock another worker's contact. We recommend unlocking 2–3 contacts for best results." },
-  { q: "Can I report a fake or inactive worker profile?", a: "Yes. If you find a profile that appears fake, outdated, or misleading, email us at mdstabrez1@gmail.com with the worker's name and profile link. We will investigate and remove it if found invalid." },
+  { q: "Can I report a fake or inactive worker profile?", a: "Yes. If you find a profile that appears fake, outdated, or misleading, email us at rozgarapp2026@gmail.com with the worker's name and profile link. We will investigate and remove it if found invalid." },
   { q: "Is there a free trial for employers?", a: "Employer registration and browsing worker profiles is free. You only pay ₹30 when you choose to unlock a specific worker's contact. There are no hidden charges." },
 ];
 
