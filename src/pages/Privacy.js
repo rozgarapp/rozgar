@@ -30,8 +30,7 @@ export default function Privacy() {
         <h1 className="text-3xl font-bold text-white mb-2">Privacy Policy</h1>
         <p className="text-green-200 text-sm">Effective Date: September 15, 2026</p>
         <p className="text-green-300 text-xs mt-1">
-  rozgarapp2026@gmail.com
-</p>
+          rozgarapp2026@gmail.com
         </p>
       </div>
 
