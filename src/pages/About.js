@@ -59,27 +59,26 @@ export default function About() {
         <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-6">
           <h2 className="text-base font-semibold mb-3" style={{ color: "#1B4332" }}>🎯 Our Mission</h2>
           <p className="text-gray-600 text-sm leading-relaxed">
-            Rozgar exists to solve a simple but powerful problem — skilled workers across Telangana
+            Rozgar exists to solve a simple but powerful problem — skilled workers 
             struggle to find work, and employers struggle to find trusted workers. We built Rozgar
             to bridge that gap with technology that is simple, fast, and available in the languages
             people actually speak.
           </p>
           <p className="text-gray-600 text-sm leading-relaxed mt-3">
             Our mission is to create dignified employment opportunities for every skilled worker —
-            whether they are a mason in Karimnagar, a cook in Nizamabad, or an electrician in
-            Hyderabad — by making them visible and reachable to employers who need them.
+            by making them visible and reachable to employers who need them.
           </p>
         </div>
 
         <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-6">
           <h2 className="text-base font-semibold mb-3" style={{ color: "#1B4332" }}>📖 Our Story</h2>
           <p className="text-gray-600 text-sm leading-relaxed">
-            Rozgar was founded in 2026 to solve a problem faced across industries: talented tradespeople struggling to get discovered by the right employers. Rozgar connects skilled workers with employers, making it easier for great talent to be found.
+            Rozgar was founded to solve a problem faced across industries: talented tradespeople struggling to get discovered by the right employers. Rozgar connects skilled workers with employers, making it easier for great talent to be found.
           </p>
           <p className="text-gray-600 text-sm leading-relaxed mt-3">
             The vision was straightforward: build a platform that works for the worker — not just
-            in English, but in Telugu, Hindi, and Urdu too. A platform where a plumber in Warangal
-            or a driver in Adilabad can be found by an employer in minutes, not days.
+            in English, but in Telugu, Hindi, and Urdu too. A platform where a skilled worker 
+            can be found by an employer in minutes, not days.
           </p>
           <div className="mt-6 border-l-2 pl-4" style={{ borderColor: "#1B4332" }}>
             {timeline.map((t, i) => (
@@ -142,16 +141,20 @@ export default function About() {
         <div className="rounded-xl p-6 mb-6" style={{ background: "#F0FDF4", border: "1px solid #BBF7D0" }}>
           <h2 className="text-base font-semibold mb-3" style={{ color: "#1B4332" }}>👤 About the Operator</h2>
           <p className="text-sm text-gray-600 leading-relaxed">
-            <strong>Mohammed Shamsh Tabrez</strong> is a QAQC Civil Engineer and Structural
-            Draftsman with over 16 years of experience in UAE and Indian construction. He has
-            worked with major construction firms across Telangana and the UAE, giving him deep
-            understanding of the skilled labour market and the challenges workers face in finding
-            dignified employment.
+            <strong>Rozgar</strong> is built and operated by a professional with real,
+            hands-on experience in the skilled labour industry — someone who has
+            seen firsthand the gap between talented workers and the employers
+            who need them.
           </p>
           <p className="text-sm text-gray-600 leading-relaxed mt-2">
-            📍 Hyderabad, Telangana, India &nbsp;·&nbsp;
-            <a href="mailto:mdstabrez1@gmail.com" style={{ color: "#1B4332" }} className="underline">
-              mdstabrez1@gmail.com
+            That experience shaped Rozgar's mission: to make finding work, and
+            finding workers, simple, fast, and fair.
+          </p>
+          <p className="text-sm text-gray-600 leading-relaxed mt-2">
+            📧&nbsp;
+            <a href="mailto:rozgarapp2026@gmail.com" style={{ color: "#1B4332" }} className="underline">
+              rozgarapp2026@gmail.com
+            </a>
             </a>
           </p>
         </div>
