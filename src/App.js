@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AppProvider } from "./context/AppContext";
 import { Toaster } from "./components/ui/sonner";
+import Navbar from "./components/Navbar";
 import Landing from "./pages/Landing";
 import WorkersDirectory from "./pages/WorkersDirectory";
 import WorkerProfile from "./pages/WorkerProfile";
@@ -25,9 +26,9 @@ import "./App.css";
 
 function AppRouter() {
   const location = useLocation();
-  if (location.hash?.includes("session_id=")) return <AuthCallback />;
   return (
     <>
+      <Navbar />
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/workers" element={<WorkersDirectory />} />
