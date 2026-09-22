@@ -52,7 +52,6 @@ export default function PostJob() {
 
   return (
     <div className="min-h-screen bg-slate-50 pb-24 md:pb-8">
-      <Navbar />
       <div className="max-w-2xl mx-auto px-4 py-8">
         <h1 className="heading text-2xl font-extrabold text-slate-900 mb-6">{t("post_job", lang)}</h1>
         <form onSubmit={submit} className="bg-white rounded-2xl border border-slate-200 p-6 rz-card-shadow space-y-4">
