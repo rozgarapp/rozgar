@@ -54,9 +54,12 @@ export default function Faq() {
   return (
     <div className="min-h-screen bg-gray-50">
       <div style={{ background: "#1B4332" }} className="py-12 px-4 text-center">
-        <h1 className="text-3xl font-bold text-white mb-2">Frequently Asked Questions</h1>
-        <p className="text-green-200 text-sm">Find answers to the most common questions about Rozgar</p>
-      </div>
+  <Link to="/" className="inline-flex items-center gap-1 text-green-300 text-xs hover:text-white mb-4 block">
+    ← Back to Rozgar Home
+  </Link>
+  <h1 className="text-3xl font-bold text-white mb-2">Frequently Asked Questions</h1>
+  <p className="text-green-200 text-sm">Find answers to the most common questions about Rozgar</p>
+</div>
 
       <div className="max-w-3xl mx-auto px-4 py-10">
         <div className="flex bg-white rounded-xl border border-gray-100 shadow-sm p-1 mb-8">
