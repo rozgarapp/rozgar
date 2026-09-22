@@ -48,7 +48,6 @@ export default function JobsPage() {
 
   return (
     <div className="min-h-screen bg-slate-50 pb-32 md:pb-24">
-      <Navbar />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex items-center justify-between mb-6 flex-wrap gap-2">
           <div>
