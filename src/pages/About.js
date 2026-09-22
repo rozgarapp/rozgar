@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 const stats = [
   { number: "117+", label: "Trades & Skills" },
+  { number: "33", label: "Districts Covered" },
   { number: "4", label: "Languages" },
   { number: "2026", label: "Founded" },
 ];
@@ -10,7 +11,7 @@ const stats = [
 const trades = [
   "Mason", "Carpenter", "Electrician", "Plumber", "Painter",
   "Welder", "Tiler", "Driver", "Cook", "Tailor",
-  "AC Technician", "Security Guard", "Cleaner", "Helper", "Gardener",
+  "AC Technician", "Security Guard", "Cleaner", "Helper", "Gardner",
 ];
 
 const languages = [
@@ -39,7 +40,7 @@ export default function About() {
       </div>
 
       <div className="max-w-3xl mx-auto px-4 py-10">
-        <div className="grid grid-cols-2 gap-4 mb-8 sm:grid-cols-3">
+        <div className="grid grid-cols-2 gap-4 mb-8 sm:grid-cols-4">
           {stats.map((s, i) => (
             <div key={i} className="bg-white rounded-xl border border-gray-100 shadow-sm p-4 text-center">
               <p className="text-2xl font-bold" style={{ color: "#1B4332" }}>{s.number}</p>
@@ -51,26 +52,19 @@ export default function About() {
         <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-6">
           <h2 className="text-base font-semibold mb-3" style={{ color: "#1B4332" }}>🎯 Our Mission</h2>
           <p className="text-gray-600 text-sm leading-relaxed">
-            Rozgar exists to solve a simple but powerful problem — skilled workers 
-            struggle to find work, and employers struggle to find trusted workers. We built Rozgar
-            to bridge that gap with technology that is simple, fast, and available in the languages
-            people actually speak.
-          </p>
-          <p className="text-gray-600 text-sm leading-relaxed mt-3">
-            Our mission is to create dignified employment opportunities for every skilled worker —
-            by making them visible and reachable to employers who need them.
+            Rozgar exists to connect skilled workers across Telangana with employers who need them.
+            We built Rozgar to bridge that gap with technology that is simple, fast, and available
+            in the languages people actually speak.
           </p>
         </div>
 
         <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-6">
           <h2 className="text-base font-semibold mb-3" style={{ color: "#1B4332" }}>📖 Our Story</h2>
           <p className="text-gray-600 text-sm leading-relaxed">
-            Rozgar was founded to solve a problem faced across industries: talented tradespeople struggling to get discovered by the right employers. Rozgar connects skilled workers with employers, making it easier for great talent to be found.
-          </p>
-          <p className="text-gray-600 text-sm leading-relaxed mt-3">
-            The vision was straightforward: build a platform that works for the worker — not just
-            in English, but in Telugu, Hindi, and Urdu too. A platform where a skilled worker 
-            can be found by an employer in minutes, not days.
+            Rozgar was founded in 2026 in Hyderabad, Telangana. The vision was straightforward:
+            build a platform that works for the worker — not just in English, but in Telugu, Hindi,
+            and Urdu too. A platform where a plumber in Warangal or a driver in Adilabad can be
+            found by an employer in minutes, not days.
           </p>
         </div>
 
@@ -79,7 +73,7 @@ export default function About() {
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
             {[
               { icon: "👷", title: "Worker Profiles", desc: "Workers create free profiles showcasing their trade, experience, location and availability" },
-              { icon: "🏢", title: "Job Listings", desc: "Employers post jobs and find the right worker from 117+ trades across Telangana" },
+              { icon: "🏢", title: "Job Listings", desc: "Employers post jobs and find the right worker from 117+ trades across 33 districts" },
               { icon: "📞", title: "Contact Unlock", desc: "Employers pay just ₹30 to unlock a worker's contact — no subscriptions needed" },
               { icon: "🤖", title: "MatchBot", desc: "AI-powered matching to suggest the best workers for each job requirement" },
               { icon: "💬", title: "In-App Chat", desc: "Direct messaging between workers and employers within the platform" },
@@ -100,13 +94,9 @@ export default function About() {
           <h2 className="text-base font-semibold mb-3" style={{ color: "#1B4332" }}>🔧 Some of Our 117+ Trades</h2>
           <div className="flex flex-wrap gap-2">
             {trades.map((t, i) => (
-              <span key={i} className="text-xs px-3 py-1 rounded-full" style={{ background: "#D1FAE5", color: "#065F46" }}>
-                {t}
-              </span>
+              <span key={i} className="text-xs px-3 py-1 rounded-full" style={{ background: "#D1FAE5", color: "#065F46" }}>{t}</span>
             ))}
-            <span className="text-xs px-3 py-1 rounded-full font-medium" style={{ background: "#1B4332", color: "#fff" }}>
-              + 100 more
-            </span>
+            <span className="text-xs px-3 py-1 rounded-full font-medium" style={{ background: "#1B4332", color: "#fff" }}>+ 100 more</span>
           </div>
         </div>
 
@@ -120,26 +110,6 @@ export default function About() {
               </div>
             ))}
           </div>
-        </div>
-
-        <div className="rounded-xl p-6 mb-6" style={{ background: "#F0FDF4", border: "1px solid #BBF7D0" }}>
-          <h2 className="text-base font-semibold mb-3" style={{ color: "#1B4332" }}>👤 About the Operator</h2>
-          <p className="text-sm text-gray-600 leading-relaxed">
-            <strong>Rozgar</strong> is built and operated by a professional with real,
-            hands-on experience in the skilled labour industry — someone who has
-            seen firsthand the gap between talented workers and the employers
-            who need them.
-          </p>
-          <p className="text-sm text-gray-600 leading-relaxed mt-2">
-            That experience shaped Rozgar's mission: to make finding work, and
-            finding workers, simple, fast, and fair.
-          </p>
-          <p className="text-sm text-gray-600 leading-relaxed mt-2">
-            📧&nbsp;
-            <a href="mailto:rozgarapp2026@gmail.com" style={{ color: "#1B4332" }} className="underline">
-              rozgarapp2026@gmail.com
-            </a>
-          </p>
         </div>
 
         <div className="text-center mb-8">
@@ -162,9 +132,7 @@ export default function About() {
               { to: "/contact", label: "Contact" },
               { to: "/faq", label: "FAQ" },
             ].map((l) => (
-              <Link key={l.to} to={l.to} className="text-xs underline" style={{ color: "#1B4332" }}>
-                {l.label}
-              </Link>
+              <Link key={l.to} to={l.to} className="text-xs underline" style={{ color: "#1B4332" }}>{l.label}</Link>
             ))}
           </div>
         </div>
