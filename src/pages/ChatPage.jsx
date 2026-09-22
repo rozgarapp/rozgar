@@ -40,11 +40,10 @@ export default function ChatPage() {
     setText("");
   };
 
-  if (!user) return <div className="min-h-screen bg-slate-50"><Navbar /><div className="p-20 text-center">Please login to chat.</div></div>;
+  if (!user) return <div className="min-h-screen bg-slate-50"><div className="p-20 text-center">Please login to chat.</div></div>;
 
   return (
     <div className="min-h-screen bg-slate-50 pb-20 md:pb-0">
-      <Navbar />
       <div className="max-w-6xl mx-auto px-2 sm:px-6 py-4 grid md:grid-cols-[280px_1fr] gap-4 h-[calc(100vh-6rem)]">
         <aside className="bg-white rounded-2xl border border-slate-200 overflow-hidden hidden md:flex flex-col">
           <div className="p-4 border-b border-slate-100">
