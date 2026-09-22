@@ -29,7 +29,7 @@ function AppRouter() {
   if (location.hash?.includes("session_id=")) return <AuthCallback />;
   return (
     <>
-      <Navbar />
+      
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/workers" element={<WorkersDirectory />} />
