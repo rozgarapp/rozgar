@@ -30,14 +30,17 @@ export default function About() {
   return (
     <div className="min-h-screen bg-gray-50">
       <div style={{ background: "#1B4332" }} className="py-16 px-4 text-center">
-        <h1 className="text-3xl font-bold text-white mb-2">About Rozgar</h1>
-        <p className="text-green-200 text-sm max-w-xl mx-auto leading-relaxed">
-          Connecting skilled workers with employers across Telangana — in your language, in your district.
-        </p>
-        <p className="text-green-300 text-lg mt-4 font-medium tracking-wide">
-          Rozgar · ఉపాధి · रोजगार · روزگار
-        </p>
-      </div>
+  <Link to="/" className="inline-flex items-center gap-1 text-green-300 text-xs hover:text-white mb-4 block">
+    ← Back to Rozgar Home
+  </Link>
+  <h1 className="text-3xl font-bold text-white mb-2">About Rozgar</h1>
+  <p className="text-green-200 text-sm max-w-xl mx-auto leading-relaxed">
+    Connecting skilled workers with employers across Telangana — in your language, in your district.
+  </p>
+  <p className="text-green-300 text-lg mt-4 font-medium tracking-wide">
+    Rozgar · ఉపాధి · रोजगार · روزگار
+  </p>
+</div>
 
       <div className="max-w-3xl mx-auto px-4 py-10">
         <div className="grid grid-cols-2 gap-4 mb-8 sm:grid-cols-4">
