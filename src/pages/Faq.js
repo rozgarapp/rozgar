@@ -10,7 +10,7 @@ const workerFaqs = [
   { q: "Can I use Rozgar in Telugu, Hindi, or Urdu?", a: "Yes. Rozgar supports 4 languages — English, Telugu (తెలుగు), Hindi (हिंदी), and Urdu (اردو). Use the language selector in the top navigation bar to switch." },
   { q: "How do I delete my account?", a: "Email us at rozgarapp2026@gmail.com with your registered email or mobile number and request account deletion. We will delete your account within 7 working days." },
   { q: "What trades are available on Rozgar?", a: "Rozgar covers 117+ trades including Mason, Carpenter, Electrician, Plumber, Painter, Welder, Tiler, Driver, Cook, Tailor, AC Technician, Security Guard, Cleaner, Helper, Gardner, and many more." },
-  { q: "Which districts does Rozgar cover?", a: "Rozgar covers all 33 districts of Telangana including Hyderabad, Warangal, Nizamabad, Karimnagar, Khammam, Adilabad, Nalgonda, Medak, and all others." },
+  { q: "Which districts does Rozgar cover?", a: "Rozgar covers all 33 districts of Telangana including Hyderabad, Warangal, Nizamabad, Karimnagar, Khammam, Adilabad, Nalgonda, Medak, Mahabubnagar, and all others." },
 ];
 
 const employerFaqs = [
