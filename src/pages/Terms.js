@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const sections = [
   {
     title: "1. About Rozgar Platform",
-    content: `Rozgar is an online platform connecting workers and employers across Telangana and India. The platform is operated remotely. Email: rozgarapp2026@gmail.com. By accessing or using Rozgar, you agree to be bound by these Terms & Conditions.`,
+    content: `Rozgar is an online platform connecting workers and employers across Telangana and India. The platform is operated by Rozgar Platform. Email: rozgarapp2026@gmail.com. By accessing or using Rozgar, you agree to be bound by these Terms & Conditions.`,
   },
   {
     title: "2. Eligibility",
@@ -56,7 +56,7 @@ const sections = [
   },
   {
     title: "14. Platform Data Accuracy",
-    content: `Platform statistics including number of workers, trades, and languages are updated periodically and may vary as the platform grows. Rozgar does not guarantee real-time accuracy of these figures.`,
+    content: `Platform statistics including number of workers, trades, and districts are updated periodically. Rozgar does not guarantee real-time accuracy of these figures.`,
   },
   {
     title: "15. Governing Law",
@@ -72,7 +72,7 @@ const sections = [
   },
   {
     title: "18. Contact Information",
-    content: `For any questions or concerns regarding these Terms & Conditions, please contact:\n\n\nRozgar Platform\nEmail: rozgarapp2026@gmail.com`,
+    content: `For any questions, concerns, or legal notices regarding these Terms & Conditions, please contact:\n\nRozgar Platform\nHyderabad, Telangana, India\nEmail: rozgarapp2026@gmail.com`,
   },
 ];
 
@@ -84,16 +84,11 @@ export default function Terms() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
       <div style={{ background: "#1B4332" }} className="py-12 px-4 text-center">
         <h1 className="text-3xl font-bold text-white mb-2">Terms & Conditions</h1>
         <p className="text-green-200 text-sm">Effective Date: September 15, 2026</p>
-        <p className="text-green-300 text-xs mt-1">
-          rozgarapp2026@gmail.com
-        </p>
       </div>
 
-      {/* Content */}
       <div className="max-w-3xl mx-auto px-4 py-10">
         <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-6">
           <p className="text-gray-600 text-sm leading-relaxed">
@@ -104,14 +99,8 @@ export default function Terms() {
         </div>
 
         {sections.map((sec, i) => (
-          <div
-            key={i}
-            className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-4"
-          >
-            <h2
-              className="text-base font-semibold mb-3"
-              style={{ color: "#1B4332" }}
-            >
+          <div key={i} className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-4">
+            <h2 className="text-base font-semibold mb-3" style={{ color: "#1B4332" }}>
               {sec.title}
             </h2>
             <p className="text-gray-600 text-sm leading-relaxed whitespace-pre-line">
@@ -120,14 +109,9 @@ export default function Terms() {
           </div>
         ))}
 
-        {/* Footer note */}
         <div className="text-center mt-10 pb-6">
-          <p className="text-xs text-gray-400">
-            © Copyright 2026 Rozgar Platform · All rights reserved
-          </p>
-          <p className="text-xs text-gray-400 mt-1">
-            Rozgar ఉపాధి रोजगार روزگار
-          </p>
+          <p className="text-xs text-gray-400">© Copyright 2026 Rozgar Platform · All rights reserved</p>
+          <p className="text-xs text-gray-400 mt-1">Rozgar ఉపాధి रोजगार روزگار</p>
           <div className="flex justify-center gap-4 mt-3 flex-wrap">
             {[
               { to: "/privacy", label: "Privacy Policy" },
@@ -136,12 +120,7 @@ export default function Terms() {
               { to: "/contact", label: "Contact" },
               { to: "/faq", label: "FAQ" },
             ].map((l) => (
-              <Link
-                key={l.to}
-                to={l.to}
-                className="text-xs underline"
-                style={{ color: "#1B4332" }}
-              >
+              <Link key={l.to} to={l.to} className="text-xs underline" style={{ color: "#1B4332" }}>
                 {l.label}
               </Link>
             ))}
