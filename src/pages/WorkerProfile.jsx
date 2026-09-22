@@ -28,7 +28,7 @@ export default function WorkerProfile() {
     if (user) api.get(`/workers/${id}/unlock/status`).then(({data}) => { if (data.unlocked) setContact(data); }).catch(()=>{});
   }, [id, user]);
 
-  if (!w) return <div className="min-h-screen bg-slate-50"><Navbar /><div className="p-20 text-center text-slate-500">Loading…</div></div>;
+  if (!w) return <div className="min-h-screen bg-slate-50"><div className="p-20 text-center text-slate-500">Loading...</div></div>;
   const cat = CATEGORY_MAP[w.category];
 
   const rewardedUnlock = async () => {
@@ -50,8 +50,7 @@ export default function WorkerProfile() {
 
   return (
     <div className="min-h-screen bg-slate-50 pb-24 md:pb-8">
-      <Navbar />
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="bg-white rounded-3xl border border-slate-200 rz-card-shadow p-6 sm:p-8">
           <div className="flex flex-col sm:flex-row gap-6 items-start">
             <div className="relative w-24 h-24 rounded-full flex items-center justify-center text-5xl shadow-inner"
