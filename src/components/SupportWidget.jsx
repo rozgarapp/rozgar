@@ -52,6 +52,15 @@ export default function SupportWidget() {
 
   useEffect(() => { bottomRef.current?.scrollIntoView({ behavior: "smooth" }); }, [messages, typing]);
 
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => { document.body.style.overflow = ""; };
+  }, [open]);
+
   const raiseTicket = async (issue_category, message) => {
     if (!user) return null;
     try {
@@ -85,28 +94,28 @@ export default function SupportWidget() {
   };
 
   const pickCategory = async (cat) => {
-  setCategory(cat.key);
-  const label = t(cat.labelKey, lang);
-  setMessages(m => [...m, { from: "user", text: label }]);
+    setCategory(cat.key);
+    const label = t(cat.labelKey, lang);
+    setMessages(m => [...m, { from: "user", text: label }]);
 
-  setTyping(true);
-  await new Promise(r => setTimeout(r, 500));
-  setTyping(false);
+    setTyping(true);
+    await new Promise(r => setTimeout(r, 500));
+    setTyping(false);
 
-  let botReply;
-  if (cat.key === "payment") {
-    botReply = t("faq_payment", lang);
-  } else if (cat.key === "complaint") {
-    botReply = t("support_ask_lang", lang) + " Please tell us more about the issue with the worker or employer.";
-  } else if (cat.key === "bug") {
-    botReply = t("support_ask_lang", lang) + " Please describe the bug or technical issue you're facing.";
-  } else {
-    botReply = t("support_ask_lang", lang);
-  }
+    let botReply;
+    if (cat.key === "payment") {
+      botReply = t("faq_payment", lang);
+    } else if (cat.key === "complaint") {
+      botReply = t("support_ask_lang", lang) + " Please tell us more about the issue with the worker or employer.";
+    } else if (cat.key === "bug") {
+      botReply = t("support_ask_lang", lang) + " Please describe the bug or technical issue you're facing.";
+    } else {
+      botReply = t("support_ask_lang", lang);
+    }
 
-  setMessages(m => [...m, { from: "bot", text: botReply }]);
-  if (user) await raiseTicket(cat.key, `Selected category: ${label}`);
-};
+    setMessages(m => [...m, { from: "bot", text: botReply }]);
+    if (user) await raiseTicket(cat.key, `Selected category: ${label}`);
+  };
 
   const startRecording = async () => {
     if (!user) { toast.error("Please login first"); return; }
