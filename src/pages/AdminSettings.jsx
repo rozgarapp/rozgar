@@ -89,7 +89,6 @@ export default function AdminSettings() {
 
   return (
     <div className="min-h-screen bg-slate-50 pb-24 md:pb-8">
-      <Navbar />
       <div className="max-w-6xl mx-auto px-4 py-8">
         <div className="flex items-center gap-3 mb-6">
           <div className="w-11 h-11 rounded-xl bg-[#1B4332] text-white flex items-center justify-center">
