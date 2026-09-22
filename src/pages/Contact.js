@@ -26,9 +26,7 @@ export default function Contact() {
     setLoading(true);
     try {
       const subject = encodeURIComponent(form.subject || "Contact from Rozgar Platform");
-      const body = encodeURIComponent(
-        `Name: ${form.name}\nEmail: ${form.email}\n\nMessage:\n${form.message}`
-      );
+      const body = encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\nMessage:\n${form.message}`);
       window.location.href = `mailto:rozgarapp2026@gmail.com?subject=${subject}&body=${body}`;
       setSubmitted(true);
     } catch {
@@ -46,9 +44,10 @@ export default function Contact() {
       </div>
 
       <div className="max-w-3xl mx-auto px-4 py-10">
-        <div className="grid grid-cols-1 gap-4 mb-8 sm:grid-cols-2">
+        <div className="grid grid-cols-1 gap-4 mb-8 sm:grid-cols-3">
           {[
             { icon: "📧", title: "Email Us", value: "rozgarapp2026@gmail.com", sub: "We reply within 2 working days", href: "mailto:rozgarapp2026@gmail.com" },
+            { icon: "📍", title: "Location", value: "Hyderabad, Telangana", sub: "India", href: null },
             { icon: "🕐", title: "Response Time", value: "Within 2 days", sub: "Mon – Sat", href: null },
           ].map((item, i) => (
             <div key={i} className="bg-white rounded-xl border border-gray-100 shadow-sm p-4 text-center">
@@ -71,13 +70,11 @@ export default function Contact() {
               <div className="text-3xl mb-3">✅</div>
               <p className="text-sm font-semibold mb-1" style={{ color: "#1B4332" }}>Your email app should have opened!</p>
               <p className="text-xs text-gray-500">
-                If it didn't open, email us directly at{" "}
+                If it didn't open, email us at{" "}
                 <a href="mailto:rozgarapp2026@gmail.com" className="underline" style={{ color: "#1B4332" }}>rozgarapp2026@gmail.com</a>
               </p>
-              <button
-                onClick={() => { setSubmitted(false); setForm({ name: "", email: "", subject: "", message: "" }); }}
-                className="mt-4 text-xs underline" style={{ color: "#1B4332" }}
-              >
+              <button onClick={() => { setSubmitted(false); setForm({ name: "", email: "", subject: "", message: "" }); }}
+                className="mt-4 text-xs underline" style={{ color: "#1B4332" }}>
                 Send another message
               </button>
             </div>
@@ -102,45 +99,22 @@ export default function Contact() {
               </div>
               <div>
                 <label className="block text-xs font-medium text-gray-600 mb-1">Message <span className="text-red-500">*</span></label>
-                <textarea name="message" value={form.message} onChange={handleChange} placeholder="Tell us how we can help you..."
+                <textarea name="message" value={form.message} onChange={handleChange} placeholder="Tell us how we can help..."
                   rows={5} className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 resize-none" />
               </div>
               {error && <p className="text-xs text-red-500 bg-red-50 px-3 py-2 rounded-lg">{error}</p>}
               <button type="submit" disabled={loading}
-                className="w-full py-3 rounded-xl text-white text-sm font-medium transition-opacity"
+                className="w-full py-3 rounded-xl text-white text-sm font-medium"
                 style={{ background: "#1B4332", opacity: loading ? 0.7 : 1 }}>
                 {loading ? "Opening email..." : "Send Message →"}
               </button>
-              <p className="text-xs text-gray-400 text-center">This will open your email app with your message pre-filled.</p>
             </form>
           )}
         </div>
 
-        <div className="rounded-xl p-5 mb-6 flex items-center justify-between" style={{ background: "#F0FDF4", border: "1px solid #BBF7D0" }}>
-          <div>
-            <p className="text-sm font-semibold" style={{ color: "#1B4332" }}>Have a common question?</p>
-            <p className="text-xs text-gray-500 mt-0.5">Check our FAQ — you might find the answer instantly.</p>
-          </div>
-          <Link to="/faq" className="text-xs font-medium px-4 py-2 rounded-lg text-white flex-shrink-0" style={{ background: "#1B4332" }}>
-            View FAQ →
-          </Link>
-        </div>
-
-        <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-6">
-          <h2 className="text-base font-semibold mb-4" style={{ color: "#1B4332" }}>📋 Common Topics</h2>
-          <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
-            {["Worker registration help","Employer account issues","Payment / refund queries","Contact unlock problems",
-              "Report a fake profile","Partnership enquiry","Technical bug report","General feedback"].map((topic, i) => (
-              <div key={i} className="flex items-center gap-2 text-xs text-gray-600 py-1">
-                <span style={{ color: "#1B4332" }}>→</span>{topic}
-              </div>
-            ))}
-          </div>
-        </div>
-
         <div className="text-center pb-6">
           <p className="text-xs text-gray-400">© Copyright 2026 Rozgar Platform · All rights reserved</p>
-          <p className="text-xs text-gray-400 mt-1">Rozgar ఉపాధి रोजगार روزگار</p>
+          <p className="text-xs text-gray-400 mt-1">Rozgar ఉపాధి रोजगार روزగار</p>
           <div className="flex justify-center gap-4 mt-3 flex-wrap">
             {[
               { to: "/terms", label: "Terms & Conditions" },
