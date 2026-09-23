@@ -42,7 +42,8 @@ export default function Landing() {
 
   return (
     <div className="min-h-screen pb-24 md:pb-16">
-    
+    <section className="pt-8 pb-12 md:pt-16 md:pb-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-10 items-center">
 
       {/* Search Box */}
 <div className="fade-in-up order-2 md:order-1">
