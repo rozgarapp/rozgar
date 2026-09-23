@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "./ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "./ui/dialog";
 import { Button } from "./ui/button";
 import { Progress } from "./ui/progress";
 import { Play, Gift } from "lucide-react";
@@ -27,9 +27,14 @@ export default function RewardedAd({ open, onClose, onReward, title = "Watch to 
   return (
     <Dialog open={open} onOpenChange={(v) => !v && (complete || !started) && onClose()}>
       <DialogContent data-testid="rewarded-ad" className="sm:max-w-lg">
-        <DialogHeader><DialogTitle className="heading flex items-center gap-2">
-          <Gift className="w-5 h-5 text-amber-500" /> {title}
-        </DialogTitle></DialogHeader>
+        <DialogHeader>
+          <DialogTitle className="heading flex items-center gap-2">
+            <Gift className="w-5 h-5 text-amber-500" /> {title}
+          </DialogTitle>
+          <DialogDescription>
+            Watch a short rewarded ad to unlock this worker's contact for free.
+          </DialogDescription>
+        </DialogHeader>
         <div className="relative bg-gradient-to-br from-slate-900 to-[#1B4332] text-white aspect-video rounded-xl flex flex-col items-center justify-center">
           <div className="absolute top-2 start-2 text-[10px] font-bold bg-amber-500 text-black px-2 py-1 rounded">REWARDED AD</div>
           {!started ? (
