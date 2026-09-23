@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import CategorySection from "../components/CategorySection";
 import WorkerCard from "../components/WorkerCard";
 import AdBanner from "../components/AdBanner";
+import PromoBanner from "../components/PromoBanner";
 import { Button } from "../components/ui/button";
 import { useEffect, useState } from "react";
 import { useApp } from "../context/AppContext";
@@ -148,6 +149,11 @@ export default function Landing() {
           </div>
         </div>
       </section>
+
+      {/* ⬅️ NEW — Promo banner placed between hero and categories */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <PromoBanner />
+      </div>
 
       <CategorySection />
 
