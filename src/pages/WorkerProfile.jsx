@@ -22,6 +22,7 @@ export default function WorkerProfile() {
   const [showRewarded, setShowRewarded] = useState(false);
   const [showOtp, setShowOtp] = useState(false);
   const [showProxy, setShowProxy] = useState(false);
+  const [pendingAfterOtp, setPendingAfterOtp] = useState(null); // ⬅️ NEW
 
   useEffect(() => {
     api.get(`/workers/${id}`).then(({ data }) => setW(data)).catch(() => {});
@@ -42,10 +43,30 @@ export default function WorkerProfile() {
     setShowRewarded(false);
   };
 
+  // ⬅️ NEW — gate the ad behind OTP check
+  const requireOtpForAd = () => {
+    if (!user) { nav("/login"); return; }
+    if (user.role === "employer" && !user.otp_verified) {
+      setPendingAfterOtp("ad"); setShowOtp(true); return;
+    }
+    setShowRewarded(true);
+  };
+
+  // ⬅️ CHANGED — now sets pendingAfterOtp
   const requireOtpForCall = () => {
     if (!user) { nav("/login"); return; }
-    if (user.role === "employer" && !user.otp_verified) { setShowOtp(true); return; }
+    if (user.role === "employer" && !user.otp_verified) {
+      setPendingAfterOtp("call"); setShowOtp(true); return;
+    }
     setShowProxy(true);
+  };
+
+  // ⬅️ NEW — resumes whichever action triggered OTP
+  const onOtpVerified = () => {
+    setShowOtp(false);
+    if (pendingAfterOtp === "ad") setShowRewarded(true);
+    else if (pendingAfterOtp === "call") setShowProxy(true);
+    setPendingAfterOtp(null);
   };
 
   return (
@@ -81,9 +102,14 @@ export default function WorkerProfile() {
                   <span className={`w-1.5 h-1.5 rounded-full ${w.availability === "available" ? "bg-emerald-500" : "bg-rose-500"}`} />
                   {w.availability === "available" ? t("available", lang) : t("busy", lang)}
                 </span>
-                <span className="flex items-center gap-1"><Star className="w-4 h-4 fill-amber-400 text-amber-400" />{w.rating}</span>
+                <span className="flex items-center gap-1"><Star className="w-4 h-4 fill-amber-400 text-amber-400" />{Number(w.rating).toFixed(1)}</span>
                 <span className="flex items-center gap-1 text-slate-600"><MapPin className="w-4 h-4" />{w.district}</span>
-                <span className="flex items-center gap-1 text-slate-500 font-mono text-xs">📱 {w.masked_phone || "+91-XXXXX-XXXXX"}</span>
+                {/* ⬅️ CHANGED — only show masked number when NOT unlocked */}
+                {!contact && (
+                  <span className="flex items-center gap-1 text-slate-500 font-mono text-xs">
+                    📱 {w.masked_phone || "+91-XXXXX-XXXXX"}
+                  </span>
+                )}
               </div>
               <div className="mt-4 flex gap-2 flex-wrap">
                 {contact ? (
@@ -103,7 +129,8 @@ export default function WorkerProfile() {
                   </>
                 ) : (
                   <>
-                    <Button onClick={() => setShowRewarded(true)} className="bg-emerald-600 hover:bg-emerald-700 text-white gap-2" data-testid="profile-watch-ad">
+                    {/* ⬅️ CHANGED — onClick now goes through OTP gate */}
+                    <Button onClick={requireOtpForAd} className="bg-emerald-600 hover:bg-emerald-700 text-white gap-2" data-testid="profile-watch-ad">
                       🎬 Watch Ad to Unlock (Free)
                     </Button>
                     <Button onClick={() => setOpenUnlock(true)} variant="outline" className="gap-2" data-testid="profile-unlock">
@@ -139,7 +166,8 @@ export default function WorkerProfile() {
       <UnlockContactModal open={openUnlock} onClose={() => setOpenUnlock(false)} worker={w}
         onUnlocked={(c) => { setContact(c); setOpenUnlock(false); }} />
       <RewardedAd open={showRewarded} onClose={() => setShowRewarded(false)} onReward={rewardedUnlock} title={`Unlock ${w.name}'s contact`} />
-      <OtpModal open={showOtp} onClose={() => setShowOtp(false)} onVerified={() => {}} />
+      {/* ⬅️ CHANGED — onVerified now wired to onOtpVerified */}
+      <OtpModal open={showOtp} onClose={() => setShowOtp(false)} onVerified={onOtpVerified} />
       <ProxyCallModal open={showProxy} onClose={() => setShowProxy(false)} worker={w} />
     </div>
   );
