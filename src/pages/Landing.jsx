@@ -43,7 +43,6 @@ export default function Landing() {
 
   return (
     <div className="min-h-screen pb-24 md:pb-16">
-      <AdBanner position="top" />
       <section className="pt-8 pb-12 md:pt-16 md:pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-10 items-center">
 
@@ -151,12 +150,10 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* ⬅️ NEW — Promo banner placed between hero and categories */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <PromoBanner />
       </div>
 
-      <AdBanner position="mid" />
       <CategorySection />
 
       <section className="py-12 bg-slate-50">
@@ -173,6 +170,9 @@ export default function Landing() {
           </div>
         </div>
       </section>
+
+      {/* Sponsored (local) banner — repositioned to the middle of the page */}
+      <AdBanner position="local" />
 
       <section className="py-14">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-3 gap-6">
@@ -192,8 +192,6 @@ export default function Landing() {
         </div>
       </section>
 
-      
-      <AdBanner position="local" />
       <AdBanner position="bottom" />
     </div>
   );
