@@ -11,19 +11,30 @@ import api from "../lib/api";
 import { useNavigate } from "react-router-dom";
 import { ShieldCheck, Zap, Users } from "lucide-react";
 
-const HERO_TILES = [
-  { trade: "Mason",       emoji: "🧱", bg: "#FFF3EC", border: "#FFCBA4", rate: 900 },
-  { trade: "Electrician", emoji: "⚡", bg: "#FFFBEA", border: "#FFE082", rate: 1000 },
-  { trade: "Beautician",  emoji: "💇", bg: "#FFF0F5", border: "#F8BBD9", rate: 800 },
-  { trade: "Cook",        emoji: "👨‍🍳", bg: "#F0FAF4", border: "#A8DABC", rate: 700 },
-  { trade: "Driver",      emoji: "🚗", bg: "#EBF5FB", border: "#AED6F1", rate: 800 },
-  { trade: "Plumber",     emoji: "🔧", bg: "#F5EEF8", border: "#D7BDE2", rate: 900 },
+const TRADES = [
+  "Mason/Bricklayer","Carpenter","Plumber","Electrician","Painter",
+  "Welder","Cook/Chef","Driver","Tailor","Beautician",
+  "AC Mechanic","Security Guard","Housekeeping Staff","Gardner/Mali",
+  "Delivery Boy 2-Wheeler","Farm Laborer","General Helper/Mazdoor",
+];
+
+const DISTRICTS = [
+  "Hyderabad","Warangal","Nizamabad","Karimnagar","Khammam",
+  "Adilabad","Nalgonda","Medak","Ranga Reddy","Sangareddy",
+  "Medchal-Malkajgiri","Siddipet","Jagtial","Mancherial","Nirmal",
+  "Kamareddy","Vikarabad","Suryapet","Narayanpet","Wanaparthy",
+  "Mahabubnagar","Nagarkurnool","Jogulamba Gadwal","Yadadri Bhuvanagiri",
+  "Mulugu","Bhadradri Kothagudem","Hanamkonda","Jangaon",
+  "Jayashankar Bhupalpally","Kumuram Bheem Asifabad","Peddapalli",
+  "Rajanna Sircilla","Mahabubabad",
 ];
 
 export default function Landing() {
   const { lang } = useApp();
   const nav = useNavigate();
   const [featured, setFeatured] = useState([]);
+  const [searchTrade, setSearchTrade] = useState("");
+  const [searchDistrict, setSearchDistrict] = useState("");
 
   useEffect(() => {
     api.get("/workers").then(({ data }) => setFeatured(data.slice(0, 6))).catch(() => {});
@@ -33,37 +44,75 @@ export default function Landing() {
     <div className="min-h-screen pb-24 md:pb-16">
     
 
-      {/* Hero — flat illustration, no photo */}
-      <section className="relative overflow-hidden" style={{ backgroundColor: "#F0FAF4" }}>
-        <div className="absolute inset-0 pointer-events-none opacity-40"
-          style={{ backgroundImage: "radial-gradient(#A8DABC 1px, transparent 1px)", backgroundSize: "20px 20px" }} />
+      {/* Search Box */}
+<div className="fade-in-up order-2 md:order-1">
+  <div className="bg-white rounded-2xl p-6 rz-card-shadow border border-slate-100">
+    <h3 className="text-lg font-bold mb-4" style={{ color: "#1B4332" }}>
+      🔍 Find a Worker Near You
+    </h3>
+    <div className="space-y-3">
+      <div>
+        <label className="text-xs font-medium text-slate-500 mb-1 block">Select Trade / Skill</label>
+        <select
+          value={searchTrade}
+          onChange={(e) => setSearchTrade(e.target.value)}
+          className="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 bg-white"
+        >
+          <option value="">All Trades</option>
+          {TRADES.map((t) => <option key={t} value={t}>{t}</option>)}
+        </select>
+      </div>
+      <div>
+        <label className="text-xs font-medium text-slate-500 mb-1 block">Select District</label>
+        <select
+          value={searchDistrict}
+          onChange={(e) => setSearchDistrict(e.target.value)}
+          className="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 bg-white"
+        >
+          <option value="">All Districts</option>
+          {DISTRICTS.map((d) => <option key={d} value={d}>{d}</option>)}
+        </select>
+      </div>
+      <button
+        onClick={() => {
+          const params = new URLSearchParams();
+          if (searchTrade) params.set("trade", searchTrade);
+          if (searchDistrict) params.set("district", searchDistrict);
+          nav(`/workers?${params.toString()}`);
+        }}
+        className="w-full py-3 rounded-xl text-white font-semibold text-sm transition-all"
+        style={{ background: "#1B4332" }}
+      >
+        Search Workers →
+      </button>
+    </div>
+    <div className="mt-4">
+      <p className="text-xs text-slate-400 mb-2">Popular searches:</p>
+      <div className="flex flex-wrap gap-2">
+        {["Mason","Driver","Cook/Chef","Electrician","Plumber"].map((t) => (
+          <button
+            key={t}
+            onClick={() => nav(`/workers?trade=${encodeURIComponent(t)}`)}
+            className="text-xs px-3 py-1 rounded-full border transition-all hover:bg-emerald-50"
+            style={{ borderColor: "#1B4332", color: "#1B4332" }}
+          >
+            {t}
+          </button>
+        ))}
+      </div>
+    </div>
+  </div>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 grid md:grid-cols-2 gap-10 items-center">
-          {/* Illustration tiles */}
-          <div className="fade-in-up order-2 md:order-1">
-            <div className="grid grid-cols-3 gap-3 sm:gap-4">
-              {HERO_TILES.map((tile, i) => (
-                <div key={tile.trade} className="flex flex-col items-center bg-white/70 backdrop-blur-sm rounded-2xl p-3 sm:p-4 border border-white/60 shadow-sm"
-                     data-testid={`hero-tile-${tile.trade.toLowerCase()}`}
-                     style={{ animation: `fadeInUp .4s ${i * 80}ms ease-out both` }}>
-                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center text-2xl sm:text-3xl border-2 shadow-inner"
-                       style={{ backgroundColor: tile.bg, borderColor: tile.border }}>
-                    {tile.emoji}
-                  </div>
-                  <div className="mt-2 text-[10px] font-bold" style={{ color: "#1B4332" }}>{tile.trade}</div>
-                  </div>
-              ))}
-            </div>
-            <div className="mt-6 hidden sm:flex bg-white rounded-2xl p-4 rz-card-shadow items-center gap-3 max-w-fit">
-              <div className="w-11 h-11 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center">
-                <ShieldCheck className="w-5 h-5" />
-              </div>
-              <div>
-                <div className="text-xs text-slate-500">Verified workers</div>
-                <div className="font-bold text-slate-900">Trusted profiles</div>
-              </div>
-            </div>
-          </div>
+  <div className="mt-4 flex bg-white rounded-2xl p-4 rz-card-shadow items-center gap-3">
+    <div className="w-11 h-11 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center">
+      <ShieldCheck className="w-5 h-5" />
+    </div>
+    <div>
+      <div className="text-xs text-slate-500">Verified workers</div>
+      <div className="font-bold text-slate-900">Trusted profiles</div>
+    </div>
+  </div>
+</div>
 
           {/* Text */}
           <div className="order-1 md:order-2">
