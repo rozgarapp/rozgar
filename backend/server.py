@@ -411,7 +411,7 @@ async def verify_payment(data: PaymentVerifyIn, user=Depends(get_current_user)):
         {"$set": {"status": "paid", "payment_id": data.razorpay_payment_id,
                   "paid_at": datetime.now(timezone.utc).isoformat()}})
     now = datetime.now(timezone.utc)
-   if data.purpose == "unlock":
+    if data.purpose == "unlock":
         await db.unlocks.update_one(
             {"user_id": user["user_id"], "worker_id": data.reference_id},
             {"$set": {"unlocked_at": now.isoformat(), "method": "paid"}}, upsert=True)
