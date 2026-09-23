@@ -43,7 +43,8 @@ export default function Landing() {
 
   return (
     <div className="min-h-screen pb-24 md:pb-16">
-    <section className="pt-8 pb-12 md:pt-16 md:pb-20">
+      <AdBanner position="top" />
+      <section className="pt-8 pb-12 md:pt-16 md:pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-10 items-center">
 
       {/* Search Box */}
@@ -155,6 +156,7 @@ export default function Landing() {
         <PromoBanner />
       </div>
 
+      <AdBanner position="mid" />
       <CategorySection />
 
       <section className="py-12 bg-slate-50">
@@ -191,7 +193,8 @@ export default function Landing() {
       </section>
 
       
-<AdBanner position="bottom" />
+      <AdBanner position="local" />
+      <AdBanner position="bottom" />
     </div>
   );
 }
