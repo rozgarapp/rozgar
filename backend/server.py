@@ -324,11 +324,12 @@ async def unlock_contact(worker_id: str, method: str = "ad", user=Depends(get_cu
         upsert=True,
     )
     phone = w.get("phone", "")
-    return {"phone": phone,
+    protected = w.get("trade") in FEMALE_TRADES
+    return {"phone": None if protected else phone,
             "masked_phone": _mask_phone(phone),
-            "whatsapp": f"https://wa.me/{phone.replace('+','').replace(' ','').replace('-','')}",
+            "whatsapp": None if protected else f"https://wa.me/{phone.replace('+','').replace(' ','').replace('-','')}",
             "worker_id": worker_id,
-            "is_female_protected": w.get("trade") in FEMALE_TRADES}
+            "is_female_protected": protected}
 
 @api.get("/workers/{worker_id}/unlock/status")
 async def unlock_status(worker_id: str, user=Depends(get_current_user)):
@@ -337,10 +338,11 @@ async def unlock_status(worker_id: str, user=Depends(get_current_user)):
         return {"unlocked": False}
     w = await db.workers.find_one({"worker_id": worker_id}, {"_id": 0})
     phone = (w or {}).get("phone", "")
-    return {"unlocked": True, "phone": phone,
+    protected = (w or {}).get("trade") in FEMALE_TRADES
+    return {"unlocked": True, "phone": None if protected else phone,
             "masked_phone": _mask_phone(phone),
-            "whatsapp": f"https://wa.me/{phone.replace('+','').replace(' ','').replace('-','')}",
-            "is_female_protected": (w or {}).get("trade") in FEMALE_TRADES}
+            "whatsapp": None if protected else f"https://wa.me/{phone.replace('+','').replace(' ','').replace('-','')}",
+            "is_female_protected": protected}
 
 # ---------------- Settings ----------------
 DEFAULT_SETTINGS = {
@@ -409,14 +411,17 @@ async def verify_payment(data: PaymentVerifyIn, user=Depends(get_current_user)):
         {"$set": {"status": "paid", "payment_id": data.razorpay_payment_id,
                   "paid_at": datetime.now(timezone.utc).isoformat()}})
     now = datetime.now(timezone.utc)
-    if data.purpose == "unlock":
+   if data.purpose == "unlock":
         await db.unlocks.update_one(
             {"user_id": user["user_id"], "worker_id": data.reference_id},
             {"$set": {"unlocked_at": now.isoformat(), "method": "paid"}}, upsert=True)
         w = await db.workers.find_one({"worker_id": data.reference_id}, {"_id": 0})
         phone = (w or {}).get("phone", "")
-        return {"ok": True, "phone": phone,
-                "whatsapp": f"https://wa.me/{phone.replace('+','').replace(' ','')}"}
+        protected = (w or {}).get("trade") in FEMALE_TRADES
+        return {"ok": True, "phone": None if protected else phone,
+                "masked_phone": _mask_phone(phone),
+                "whatsapp": None if protected else f"https://wa.me/{phone.replace('+','').replace(' ','')}",
+                "is_female_protected": protected}
     if data.purpose in ("boost_district", "boost_statewide"):
         expires = (now + timedelta(days=7)).isoformat()
         boost_type = "statewide" if data.purpose == "boost_statewide" else "district"
