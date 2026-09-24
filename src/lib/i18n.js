@@ -9,6 +9,18 @@ export const LANGS = [
 export const RTL_LANGS = ["UR"];
 
 const T = {
+  verified_pro_badge: { EN: "⭐ Verified Pro", TE: "⭐ ధృవీకరించబడిన నిపుణుడు", HI: "⭐ सत्यापित प्रो", UR: "⭐ تصدیق شدہ ماہر" },
+  call_worker_private: { EN: "Call Worker (Private)", TE: "కార్మికుడికి కాల్ చేయండి (ప్రైవేట్)", HI: "कारीगर को कॉल करें (निजी)", UR: "کارکن کو کال کریں (نجی)" },
+  watch_ad_unlock: { EN: "Watch Ad to Unlock (Free)", TE: "అన్‌లాక్ చేయడానికి ప్రకటన చూడండి (ఉచితం)", HI: "अनलॉक करने के लिए विज्ञापन देखें (मुफ़्त)", UR: "کھولنے کے لیے اشتہار دیکھیں (مفت)" },
+  pay_to_unlock: { EN: "Pay ₹30", TE: "₹30 చెల్లించండి", HI: "₹30 भुगतान करें", UR: "₹30 ادا کریں" },
+  per_day: { EN: "per day", TE: "రోజుకు", HI: "प्रति दिन", UR: "فی دن" },
+  experience_label: { EN: "Experience", TE: "అనుభవం", HI: "अनुभव", UR: "تجربہ" },
+  category_label: { EN: "Category", TE: "వర్గం", HI: "श्रेणी", UR: "زمرہ" },
+  joined_label: { EN: "Joined", TE: "చేరిన తేదీ", HI: "शामिल हुए", UR: "شمولیت کی تاریخ" },
+  about_label: { EN: "About", TE: "గురించి", HI: "बारे में", UR: "کے بارے میں" },
+  no_bio_yet: { EN: "No bio yet.", TE: "ఇంకా బయో లేదు.", HI: "अभी तक कोई बायो नहीं।", UR: "ابھی تک کوئی تعارف نہیں۔" },
+  loading_text: { EN: "Loading...", TE: "లోడ్ అవుతోంది...", HI: "लोड हो रहा है...", UR: "لوڈ ہو رہا ہے..." },
+  years_suffix: { EN: "yrs", TE: "సంవత్సరాలు", HI: "वर्ष", UR: "سال" },
   find_worker_heading: { EN: "Find a Worker Near You", TE: "మీ దగ్గర కార్మికుడిని కనుగొనండి", HI: "अपने पास कारीगर खोजें", UR: "اپنے قریب کارکن تلاش کریں" },
   select_trade_skill: { EN: "Select Trade / Skill", TE: "వృత్తి / నైపుణ్యం ఎంచుకోండి", HI: "ट्रेड / कौशल चुनें", UR: "پیشہ / ہنر منتخب کریں" },
   select_district: { EN: "Select District", TE: "జిల్లా ఎంచుకోండి", HI: "ज़िला चुनें", UR: "ضلع منتخب کریں" },
