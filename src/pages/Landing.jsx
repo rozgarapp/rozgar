@@ -50,28 +50,28 @@ export default function Landing() {
 <div className="fade-in-up order-2 md:order-1">
   <div className="bg-white rounded-2xl p-6 rz-card-shadow border border-slate-100">
     <h3 className="text-lg font-bold mb-4" style={{ color: "#1B4332" }}>
-      🔍 Find a Worker Near You
+      🔍 {t("find_worker_heading", lang)}
     </h3>
     <div className="space-y-3">
       <div>
-        <label className="text-xs font-medium text-slate-500 mb-1 block">Select Trade / Skill</label>
+        <label className="text-xs font-medium text-slate-500 mb-1 block">{t("select_trade_skill", lang)}</label>
         <select
           value={searchTrade}
           onChange={(e) => setSearchTrade(e.target.value)}
           className="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 bg-white"
         >
-          <option value="">All Trades</option>
-          {TRADES.map((t) => <option key={t} value={t}>{t}</option>)}
+          <option value="">{t("all_categories", lang)}</option>
+          {TRADES.map((tr) => <option key={tr} value={tr}>{tr}</option>)}
         </select>
       </div>
       <div>
-        <label className="text-xs font-medium text-slate-500 mb-1 block">Select District</label>
+        <label className="text-xs font-medium text-slate-500 mb-1 block">{t("select_district", lang)}</label>
         <select
           value={searchDistrict}
           onChange={(e) => setSearchDistrict(e.target.value)}
           className="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 bg-white"
         >
-          <option value="">All Districts</option>
+          <option value="">{t("all_districts", lang)}</option>
           {DISTRICTS.map((d) => <option key={d} value={d}>{d}</option>)}
         </select>
       </div>
@@ -85,20 +85,20 @@ export default function Landing() {
         className="w-full py-3 rounded-xl text-white font-semibold text-sm transition-all"
         style={{ background: "#1B4332" }}
       >
-        Search Workers →
+        {t("search_workers_btn", lang)}
       </button>
     </div>
     <div className="mt-4">
-      <p className="text-xs text-slate-400 mb-2">Popular searches:</p>
+      <p className="text-xs text-slate-400 mb-2">{t("popular_searches", lang)}</p>
       <div className="flex flex-wrap gap-2">
-        {["Mason","Driver","Cook/Chef","Electrician","Plumber"].map((t) => (
+        {["Mason","Driver","Cook/Chef","Electrician","Plumber"].map((tr) => (
           <button
-            key={t}
-            onClick={() => nav(`/workers?trade=${encodeURIComponent(t)}`)}
+            key={tr}
+            onClick={() => nav(`/workers?trade=${encodeURIComponent(tr)}`)}
             className="text-xs px-3 py-1 rounded-full border transition-all hover:bg-emerald-50"
             style={{ borderColor: "#1B4332", color: "#1B4332" }}
           >
-            {t}
+            {tr}
           </button>
         ))}
       </div>
@@ -110,8 +110,8 @@ export default function Landing() {
       <ShieldCheck className="w-5 h-5" />
     </div>
     <div>
-      <div className="text-xs text-slate-500">Verified workers</div>
-      <div className="font-bold text-slate-900">Trusted profiles</div>
+      <div className="text-xs text-slate-500">{t("verified_workers_label", lang)}</div>
+      <div className="font-bold text-slate-900">{t("trusted_profiles", lang)}</div>
     </div>
   </div>
 </div>
@@ -119,10 +119,10 @@ export default function Landing() {
           {/* Text */}
           <div className="order-1 md:order-2">
             <div className="inline-flex items-center gap-2 bg-emerald-100/70 text-emerald-800 border border-emerald-200 rounded-full px-3 py-1 text-xs font-semibold mb-4">
-              <span className="w-2 h-2 rounded-full bg-emerald-500" /> Serving all 33 districts · {TOTAL_TRADES}+ trades · 4.7★
+              <span className="w-2 h-2 rounded-full bg-emerald-500" /> {t("serving_stat", lang)} · {TOTAL_TRADES}+ {t("trade_skills_label", lang)} · 4.7★
             </div>
             <div className="heading">
-              <div className="text-3xl sm:text-4xl font-extrabold" style={{ color: "#1B4332", fontSize: "clamp(28px,4vw,44px)" }}>Rozgar</div>
+              <div className="text-3xl sm:text-4xl font-extrabold" style={{ color: "#1B4332", fontSize: "clamp(28px,4vw,44px)" }}>{t("brand", lang)}</div>
               <div className="mt-1 rz-wordmark-multi text-sm sm:text-base" style={{ color: "#2D6A4F", fontSize: "clamp(12px,1.4vw,16px)" }}>
                 <span lang="te">ఉపాధి</span>&nbsp;&nbsp;<span lang="hi">रोजगार</span>&nbsp;&nbsp;<span lang="ur" className="rz-wordmark-urdu">روزگار</span>
               </div>
@@ -142,29 +142,30 @@ export default function Landing() {
               </Button>
             </div>
             <div className="mt-8 grid grid-cols-3 gap-4 max-w-md">
-              <div><div className="text-2xl font-extrabold text-[#1B4332]">33</div><div className="text-xs text-slate-600">Districts</div></div>
-              <div><div className="text-2xl font-extrabold text-[#1B4332]">{TOTAL_TRADES}+</div><div className="text-xs text-slate-600">Trade skills</div></div>
-              <div><div className="text-2xl font-extrabold text-[#1B4332]">4.7★</div><div className="text-xs text-slate-600">Avg. rating</div></div>
+              <div><div className="text-2xl font-extrabold text-[#1B4332]">33</div><div className="text-xs text-slate-600">{t("districts_label", lang)}</div></div>
+              <div><div className="text-2xl font-extrabold text-[#1B4332]">{TOTAL_TRADES}+</div><div className="text-xs text-slate-600">{t("trade_skills_label", lang)}</div></div>
+              <div><div className="text-2xl font-extrabold text-[#1B4332]">4.7★</div><div className="text-xs text-slate-600">{t("avg_rating_label", lang)}</div></div>
             </div>
           </div>
         </div>
       </section>
 
-              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <PromoBanner />
       </div>
 
       <AdBanner position="mid" />
 
       <CategorySection />
+
       <section className="py-12 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-end justify-between mb-6">
             <div>
               <h2 className="heading text-2xl sm:text-3xl font-extrabold text-slate-900">{t("featured_workers", lang)}</h2>
-              <p className="text-slate-600 text-sm">Top-rated workers ready for hire</p>
+              <p className="text-slate-600 text-sm">{t("top_rated_ready", lang)}</p>
             </div>
-            <Button variant="ghost" onClick={() => nav("/workers")} data-testid="see-all-workers">See all →</Button>
+            <Button variant="ghost" onClick={() => nav("/workers")} data-testid="see-all-workers">{t("see_all", lang)}</Button>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {featured.map((w) => <WorkerCard key={w.worker_id} worker={w} />)}
@@ -178,9 +179,9 @@ export default function Landing() {
       <section className="py-14">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-3 gap-6">
           {[
-            { icon: ShieldCheck, title: "Verified profiles", body: "Every worker profile is district-verified." },
-            { icon: Zap, title: "Instant contact", body: "Unlock phone numbers with an ad or a small fee." },
-            { icon: Users, title: "Smart ATS", body: "Contractors track applications with a modern ATS." },
+            { icon: ShieldCheck, title: t("feature_verified_title", lang), body: t("feature_verified_body", lang) },
+            { icon: Zap, title: t("feature_instant_title", lang), body: t("feature_instant_body", lang) },
+            { icon: Users, title: t("feature_ats_title", lang), body: t("feature_ats_body", lang) },
           ].map((f, i) => (
             <div key={i} className="rz-card-shadow bg-white rounded-2xl border border-slate-200 p-6">
               <div className="w-12 h-12 rounded-xl bg-[#1B4332]/10 text-[#1B4332] flex items-center justify-center mb-3">
