@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import Navbar from "../components/Navbar";
 import WorkerCard from "../components/WorkerCard";
 import { useApp } from "../context/AppContext";
-import { CATEGORIES, DISTRICTS, CATEGORY_MAP, t } from "../lib/i18n";
+import { CATEGORIES, DISTRICTS, CATEGORY_MAP, t, districtLabel } from "../lib/i18n";
 import api from "../lib/api";
 import { useSearchParams } from "react-router-dom";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../components/ui/select";
@@ -96,7 +96,7 @@ export default function WorkersDirectory() {
             <SelectTrigger data-testid="filter-district" className="bg-white min-h-[44px]"><SelectValue placeholder={t("all_districts", lang)} /></SelectTrigger>
             <SelectContent className="max-h-72">
               <SelectItem value="all">{t("all_districts", lang)}</SelectItem>
-              {DISTRICTS.map(d => <SelectItem key={d} value={d}>{d}</SelectItem>)}
+              {DISTRICTS.map(d => <SelectItem key={d} value={d}>{districtLabel(d, lang)}</SelectItem>)}
             </SelectContent>
           </Select>
         </div>
