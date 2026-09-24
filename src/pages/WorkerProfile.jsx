@@ -22,14 +22,14 @@ export default function WorkerProfile() {
   const [showRewarded, setShowRewarded] = useState(false);
   const [showOtp, setShowOtp] = useState(false);
   const [showProxy, setShowProxy] = useState(false);
-  const [pendingAfterOtp, setPendingAfterOtp] = useState(null); // ⬅️ NEW
+  const [pendingAfterOtp, setPendingAfterOtp] = useState(null);
 
   useEffect(() => {
     api.get(`/workers/${id}`).then(({ data }) => setW(data)).catch(() => {});
     if (user) api.get(`/workers/${id}/unlock/status`).then(({data}) => { if (data.unlocked) setContact(data); }).catch(()=>{});
   }, [id, user]);
 
-  if (!w) return <div className="min-h-screen bg-slate-50"><div className="p-20 text-center text-slate-500">Loading...</div></div>;
+  if (!w) return <div className="min-h-screen bg-slate-50"><div className="p-20 text-center text-slate-500">{t("loading_text", lang)}</div></div>;
   const cat = CATEGORY_MAP[w.category];
 
   const rewardedUnlock = async () => {
@@ -43,7 +43,6 @@ export default function WorkerProfile() {
     setShowRewarded(false);
   };
 
-  // ⬅️ NEW — gate the ad behind OTP check
   const requireOtpForAd = () => {
     if (!user) { nav("/login"); return; }
     if (user.role === "employer" && !user.otp_verified) {
@@ -52,7 +51,6 @@ export default function WorkerProfile() {
     setShowRewarded(true);
   };
 
-  // ⬅️ CHANGED — now sets pendingAfterOtp
   const requireOtpForCall = () => {
     if (!user) { nav("/login"); return; }
     if (user.role === "employer" && !user.otp_verified) {
@@ -61,7 +59,6 @@ export default function WorkerProfile() {
     setShowProxy(true);
   };
 
-  // ⬅️ NEW — resumes whichever action triggered OTP
   const onOtpVerified = () => {
     setShowOtp(false);
     if (pendingAfterOtp === "ad") setShowRewarded(true);
@@ -87,11 +84,11 @@ export default function WorkerProfile() {
               <div className="flex items-center gap-2 flex-wrap">
                 <h1 className="heading text-2xl sm:text-3xl font-extrabold text-slate-900">{w.name}</h1>
                 {w.verified_pro && (
-                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-bold bg-amber-100 text-amber-800 border border-amber-300">⭐ Verified Pro</span>
+                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-bold bg-amber-100 text-amber-800 border border-amber-300">{t("verified_pro_badge", lang)}</span>
                 )}
                 {w.is_female_protected && (
                   <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-bold bg-pink-100 text-pink-700 border border-pink-300" data-testid="profile-protected">
-                    <Shield className="w-3 h-3" /> Protected Number
+                    <Shield className="w-3 h-3" /> {t("protected_number", lang)}
                   </span>
                 )}
               </div>
@@ -104,7 +101,6 @@ export default function WorkerProfile() {
                 </span>
                 <span className="flex items-center gap-1"><Star className="w-4 h-4 fill-amber-400 text-amber-400" />{Number(w.rating).toFixed(1)}</span>
                 <span className="flex items-center gap-1 text-slate-600"><MapPin className="w-4 h-4" />{w.district}</span>
-                {/* ⬅️ CHANGED — only show masked number when NOT unlocked */}
                 {!contact && (
                   <span className="flex items-center gap-1 text-slate-500 font-mono text-xs">
                     📱 {w.masked_phone || "+91-XXXXX-XXXXX"}
@@ -115,10 +111,10 @@ export default function WorkerProfile() {
                 {contact ? (
                   <>
                     <div className="px-4 py-2 rounded-lg bg-emerald-50 text-emerald-800 font-mono font-semibold border border-emerald-200" data-testid="profile-phone">
-                      📞 {contact.masked_phone || contact.phone}
+                      📞 {contact.masked_phone || "Protected · Call via App"}
                     </div>
                     <Button onClick={requireOtpForCall} className="bg-[#1B4332] hover:bg-[#143225] text-white gap-2" data-testid="profile-call">
-                      <Phone className="w-4 h-4" /> Call Worker (Private)
+                      <Phone className="w-4 h-4" /> {t("call_worker_private", lang)}
                     </Button>
                     {contact.whatsapp && !w.is_female_protected && (
                       <a href={contact.whatsapp} target="_blank" rel="noreferrer"
@@ -129,12 +125,11 @@ export default function WorkerProfile() {
                   </>
                 ) : (
                   <>
-                    {/* ⬅️ CHANGED — onClick now goes through OTP gate */}
                     <Button onClick={requireOtpForAd} className="bg-emerald-600 hover:bg-emerald-700 text-white gap-2" data-testid="profile-watch-ad">
-                      🎬 Watch Ad to Unlock (Free)
+                      🎬 {t("watch_ad_unlock", lang)}
                     </Button>
                     <Button onClick={() => setOpenUnlock(true)} variant="outline" className="gap-2" data-testid="profile-unlock">
-                      <Lock className="w-4 h-4" /> Pay ₹30
+                      <Lock className="w-4 h-4" /> {t("pay_to_unlock", lang)}
                     </Button>
                   </>
                 )}
@@ -147,26 +142,25 @@ export default function WorkerProfile() {
             </div>
             <div className="bg-[#1B4332] text-white rounded-2xl px-5 py-4 text-center min-w-[140px]">
               <div className="text-3xl font-extrabold">₹{w.daily_rate}</div>
-              <div className="text-xs text-emerald-200">per day</div>
+              <div className="text-xs text-emerald-200">{t("per_day", lang)}</div>
             </div>
           </div>
 
           <div className="mt-8 grid sm:grid-cols-3 gap-4">
-            <Stat icon={Award} label="Experience" value={`${w.experience_years || 0} yrs`} />
-            <Stat icon={Briefcase} label="Category" value={cat?.label?.EN || w.category} />
-            <Stat icon={Calendar} label="Joined" value={new Date(w.created_at).toLocaleDateString()} />
+            <Stat icon={Award} label={t("experience_label", lang)} value={`${w.experience_years || 0} ${t("years_suffix", lang)}`} />
+            <Stat icon={Briefcase} label={t("category_label", lang)} value={cat?.label?.[lang] || cat?.label?.EN || w.category} />
+            <Stat icon={Calendar} label={t("joined_label", lang)} value={new Date(w.created_at).toLocaleDateString()} />
           </div>
 
           <div className="mt-8">
-            <h2 className="heading font-bold text-slate-900 text-lg mb-2">About</h2>
-            <p className="text-slate-700 text-sm leading-relaxed">{w.bio || "No bio yet."}</p>
+            <h2 className="heading font-bold text-slate-900 text-lg mb-2">{t("about_label", lang)}</h2>
+            <p className="text-slate-700 text-sm leading-relaxed">{w.bio || t("no_bio_yet", lang)}</p>
           </div>
         </div>
       </div>
       <UnlockContactModal open={openUnlock} onClose={() => setOpenUnlock(false)} worker={w}
         onUnlocked={(c) => { setContact(c); setOpenUnlock(false); }} />
       <RewardedAd open={showRewarded} onClose={() => setShowRewarded(false)} onReward={rewardedUnlock} title={`Unlock ${w.name}'s contact`} />
-      {/* ⬅️ CHANGED — onVerified now wired to onOtpVerified */}
       <OtpModal open={showOtp} onClose={() => setShowOtp(false)} onVerified={onOtpVerified} />
       <ProxyCallModal open={showProxy} onClose={() => setShowProxy(false)} worker={w} />
     </div>
