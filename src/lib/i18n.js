@@ -222,6 +222,47 @@ export const DISTRICTS = [
   "Vikarabad","Wanaparthy","Warangal","Hanamkonda","Yadadri Bhuvanagiri",
 ];
 
+export const DISTRICT_LABELS = {
+  "Adilabad": { TE: "ఆదిలాబాద్", HI: "आदिलाबाद", UR: "آدیلاباد" },
+  "Bhadradri Kothagudem": { TE: "భద్రాద్రి కొత్తగూడెం", HI: "भद्राद्री कोठागुडेम", UR: "بھدرادری کوٹہ گوڑیم" },
+  "Hyderabad": { TE: "హైదరాబాద్", HI: "हैदराबाद", UR: "حیدرآباد" },
+  "Jagtial": { TE: "జగిత్యాల", HI: "जगतियाल", UR: "جگتیال" },
+  "Jangaon": { TE: "జనగామ", HI: "जनगांव", UR: "جن گاؤں" },
+  "Jayashankar Bhupalpally": { TE: "జయశంకర్ భూపాలపల్లి", HI: "जयशंकर भूपालपल्ली", UR: "جے شنکر بھوپال پلی" },
+  "Jogulamba Gadwal": { TE: "జోగులాంబ గద్వాల", HI: "जोगुलाम्बा गडवाल", UR: "جوگولمبا گڈوال" },
+  "Kamareddy": { TE: "కామారెడ్డి", HI: "कामारेड्डी", UR: "کامareddy" },
+  "Karimnagar": { TE: "కరీంనగర్", HI: "करीमनगर", UR: "کریم نگر" },
+  "Khammam": { TE: "ఖమ్మం", HI: "खम्मम", UR: "کھمم" },
+  "Kumuram Bheem Asifabad": { TE: "కుమురం భీం ఆసిఫాబాద్", HI: "कुमुराम भीम आसिफाबाद", UR: "کمرم بھیم آصف آباد" },
+  "Mahabubabad": { TE: "మహబూబాబాద్", HI: "महबूबाबाद", UR: "محبوب آباد" },
+  "Mahabubnagar": { TE: "మహబూబ్‌నగర్", HI: "महबूबनगर", UR: "محبوب نگر" },
+  "Mancherial": { TE: "మంచిర్యాల", HI: "मंचेरियाल", UR: "منچریال" },
+  "Medak": { TE: "మెదక్", HI: "मेडक", UR: "میدک" },
+  "Medchal-Malkajgiri": { TE: "మేడ్చల్-మల్కాజ్‌గిరి", HI: "मेडचल-मलकाजगिरी", UR: "میڈچل-ملکاج گری" },
+  "Mulugu": { TE: "ములుగు", HI: "मुलुगु", UR: "مولگو" },
+  "Nagarkurnool": { TE: "నాగర్‌కర్నూల్", HI: "नागरकुर्नूल", UR: "ناگرکرنول" },
+  "Nalgonda": { TE: "నల్గొండ", HI: "नलगोंडा", UR: "نلگوندہ" },
+  "Narayanpet": { TE: "నారాయణపేట", HI: "नारायणपेट", UR: "نارائن پیٹ" },
+  "Nirmal": { TE: "నిర్మల్", HI: "निर्मल", UR: "نرمل" },
+  "Nizamabad": { TE: "నిజామాబాద్", HI: "निज़ामाबाद", UR: "نظام آباد" },
+  "Peddapalli": { TE: "పెద్దపల్లి", HI: "पेद्दापल्ली", UR: "پیڈا پلی" },
+  "Rajanna Sircilla": { TE: "రాజన్న సిరిసిల్ల", HI: "राजन्ना सिरसिल्ला", UR: "راجنا سرسلہ" },
+  "Ranga Reddy": { TE: "రంగారెడ్డి", HI: "रंगारेड्डी", UR: "رنگا ریڈی" },
+  "Sangareddy": { TE: "సంగారెడ్డి", HI: "संगारेड्डी", UR: "سنگا ریڈی" },
+  "Siddipet": { TE: "సిద్దిపేట", HI: "सिद्दिपेट", UR: "سدی پیٹ" },
+  "Suryapet": { TE: "సూర్యాపేట", HI: "सूर्यापेट", UR: "سوریا پیٹ" },
+  "Vikarabad": { TE: "వికారాబాద్", HI: "विकाराबाद", UR: "وکاراآباد" },
+  "Wanaparthy": { TE: "వనపర్తి", HI: "वनपर्ती", UR: "وناپرتی" },
+  "Warangal": { TE: "వరంగల్", HI: "वारंगल", UR: "ورنگل" },
+  "Hanamkonda": { TE: "హనుమకొండ", HI: "हनुमकोंडा", UR: "ہنومکونڈہ" },
+  "Yadadri Bhuvanagiri": { TE: "యాదాద్రి భువనగిరి", HI: "यादाद्री भुवनगिरी", UR: "یادادری بھونگیری" },
+};
+
+export function districtLabel(name, lang = "EN") {
+  if (lang === "EN") return name;
+  return DISTRICT_LABELS[name]?.[lang] || name;
+}
+
 export const CATEGORY_MAP = Object.fromEntries(CATEGORIES.map(c => [c.key, c]));
 
 export const FEMALE_TRADES = new Set([
