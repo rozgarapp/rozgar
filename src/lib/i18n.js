@@ -9,6 +9,26 @@ export const LANGS = [
 export const RTL_LANGS = ["UR"];
 
 const T = {
+  find_worker_heading: { EN: "Find a Worker Near You", TE: "మీ దగ్గర కార్మికుడిని కనుగొనండి", HI: "अपने पास कारीगर खोजें", UR: "اپنے قریب کارکن تلاش کریں" },
+  select_trade_skill: { EN: "Select Trade / Skill", TE: "వృత్తి / నైపుణ్యం ఎంచుకోండి", HI: "ट्रेड / कौशल चुनें", UR: "پیشہ / ہنر منتخب کریں" },
+  select_district: { EN: "Select District", TE: "జిల్లా ఎంచుకోండి", HI: "ज़िला चुनें", UR: "ضلع منتخب کریں" },
+  search_workers_btn: { EN: "Search Workers →", TE: "కార్మికులను వెతకండి →", HI: "कारीगर खोजें →", UR: "کارکن تلاش کریں →" },
+  popular_searches: { EN: "Popular searches:", TE: "ప్రసిద్ధ శోధనలు:", HI: "लोकप्रिय खोजें:", UR: "مقبول تلاش:" },
+  verified_workers_label: { EN: "Verified workers", TE: "ధృవీకరించబడిన కార్మికులు", HI: "सत्यापित कारीगर", UR: "تصدیق شدہ کارکن" },
+  trusted_profiles: { EN: "Trusted profiles", TE: "నమ్మదగిన ప్రొఫైల్‌లు", HI: "विश्वसनीय प्रोफ़ाइल", UR: "قابل اعتماد پروفائلز" },
+  serving_stat: { EN: "Serving all 33 districts", TE: "అన్ని 33 జిల్లాలలో సేవ", HI: "सभी 33 ज़िलों में सेवा", UR: "تمام 33 اضلاع میں خدمت" },
+  districts_label: { EN: "Districts", TE: "జిల్లాలు", HI: "ज़िले", UR: "اضلاع" },
+  trade_skills_label: { EN: "Trade skills", TE: "వృత్తి నైపుణ్యాలు", HI: "ट्रेड कौशल", UR: "پیشہ ورانہ ہنر" },
+  avg_rating_label: { EN: "Avg. rating", TE: "సగటు రేటింగ్", HI: "औसत रेटिंग", UR: "اوسط ریٹنگ" },
+  top_rated_ready: { EN: "Top-rated workers ready for hire", TE: "అద్దె సిద్ధంగా ఉన్న అగ్రశ్రేణి కార్మికులు", HI: "किराए के लिए तैयार टॉप-रेटेड कारीगर", UR: "کرائے کے لیے تیار اعلیٰ درجہ کے کارکن" },
+  see_all: { EN: "See all →", TE: "అన్నీ చూడండి →", HI: "सभी देखें →", UR: "سب دیکھیں →" },
+  feature_verified_title: { EN: "Verified profiles", TE: "ధృవీకరించబడిన ప్రొఫైల్‌లు", HI: "सत्यापित प्रोफ़ाइल", UR: "تصدیق شدہ پروفائلز" },
+  feature_verified_body: { EN: "Every worker profile is district-verified.", TE: "ప్రతి కార్మికుడి ప్రొఫైల్ జిల్లా-ధృవీకరించబడింది.", HI: "हर कारीगर प्रोफ़ाइल ज़िला-सत्यापित है।", UR: "ہر کارکن پروفائل ضلع کی تصدیق شدہ ہے۔" },
+  feature_instant_title: { EN: "Instant contact", TE: "తక్షణ సంప్రదింపు", HI: "तुरंत संपर्क", UR: "فوری رابطہ" },
+  feature_instant_body: { EN: "Unlock phone numbers with an ad or a small fee.", TE: "ప్రకటన లేదా చిన్న రుసుముతో ఫోన్ నంబర్‌ను అన్‌లాక్ చేయండి.", HI: "विज्ञापन या मामूली शुल्क से फ़ोन नंबर अनलॉक करें।", UR: "اشتہار یا معمولی فیس سے فون نمبر کھولیں۔" },
+  feature_ats_title: { EN: "Smart ATS", TE: "స్మార్ట్ ATS", HI: "स्मार्ट ATS", UR: "اسمارٹ ATS" },
+  feature_ats_body: { EN: "Contractors track applications with a modern ATS.", TE: "కాంట్రాక్టర్లు ఆధునిక ATSతో దరఖాస్తులను ట్రాక్ చేస్తారు.", HI: "ठेकेदार आधुनिक ATS से आवेदन ट्रैक करते हैं।", UR: "ٹھیکیدار جدید ATS سے درخواستیں ٹریک کرتے ہیں۔" },
+  skilled_general: { EN: "9 categories · 105+ skilled and general trades", TE: "9 వర్గాలు · 105+ నైపుణ్య మరియు సాధారణ వృత్తులు", HI: "9 श्रेणियां · 105+ कुशल और सामान्य ट्रेड", UR: "9 زمرے · 105+ ہنر مند اور عام پیشے" },
   brand: { EN: "Rozgar", TE: "రోజ్‌గార్", HI: "रोज़गार", UR: "روزگار" },
   tagline: {
     EN: "Telangana's trusted trade worker marketplace",
