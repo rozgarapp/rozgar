@@ -7,7 +7,7 @@ import PromoBanner from "../components/PromoBanner";
 import { Button } from "../components/ui/button";
 import { useEffect, useState } from "react";
 import { useApp } from "../context/AppContext";
-import { t, TOTAL_TRADES } from "../lib/i18n";
+import { t, TOTAL_TRADES, districtLabel } from "../lib/i18n";
 import api from "../lib/api";
 import { useNavigate } from "react-router-dom";
 import { ShieldCheck, Zap, Users } from "lucide-react";
@@ -72,7 +72,7 @@ export default function Landing() {
           className="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 bg-white"
         >
           <option value="">{t("all_districts", lang)}</option>
-          {DISTRICTS.map((d) => <option key={d} value={d}>{d}</option>)}
+          {DISTRICTS.map((d) => <option key={d} value={d}>{districtLabel(d, lang)}</option>)}
         </select>
       </div>
       <button
