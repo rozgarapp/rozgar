@@ -302,6 +302,36 @@ export const TRADE_LABELS = {
   "Generator Technician": { TE: "జనరేటర్ టెక్నీషియన్", HI: "जनरेटर तकनीशियन", UR: "جنریٹر ٹیکنیشن" },
   "AC Mechanic": { TE: "AC మెకానిక్", HI: "AC मैकेनिक", UR: "AC مکینک" },
   "Refrigeration Technician": { TE: "రిఫ్రిజిరేషన్ టెక్నీషియన్", HI: "रेफ्रिजरेशन तकनीशियन", UR: "ریفریجریشن ٹیکنیشن" },
+  // Electrical & Electronics
+  "Industrial Electrician": { TE: "పారిశ్రామిక ఎలక్ట్రీషియన్", HI: "औद्योगिक इलेक्ट्रीशियन", UR: "صنعتی الیکٹریشن" },
+  "Domestic Electrician": { TE: "గృహ ఎలక్ట్రీషియన్", HI: "घरेलू इलेक्ट्रीशियन", UR: "گھریلو الیکٹریشن" },
+  "Wireman": { TE: "వైర్‌మ్యాన్", HI: "वायरमैन", UR: "وائرمین" },
+  "Electronics Technician": { TE: "ఎలక్ట్రానిక్స్ టెక్నీషియన్", HI: "इलेक्ट्रॉनिक्स तकनीशियन", UR: "الیکٹرانکس ٹیکنیشن" },
+  "Solar Panel Installer": { TE: "సోలార్ ప్యానెల్ ఇన్‌స్టాలర్", HI: "सोलर पैनल इंस्टॉलर", UR: "سولر پینل انسٹالر" },
+  "CCTV Installer": { TE: "CCTV ఇన్‌స్టాలర్", HI: "CCTV इंस्टॉलर", UR: "CCTV انسٹالر" },
+  "Fire Alarm Technician": { TE: "ఫైర్ అలారం టెక్నీషియన్", HI: "फायर अलार्म तकनीशियन", UR: "فائر الارم ٹیکنیشن" },
+  "Data Cable Technician": { TE: "డేటా కేబుల్ టెక్నీషియన్", HI: "डेटा केबल तकनीशियन", UR: "ڈیٹا کیبل ٹیکنیشن" },
+  "Lift/Elevator Technician": { TE: "లిఫ్ట్ టెక్నీషియన్", HI: "लिफ्ट तकनीशियन", UR: "لفٹ ٹیکنیشن" },
+  "UPS Technician": { TE: "UPS టెక్నీషియన్", HI: "UPS तकनीशियन", UR: "UPS ٹیکنیشن" },
+  "Motor Winding Technician": { TE: "మోటార్ వైండింగ్ టెక్నీషియన్", HI: "मोटर वाइंडिंग तकनीशियन", UR: "موٹر واننڈنگ ٹیکنیشن" },
+  "Panel Board Wireman": { TE: "ప్యానెల్ బోర్డ్ వైర్‌మ్యాన్", HI: "पैनल बोर्ड वायरमैन", UR: "پینل بورڈ وائرمین" },
+
+  // Domestic & Services
+  "Cook/Chef": { TE: "వంటవాడు", HI: "रसोइया", UR: "باورچی" },
+  "Housekeeping Staff": { TE: "హౌస్‌కీపింగ్ సిబ్బంది", HI: "हाउसकीपिंग स्टाफ", UR: "ہاؤس کیپنگ اسٹاف" },
+  "Driver": { TE: "డ్రైవర్", HI: "ड्राइवर", UR: "ڈرائیور" },
+  "Beautician": { TE: "బ్యూటీషియన్", HI: "ब्यूटीशियन", UR: "بیوٹیشن" },
+  "Tailor": { TE: "దర్జీ", HI: "दर्जी", UR: "درزی" },
+  "Baby Caretaker/Nanny": { TE: "శిశు సంరక్షకురాలు", HI: "आया", UR: "آیا" },
+  "Elder Care Attendant": { TE: "వృద్ధుల సంరక్షకుడు", HI: "वृद्ध देखभाल सहायक", UR: "بزرگ نگہداشت اٹینڈنٹ" },
+  "Laundry/Dhobi Worker": { TE: "లాండ్రీ కార్మికుడు", HI: "धोबी", UR: "دھوبی" },
+  "Gardener/Mali": { TE: "తోటమాలి", HI: "माली", UR: "مالی" },
+  "Pest Control Worker": { TE: "పెస్ట్ కంట్రోల్ కార్మికుడు", HI: "कीट नियंत्रण कर्मी", UR: "پیسٹ کنٹرول ورکر" },
+  "Swimming Pool Cleaner": { TE: "స్విమ్మింగ్ పూల్ క్లీనర్", HI: "स्विमिंग पूल क्लीनर", UR: "سوئمنگ پول کلینر" },
+  "Car Washer/Detailer": { TE: "కార్ వాషర్", HI: "कार वॉशर", UR: "کار واشر" },
+  "Watchman/Security Guard": { TE: "వాచ్‌మెన్/సెక్యూరిటీ గార్డ్", HI: "चौकीदार", UR: "چوکیدار" },
+  "Peon/Office Boy": { TE: "ఆఫీస్ బాయ్", HI: "ऑफिस बॉय", UR: "آفس بوائے" },
+  "Pantry Boy": { TE: "పాంట్రీ బాయ్", HI: "पैंट्री बॉय", UR: "پینٹری بوائے" },
 };
 
 export function tradeLabel(name, lang = "EN") {
