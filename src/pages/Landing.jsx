@@ -61,7 +61,7 @@ export default function Landing() {
           className="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 bg-white"
         >
           <option value="">{t("all_categories", lang)}</option>
-          {TRADES.map((tr) => <option key={tr} value={tr}>{tr}</option>)}
+          {TRADES.map((tr) => <option key={tr} value={tr}>{tradeLabel(tr, lang)}</option>)}
         </select>
       </div>
       <div>
@@ -91,12 +91,16 @@ export default function Landing() {
     <div className="mt-4">
       <p className="text-xs text-slate-400 mb-2">{t("popular_searches", lang)}</p>
       <div className="flex flex-wrap gap-2">
-        {["Mason","Driver","Cook/Chef","Electrician","Plumber"].map((tr) => (
-          <button
-            key={tr}
-            onClick={() => nav(`/workers?trade=${encodeURIComponent(tr)}`)}
-            className="text-xs px-3 py-1 rounded-full border transition-all hover:bg-emerald-50"
-            style={{ borderColor: "#1B4332", color: "#1B4332" }}
+        {["Mason/Bricklayer","Driver","Cook/Chef","Electrician","Plumber"].map((tr) => (
+  <button
+    key={tr}
+    onClick={() => nav(`/workers?trade=${encodeURIComponent(tr)}`)}
+    className="text-xs px-3 py-1 rounded-full border transition-all hover:bg-emerald-50"
+    style={{ borderColor: "#1B4332", color: "#1B4332" }}
+  >
+    {tradeLabel(tr, lang)}
+  </button>
+))}
           >
             {tr}
           </button>
