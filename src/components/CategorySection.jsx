@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { CATEGORIES } from "../lib/i18n";
+import { CATEGORIES, tradeLabel } from "../lib/i18n";
 import { useApp } from "../context/AppContext";
 import { t } from "../lib/i18n";
 
@@ -37,7 +37,7 @@ export default function CategorySection() {
                          style={{ backgroundColor: cat.bg, borderColor: cat.border }}>
                       <span>{emoji}</span>
                     </div>
-                    <div className="text-[11px] sm:text-xs font-semibold text-slate-800 text-center leading-tight">{trade}</div>
+                    <div className="text-[11px] sm:text-xs font-semibold text-slate-800 text-center leading-tight">{tradeLabel(trade, lang)}</div>
                   </button>
                 ))}
               </div>
