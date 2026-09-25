@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import Navbar from "../components/Navbar";
 import WorkerCard from "../components/WorkerCard";
 import { useApp } from "../context/AppContext";
-import { CATEGORIES, DISTRICTS, CATEGORY_MAP, t, districtLabel } from "../lib/i18n";
+import { CATEGORIES, DISTRICTS, CATEGORY_MAP, t, districtLabel, tradeLabel } from "../lib/i18n";
 import api from "../lib/api";
 import { useSearchParams } from "react-router-dom";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../components/ui/select";
@@ -140,12 +140,12 @@ export default function WorkersDirectory() {
         </div>
 
         {trade && (
-          <div className="flex items-center gap-2 bg-white border border-slate-200 rounded-lg px-3 py-1.5 mb-4 w-fit">
-            <span className="text-xs text-slate-500">Trade:</span>
-            <span className="text-sm font-semibold text-[#1B4332]">{trade}</span>
-            <button onClick={() => setParam("trade", null)} className="ms-1 text-slate-400 hover:text-slate-700 text-lg leading-none">×</button>
-          </div>
-        )}
+  <div className="flex items-center gap-2 bg-white border border-slate-200 rounded-lg px-3 py-1.5 mb-4 w-fit">
+    <span className="text-xs text-slate-500">Trade:</span>
+    <span className="text-sm font-semibold text-[#1B4332]">{tradeLabel(trade, lang)}</span>
+    <button onClick={() => setParam("trade", null)} className="ms-1 text-slate-400 hover:text-slate-700 text-lg leading-none">×</button>
+  </div>
+)}
 
         {loading ? (
           <div className="flex items-center justify-center py-20"><Loader2 className="w-6 h-6 animate-spin text-[#1B4332]" /></div>
