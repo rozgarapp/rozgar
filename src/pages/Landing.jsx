@@ -7,7 +7,7 @@ import PromoBanner from "../components/PromoBanner";
 import { Button } from "../components/ui/button";
 import { useEffect, useState } from "react";
 import { useApp } from "../context/AppContext";
-import { t, TOTAL_TRADES, districtLabel } from "../lib/i18n";
+import { t, TOTAL_TRADES, districtLabel, tradeLabel } from "../lib/i18n";
 import api from "../lib/api";
 import { useNavigate } from "react-router-dom";
 import { ShieldCheck, Zap, Users } from "lucide-react";
