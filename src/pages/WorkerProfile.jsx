@@ -7,7 +7,7 @@ import OtpModal from "../components/OtpModal";
 import ProxyCallModal from "../components/ProxyCallModal";
 import { Button } from "../components/ui/button";
 import { Star, MapPin, MessageSquare, Lock, Briefcase, Calendar, Award, ShieldCheck, Phone, Shield } from "lucide-react";
-import { CATEGORY_MAP, t } from "../lib/i18n";
+import { CATEGORY_MAP, t, tradeLabel } from "../lib/i18n";
 import { useApp } from "../context/AppContext";
 import api from "../lib/api";
 import { toast } from "sonner";
@@ -92,7 +92,7 @@ export default function WorkerProfile() {
                   </span>
                 )}
               </div>
-              <div className="text-lg text-[#1B4332] font-semibold">{w.trade}</div>
+              <div className="text-lg text-[#1B4332] font-semibold">{tradeLabel(w.trade, lang)}</div>
               <div className="mt-3 flex flex-wrap items-center gap-3 text-sm">
                 <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold ${
                   w.availability === "available" ? "bg-emerald-50 text-emerald-700" : "bg-rose-50 text-rose-700"}`}>
