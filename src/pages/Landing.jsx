@@ -88,26 +88,23 @@ export default function Landing() {
         {t("search_workers_btn", lang)}
       </button>
     </div>
-    <div className="mt-4">
-      <p className="text-xs text-slate-400 mb-2">{t("popular_searches", lang)}</p>
-      <div className="flex flex-wrap gap-2">
-        {["Mason/Bricklayer","Driver","Cook/Chef","Electrician","Plumber"].map((tr) => (
-  <button
-    key={tr}
-    onClick={() => nav(`/workers?trade=${encodeURIComponent(tr)}`)}
-    className="text-xs px-3 py-1 rounded-full border transition-all hover:bg-emerald-50"
-    style={{ borderColor: "#1B4332", color: "#1B4332" }}
-  >
-    {tradeLabel(tr, lang)}
-  </button>
-))}
-          >
-            {tr}
-          </button>
-        ))}
+            </div>
+        <div className="mt-4">
+          <p className="text-xs text-slate-400 mb-2">{t("popular_searches", lang)}</p>
+          <div className="flex flex-wrap gap-2">
+              {["Mason/Bricklayer","Driver","Cook/Chef","Electrician","Plumber"].map((tr) => (
+                <button
+                  key={tr}
+                  onClick={() => nav(`/workers?trade=${encodeURIComponent(tr)}`)}
+                  className="text-xs px-3 py-1 rounded-full border transition-all hover:bg-emerald-50"
+                  style={{ borderColor: "#1B4332", color: "#1B4332" }}
+                >
+                  {tradeLabel(tr, lang)}
+                </button>
+              ))}
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
 
   <div className="mt-4 flex bg-white rounded-2xl p-4 rz-card-shadow items-center gap-3">
     <div className="w-11 h-11 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center">
