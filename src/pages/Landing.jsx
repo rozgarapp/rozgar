@@ -44,78 +44,77 @@ export default function Landing() {
   return (
     <div className="min-h-screen pb-24 md:pb-16">
       <section className="pt-8 pb-12 md:pt-16 md:pb-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-10 items-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-10 items-center">
 
-      {/* Search Box */}
-<div className="fade-in-up order-2 md:order-1">
-  <div className="bg-white rounded-2xl p-6 rz-card-shadow border border-slate-100">
-    <h3 className="text-lg font-bold mb-4" style={{ color: "#1B4332" }}>
-      🔍 {t("find_worker_heading", lang)}
-    </h3>
-    <div className="space-y-3">
-      <div>
-        <label className="text-xs font-medium text-slate-500 mb-1 block">{t("select_trade_skill", lang)}</label>
-        <select
-          value={searchTrade}
-          onChange={(e) => setSearchTrade(e.target.value)}
-          className="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 bg-white"
-        >
-          <option value="">{t("all_categories", lang)}</option>
-          {TRADES.map((tr) => <option key={tr} value={tr}>{tradeLabel(tr, lang)}</option>)}
-        </select>
-      </div>
-      <div>
-        <label className="text-xs font-medium text-slate-500 mb-1 block">{t("select_district", lang)}</label>
-        <select
-          value={searchDistrict}
-          onChange={(e) => setSearchDistrict(e.target.value)}
-          className="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 bg-white"
-        >
-          <option value="">{t("all_districts", lang)}</option>
-          {DISTRICTS.map((d) => <option key={d} value={d}>{districtLabel(d, lang)}</option>)}
-        </select>
-      </div>
-      <button
-        onClick={() => {
-          const params = new URLSearchParams();
-          if (searchTrade) params.set("trade", searchTrade);
-          if (searchDistrict) params.set("district", searchDistrict);
-          nav(`/workers?${params.toString()}`);
-        }}
-        className="w-full py-3 rounded-xl text-white font-semibold text-sm transition-all"
-        style={{ background: "#1B4332" }}
-      >
-        {t("search_workers_btn", lang)}
-      </button>
-    </div>
-            </div>
-        <div className="mt-4">
-          <p className="text-xs text-slate-400 mb-2">{t("popular_searches", lang)}</p>
-          <div className="flex flex-wrap gap-2">
-              {["Mason/Bricklayer","Driver","Cook/Chef","Electrician","Plumber"].map((tr) => (
+          {/* Search Box */}
+          <div className="fade-in-up order-2 md:order-1">
+            <div className="bg-white rounded-2xl p-6 rz-card-shadow border border-slate-100">
+              <h3 className="text-lg font-bold mb-4" style={{ color: "#1B4332" }}>
+                🔍 {t("find_worker_heading", lang)}
+              </h3>
+              <div className="space-y-3">
+                <div>
+                  <label className="text-xs font-medium text-slate-500 mb-1 block">{t("select_trade_skill", lang)}</label>
+                  <select
+                    value={searchTrade}
+                    onChange={(e) => setSearchTrade(e.target.value)}
+                    className="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 bg-white"
+                  >
+                    <option value="">{t("all_categories", lang)}</option>
+                    {TRADES.map((tr) => <option key={tr} value={tr}>{tradeLabel(tr, lang)}</option>)}
+                  </select>
+                </div>
+                <div>
+                  <label className="text-xs font-medium text-slate-500 mb-1 block">{t("select_district", lang)}</label>
+                  <select
+                    value={searchDistrict}
+                    onChange={(e) => setSearchDistrict(e.target.value)}
+                    className="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 bg-white"
+                  >
+                    <option value="">{t("all_districts", lang)}</option>
+                    {DISTRICTS.map((d) => <option key={d} value={d}>{districtLabel(d, lang)}</option>)}
+                  </select>
+                </div>
                 <button
-                  key={tr}
-                  onClick={() => nav(`/workers?trade=${encodeURIComponent(tr)}`)}
-                  className="text-xs px-3 py-1 rounded-full border transition-all hover:bg-emerald-50"
-                  style={{ borderColor: "#1B4332", color: "#1B4332" }}
+                  onClick={() => {
+                    const params = new URLSearchParams();
+                    if (searchTrade) params.set("trade", searchTrade);
+                    if (searchDistrict) params.set("district", searchDistrict);
+                    nav(`/workers?${params.toString()}`);
+                  }}
+                  className="w-full py-3 rounded-xl text-white font-semibold text-sm transition-all"
+                  style={{ background: "#1B4332" }}
                 >
-                  {tradeLabel(tr, lang)}
+                  {t("search_workers_btn", lang)}
                 </button>
-              ))}
-          </div>
-        </div>
-      </div>
+              </div>
+              <div className="mt-4">
+                <p className="text-xs text-slate-400 mb-2">{t("popular_searches", lang)}</p>
+                <div className="flex flex-wrap gap-2">
+                  {["Mason/Bricklayer","Driver","Cook/Chef","Electrician","Plumber"].map((tr) => (
+                    <button
+                      key={tr}
+                      onClick={() => nav(`/workers?trade=${encodeURIComponent(tr)}`)}
+                      className="text-xs px-3 py-1 rounded-full border transition-all hover:bg-emerald-50"
+                      style={{ borderColor: "#1B4332", color: "#1B4332" }}
+                    >
+                      {tradeLabel(tr, lang)}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
 
-  <div className="mt-4 flex bg-white rounded-2xl p-4 rz-card-shadow items-center gap-3">
-    <div className="w-11 h-11 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center">
-      <ShieldCheck className="w-5 h-5" />
-    </div>
-    <div>
-      <div className="text-xs text-slate-500">{t("verified_workers_label", lang)}</div>
-      <div className="font-bold text-slate-900">{t("trusted_profiles", lang)}</div>
-    </div>
-  </div>
-</div>
+            <div className="mt-4 flex bg-white rounded-2xl p-4 rz-card-shadow items-center gap-3">
+              <div className="w-11 h-11 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center">
+                <ShieldCheck className="w-5 h-5" />
+              </div>
+              <div>
+                <div className="text-xs text-slate-500">{t("verified_workers_label", lang)}</div>
+                <div className="font-bold text-slate-900">{t("trusted_profiles", lang)}</div>
+              </div>
+            </div>
+          </div>
 
           {/* Text */}
           <div className="order-1 md:order-2">
@@ -174,7 +173,6 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* Sponsored (local) banner — repositioned to the middle of the page */}
       <AdBanner position="local" />
 
       <section className="py-14">
