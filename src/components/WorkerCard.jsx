@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { Star, MapPin, Lock, User, ShieldCheck, Shield } from "lucide-react";
 import { Button } from "./ui/button";
 import { useApp } from "../context/AppContext";
-import { t } from "../lib/i18n";
+import { t, tradeLabel } from "../lib/i18n";
 import UnlockContactModal from "./UnlockContactModal";
 import { useState } from "react";
 import { CATEGORY_MAP } from "../lib/i18n";
@@ -45,7 +45,7 @@ export default function WorkerCard({ worker }) {
             {worker.emoji}
           </div>
           <div>
-            <div className="font-bold text-slate-900 heading">{worker.trade}</div>
+            <div className="font-bold text-slate-900 heading">{tradeLabel(worker.trade, lang)}</div>
             <div className="text-xs text-slate-500 flex items-center gap-1"><User className="w-3 h-3" />{worker.name}</div>
           </div>
         </div>
