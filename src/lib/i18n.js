@@ -263,6 +263,52 @@ export function districtLabel(name, lang = "EN") {
   return DISTRICT_LABELS[name]?.[lang] || name;
 }
 
+export const TRADE_LABELS = {
+  // Construction & Building
+  "Mason/Bricklayer": { TE: "మేస్త్రీ/ఇటుక పనివాడు", HI: "राजमिस्त्री", UR: "معمار" },
+  "Carpenter": { TE: "వడ్రంగి", HI: "बढ़ई", UR: "بڑھئی" },
+  "Plumber": { TE: "ప్లంబర్", HI: "प्लंबर", UR: "پلمبر" },
+  "Electrician": { TE: "ఎలక్ట్రీషియన్", HI: "इलेक्ट्रीशियन", UR: "الیکٹریشن" },
+  "Painter": { TE: "పెయింటర్", HI: "पेंटर", UR: "پینٹر" },
+  "Welder": { TE: "వెల్డర్", HI: "वेल्डर", UR: "ویلڈر" },
+  "Fabricator": { TE: "ఫ్యాబ్రికేటర్", HI: "फैब्रिकेटर", UR: "فیبریکیٹر" },
+  "Steel Fixer": { TE: "స్టీల్ ఫిక్సర్", HI: "स्टील फिक्सर", UR: "اسٹیل فکسر" },
+  "Tile Setter": { TE: "టైల్ సెట్టర్", HI: "टाइल सेटर", UR: "ٹائل سیٹر" },
+  "Scaffolder": { TE: "స్కాఫోల్డర్", HI: "स्कैफोल्डर", UR: "اسکافولڈر" },
+  "Waterproofing Worker": { TE: "వాటర్‌ప్రూఫింగ్ కార్మికుడు", HI: "वाटरप्रूफिंग कर्मी", UR: "واٹر پروفنگ ورکر" },
+  "False Ceiling Fixer": { TE: "ఫాల్స్ సీలింగ్ ఫిక్సర్", HI: "फॉल्स सीलिंग फिक्सर", UR: "فالس سیلنگ فکسر" },
+  "Marble/Granite Fitter": { TE: "మార్బుల్/గ్రానైట్ ఫిట్టర్", HI: "मार्बल/ग्रेनाइट फिटर", UR: "ماربل/گرینائٹ فٹر" },
+  "Glass & Glazing Worker": { TE: "గ్లాస్ & గ్లేజింగ్ కార్మికుడు", HI: "ग्लास एंड ग्लेजिंग वर्कर", UR: "گلاس اینڈ گلیزنگ ورکر" },
+  "Shuttering Carpenter": { TE: "షట్టరింగ్ వడ్రంగి", HI: "शटरिंग बढ़ई", UR: "شٹرنگ بڑھئی" },
+  "Demolition Worker": { TE: "కూల్చివేత కార్మికుడు", HI: "विध्वंस कर्मी", UR: "انہدام کار" },
+  "Road Layer/Paver": { TE: "రోడ్ లేయర్", HI: "रोड लेयर", UR: "روڈ لیئر" },
+  "Crane Operator": { TE: "క్రేన్ ఆపరేటర్", HI: "क्रेन ऑपरेटर", UR: "کرین آپریٹر" },
+  "Concrete Mixer Operator": { TE: "కాంక్రీట్ మిక్సర్ ఆపరేటర్", HI: "कंक्रीट मिक्सर ऑपरेटर", UR: "کنکریٹ مکسر آپریٹر" },
+  "Bar Bender": { TE: "బార్ బెండర్", HI: "बार बेंडर", UR: "بار بینڈر" },
+
+  // Industrial & Mechanical
+  "Fitter": { TE: "ఫిట్టర్", HI: "फिटर", UR: "فٹر" },
+  "Machinist": { TE: "మెషినిస్ట్", HI: "मशीनिस्ट", UR: "مشینسٹ" },
+  "Turner": { TE: "టర్నర్", HI: "टर्नर", UR: "ٹرنر" },
+  "Automobile Technician": { TE: "ఆటోమొబైల్ టెక్నీషియన్", HI: "ऑटोमोबाइल तकनीशियन", UR: "آٹوموبائل ٹیکنیشن" },
+  "CNC Operator": { TE: "CNC ఆపరేటర్", HI: "CNC ऑपरेटर", UR: "CNC آپریٹر" },
+  "Diesel Mechanic": { TE: "డీజిల్ మెకానిక్", HI: "डीजल मैकेनिक", UR: "ڈیزل مکینک" },
+  "Pump Operator": { TE: "పంప్ ఆపరేటర్", HI: "पंप ऑपरेटर", UR: "پمپ آپریٹر" },
+  "Compressor Operator": { TE: "కంప్రెసర్ ఆపరేటర్", HI: "कंप्रेसर ऑपरेटर", UR: "کمپریسر آپریٹر" },
+  "Forklift Operator": { TE: "ఫోర్క్‌లిఫ్ట్ ఆపరేటర్", HI: "फोर्कलिफ्ट ऑपरेटर", UR: "فورک لفٹ آپریٹر" },
+  "Lathe Operator": { TE: "లేథ్ ఆపరేటర్", HI: "लेथ ऑपरेटर", UR: "لیتھ آپریٹر" },
+  "Sheet Metal Worker": { TE: "షీట్ మెటల్ కార్మికుడు", HI: "शीट मेटल वर्कर", UR: "شیٹ میٹل ورکر" },
+  "Boiler Operator": { TE: "బాయిలర్ ఆపరేటర్", HI: "बॉयलर ऑपरेटर", UR: "بوائلر آپریٹر" },
+  "Generator Technician": { TE: "జనరేటర్ టెక్నీషియన్", HI: "जनरेटर तकनीशियन", UR: "جنریٹر ٹیکنیشن" },
+  "AC Mechanic": { TE: "AC మెకానిక్", HI: "AC मैकेनिक", UR: "AC مکینک" },
+  "Refrigeration Technician": { TE: "రిఫ్రిజిరేషన్ టెక్నీషియన్", HI: "रेफ्रिजरेशन तकनीशियन", UR: "ریفریجریشن ٹیکنیشن" },
+};
+
+export function tradeLabel(name, lang = "EN") {
+  if (lang === "EN") return name;
+  return TRADE_LABELS[name]?.[lang] || name;
+}
+
 export const CATEGORY_MAP = Object.fromEntries(CATEGORIES.map(c => [c.key, c]));
 
 export const FEMALE_TRADES = new Set([
