@@ -1,35 +1,23 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useApp } from "../context/AppContext";
+import { t } from "../lib/i18n";
 
-const workerFaqs = [
-  { q: "How do I register as a worker on Rozgar?", a: "Click 'Sign Up' on the home page, select 'Worker', fill in your name, mobile number, email, trade/skill, district, and experience. Your profile goes live immediately after registration." },
-  { q: "Is registration free for workers?", a: "Yes, worker registration is completely free. You can create your profile, list your skills, and be discovered by employers at no cost." },
-  { q: "How will employers find me?", a: "Employers search by trade, district, and availability. Make sure your profile is complete with your trade, location, experience, and a clear photo to appear higher in search results." },
-  { q: "Will my phone number be visible to everyone?", a: "No. Your contact details are hidden by default. An employer must pay ₹30 to unlock your contact. You can delete your profile at any time to remove yourself." },
-  { q: "How do I get hired faster?", a: "Complete your profile fully — add a photo, list all your skills, write a short description of your experience, and keep your availability status updated." },
-  { q: "Can I use Rozgar in Telugu, Hindi, or Urdu?", a: "Yes. Rozgar supports 4 languages — English, Telugu (తెలుగు), Hindi (हिंदी), and Urdu (اردو). Use the language selector in the top navigation bar to switch." },
-  { q: "How do I delete my account?", a: "Email us at rozgarapp2026@gmail.com with your registered email or mobile number and request account deletion. We will delete your account within 7 working days." },
-  { q: "What trades are available on Rozgar?", a: "Rozgar covers 117+ trades including Mason, Carpenter, Electrician, Plumber, Painter, Welder, Tiler, Driver, Cook, Tailor, AC Technician, Security Guard, Cleaner, Helper, Gardner, and many more." },
-  { q: "Which districts does Rozgar cover?", a: "Rozgar covers all 33 districts of Telangana including Hyderabad, Warangal, Nizamabad, Karimnagar, Khammam, Adilabad, Nalgonda, Medak, Mahabubnagar, and all others." },
-];
+const workerFaqs = Array.from({ length: 9 }, (_, i) => ({
+  qKey: `faq_w${i + 1}_q`,
+  aKey: `faq_w${i + 1}_a`,
+}));
 
-const employerFaqs = [
-  { q: "How do I post a job on Rozgar?", a: "Sign up as an Employer, then click 'Post a Job'. Fill in the job title, trade required, location, and job description. Your job listing goes live immediately." },
-  { q: "How does Contact Unlock work?", a: "When you find a worker whose profile matches your requirement, click 'Unlock Contact'. Pay ₹30 securely. The worker's phone number or email is revealed instantly. No subscription needed." },
-  { q: "Is the ₹30 contact unlock fee refundable?", a: "No. Once a contact is revealed, the fee is non-refundable. However, if you paid but the contact was not shown due to a technical error, you will receive a full refund within 7 working days." },
-  { q: "Can I unlock multiple workers?", a: "Yes. You can unlock as many worker contacts as you need. Each contact costs ₹30. There is no monthly subscription — pay only for what you use." },
-  { q: "What is Job Boost?", a: "Job Boost promotes your job listing to the top of search results so more workers see it. Once activated, the boost fee is non-refundable." },
-  { q: "How do I pay for contact unlock or job boost?", a: "Rozgar accepts UPI, net banking, and debit/credit cards. All payments are processed securely." },
-  { q: "What if a worker does not respond after I unlock their contact?", a: "Rozgar connects you with workers but cannot guarantee their availability or response. We recommend unlocking 2–3 contacts for best results." },
-  { q: "Can I report a fake or inactive worker profile?", a: "Yes. Email us at rozgarapp2026@gmail.com with the worker's name and profile link. We will investigate and remove it if found invalid." },
-  { q: "Is there a free trial for employers?", a: "Employer registration and browsing worker profiles is free. You only pay ₹30 when you choose to unlock a specific worker's contact." },
-];
+const employerFaqs = Array.from({ length: 9 }, (_, i) => ({
+  qKey: `faq_e${i + 1}_q`,
+  aKey: `faq_e${i + 1}_a`,
+}));
 
 function FaqItem({ q, a }) {
   const [open, setOpen] = useState(false);
   return (
     <div className="border border-gray-100 rounded-xl mb-3 overflow-hidden bg-white shadow-sm">
-      <button onClick={() => setOpen(!open)} className="w-full text-left px-5 py-4 flex items-center justify-between gap-3">
+      <button onClick={() => setOpen(!open)} className="w-full text-start px-5 py-4 flex items-center justify-between gap-3">
         <span className="text-sm font-medium text-gray-800">{q}</span>
         <span className="text-lg flex-shrink-0 transition-transform duration-200"
           style={{ transform: open ? "rotate(45deg)" : "rotate(0deg)", color: "#1B4332" }}>+</span>
@@ -44,6 +32,7 @@ function FaqItem({ q, a }) {
 }
 
 export default function Faq() {
+  const { lang } = useApp();
   const [tab, setTab] = useState("worker");
 
   useEffect(() => {
@@ -51,45 +40,47 @@ export default function Faq() {
     window.scrollTo(0, 0);
   }, []);
 
+  const list = tab === "worker" ? workerFaqs : employerFaqs;
+
   return (
     <div className="min-h-screen bg-gray-50">
       <div style={{ background: "#1B4332" }} className="py-12 px-4 text-center">
-  <Link to="/" className="inline-flex items-center gap-1 text-green-300 text-xs hover:text-white mb-4 block">
-    ← Back to Rozgar Home
-  </Link>
-  <h1 className="text-3xl font-bold text-white mb-2">Frequently Asked Questions</h1>
-  <p className="text-green-200 text-sm">Find answers to the most common questions about Rozgar</p>
-</div>
+        <Link to="/" className="inline-flex items-center gap-1 text-green-300 text-xs hover:text-white mb-4 block">
+          ← Back to Rozgar Home
+        </Link>
+        <h1 className="text-3xl font-bold text-white mb-2">{t("faq_title", lang)}</h1>
+        <p className="text-green-200 text-sm">{t("faq_subtitle", lang)}</p>
+      </div>
 
       <div className="max-w-3xl mx-auto px-4 py-10">
         <div className="flex bg-white rounded-xl border border-gray-100 shadow-sm p-1 mb-8">
           {[
-            { key: "worker", label: "👷 For Workers", count: workerFaqs.length },
-            { key: "employer", label: "🏢 For Employers", count: employerFaqs.length },
-          ].map((t) => (
-            <button key={t.key} onClick={() => setTab(t.key)}
+            { key: "worker", labelKey: "faq_tab_worker", count: workerFaqs.length },
+            { key: "employer", labelKey: "faq_tab_employer", count: employerFaqs.length },
+          ].map((tb) => (
+            <button key={tb.key} onClick={() => setTab(tb.key)}
               className="flex-1 py-2.5 px-4 rounded-lg text-sm font-medium transition-all duration-200"
-              style={tab === t.key ? { background: "#1B4332", color: "#fff" } : { color: "#6B7280" }}>
-              {t.label}
-              <span className="ml-2 text-xs px-1.5 py-0.5 rounded-full"
-                style={tab === t.key ? { background: "rgba(255,255,255,0.2)", color: "#fff" } : { background: "#F3F4F6", color: "#6B7280" }}>
-                {t.count}
+              style={tab === tb.key ? { background: "#1B4332", color: "#fff" } : { color: "#6B7280" }}>
+              {t(tb.labelKey, lang)}
+              <span className="ms-2 text-xs px-1.5 py-0.5 rounded-full"
+                style={tab === tb.key ? { background: "rgba(255,255,255,0.2)", color: "#fff" } : { background: "#F3F4F6", color: "#6B7280" }}>
+                {tb.count}
               </span>
             </button>
           ))}
         </div>
 
         <div>
-          {tab === "worker"
-            ? workerFaqs.map((item, i) => <FaqItem key={i} {...item} />)
-            : employerFaqs.map((item, i) => <FaqItem key={i} {...item} />)}
+          {list.map((item, i) => (
+            <FaqItem key={i} q={t(item.qKey, lang)} a={t(item.aKey, lang)} />
+          ))}
         </div>
 
         <div className="rounded-xl p-6 mt-8 mb-6 text-center" style={{ background: "#F0FDF4", border: "1px solid #BBF7D0" }}>
-          <p className="text-sm font-semibold mb-1" style={{ color: "#1B4332" }}>Still have a question?</p>
-          <p className="text-xs text-gray-500 mb-4">We're happy to help. Email us at rozgarapp2026@gmail.com</p>
+          <p className="text-sm font-semibold mb-1" style={{ color: "#1B4332" }}>{t("faq_still_title", lang)}</p>
+          <p className="text-xs text-gray-500 mb-4">{t("faq_still_body", lang)}</p>
           <Link to="/contact" className="inline-block px-6 py-2.5 rounded-xl text-white text-sm font-medium" style={{ background: "#1B4332" }}>
-            Contact Us →
+            {t("faq_contact_btn", lang)}
           </Link>
         </div>
 
