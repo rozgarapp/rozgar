@@ -308,8 +308,20 @@ async def get_my_worker(user=Depends(get_current_user)):
         raise HTTPException(404, "Worker profile not found")
     return w
 
+AD_MIN_SECONDS = 28  # the ad in the app runs 30s; small tolerance
+
+@api.post("/workers/{worker_id}/ad-start")
+async def ad_start(worker_id: str, user=Depends(get_current_user)):
+    token = uuid.uuid4().hex
+    await db.ad_tokens.insert_one({
+        "token": token, "user_id": user["user_id"], "worker_id": worker_id,
+        "started_at": datetime.now(timezone.utc).isoformat(), "used": False,
+    })
+    return {"ad_token": token}
+
 @api.post("/workers/{worker_id}/unlock")
-async def unlock_contact(worker_id: str, method: str = "ad", user=Depends(get_current_user)):
+async def unlock_contact(worker_id: str, ad_token: str = "", user=Depends(get_current_user)):
+    # Enforce OTP for employers
     if user["role"] == "employer":
         u = await db.users.find_one({"user_id": user["user_id"]}, {"_id": 0})
         verified = bool(u.get("otp_verified")) and (u.get("otp_expires_at", "") > datetime.now(timezone.utc).isoformat())
@@ -318,9 +330,21 @@ async def unlock_contact(worker_id: str, method: str = "ad", user=Depends(get_cu
     w = await db.workers.find_one({"worker_id": worker_id}, {"_id": 0})
     if not w:
         raise HTTPException(404, "Worker not found")
+
+    # Require a completed ad (token is single-use and must be at least ~30s old)
+    tok = await db.ad_tokens.find_one_and_update(
+        {"token": ad_token, "user_id": user["user_id"], "worker_id": worker_id, "used": False},
+        {"$set": {"used": True}},
+    )
+    if not tok:
+        raise HTTPException(403, "Ad not completed")
+    started = datetime.fromisoformat(tok["started_at"])
+    if (datetime.now(timezone.utc) - started).total_seconds() < AD_MIN_SECONDS:
+        raise HTTPException(403, "Ad not completed")
+
     await db.unlocks.update_one(
         {"user_id": user["user_id"], "worker_id": worker_id},
-        {"$set": {"unlocked_at": datetime.now(timezone.utc).isoformat(), "method": method}},
+        {"$set": {"unlocked_at": datetime.now(timezone.utc).isoformat(), "method": "ad"}},
         upsert=True,
     )
     phone = w.get("phone", "")
