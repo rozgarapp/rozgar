@@ -32,9 +32,9 @@ export default function WorkerProfile() {
   if (!w) return <div className="min-h-screen bg-slate-50"><div className="p-20 text-center text-slate-500">{t("loading_text", lang)}</div></div>;
   const cat = CATEGORY_MAP[w.category];
 
-  const rewardedUnlock = async () => {
+  const rewardedUnlock = async (adToken) => {
     try {
-      const { data } = await api.post(`/workers/${w.worker_id}/unlock`, null, { params: { method: "ad" } });
+      const { data } = await api.post(`/workers/${w.worker_id}/unlock`, null, { params: { ad_token: adToken } });
       setContact(data); toast.success("Contact unlocked!");
     } catch (e) {
       if (e.response?.status === 412) { setShowOtp(true); toast.info("Please verify your mobile first"); }
@@ -160,7 +160,7 @@ export default function WorkerProfile() {
       </div>
       <UnlockContactModal open={openUnlock} onClose={() => setOpenUnlock(false)} worker={w}
         onUnlocked={(c) => { setContact(c); setOpenUnlock(false); }} />
-      <RewardedAd open={showRewarded} onClose={() => setShowRewarded(false)} onReward={rewardedUnlock} title={`Unlock ${w.name}'s contact`} />
+      <RewardedAd open={showRewarded} onClose={() => setShowRewarded(false)} onReward={rewardedUnlock} workerId={w.worker_id} title={`Unlock ${w.name}'s contact`} />
       <OtpModal open={showOtp} onClose={() => setShowOtp(false)} onVerified={onOtpVerified} />
       <ProxyCallModal open={showProxy} onClose={() => setShowProxy(false)} worker={w} />
     </div>
