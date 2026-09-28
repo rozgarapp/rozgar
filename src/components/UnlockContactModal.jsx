@@ -31,9 +31,9 @@ export default function UnlockContactModal({ open, onClose, worker, onUnlocked }
     else if (nextAction === "pay") { onClose(); doPay(); }
   };
 
-  const finishAd = async () => {
+  const finishAd = async (adToken) => {
     try {
-      const { data } = await api.post(`/workers/${worker.worker_id}/unlock`, null, { params: { method: "ad" } });
+      const { data } = await api.post(`/workers/${worker.worker_id}/unlock`, null, { params: { ad_token: adToken } });
       toast.success("Contact unlocked!");
       onUnlocked?.(data);
     } catch (e) { toast.error(fmtDetail(e.response?.data?.detail)); }
@@ -101,7 +101,7 @@ export default function UnlockContactModal({ open, onClose, worker, onUnlocked }
         </DialogContent>
       </Dialog>
 
-      <RewardedAd open={showAd} onClose={() => setShowAd(false)} onReward={finishAd} title={`Unlock ${worker?.name}'s contact`} />
+      <RewardedAd open={showAd} onClose={() => setShowAd(false)} onReward={finishAd} workerId={worker?.worker_id} title={`Unlock ${worker?.name}'s contact`} />
       <OtpModal open={showOtp} onClose={() => setShowOtp(false)} onVerified={onOtpVerified} />
     </>
   );
