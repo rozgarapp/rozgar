@@ -3,14 +3,17 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } f
 import { Button } from "./ui/button";
 import { Progress } from "./ui/progress";
 import { Play, Gift } from "lucide-react";
+import { toast } from "sonner";
+import api from "../lib/api";
 
-export default function RewardedAd({ open, onClose, onReward, title = "Watch to Unlock" }) {
+export default function RewardedAd({ open, onClose, onReward, workerId, title = "Watch to Unlock" }) {
   const [secs, setSecs] = useState(0);
   const [started, setStarted] = useState(false);
+  const [adToken, setAdToken] = useState("");
   const total = 30;
 
   useEffect(() => {
-    if (!open) { setSecs(0); setStarted(false); return; }
+    if (!open) { setSecs(0); setStarted(false); setAdToken(""); return; }
   }, [open]);
 
   useEffect(() => {
@@ -21,6 +24,16 @@ export default function RewardedAd({ open, onClose, onReward, title = "Watch to 
     }), 1000);
     return () => clearInterval(iv);
   }, [started]);
+
+  const startAd = async () => {
+    try {
+      const { data } = await api.post(`/workers/${workerId}/ad-start`);
+      setAdToken(data.ad_token);
+      setStarted(true);
+    } catch {
+      toast.error("Could not start the ad. Please try again.");
+    }
+  };
 
   const complete = secs >= total;
 
@@ -55,13 +68,13 @@ export default function RewardedAd({ open, onClose, onReward, title = "Watch to 
 
         <div className="flex justify-end gap-2 mt-2">
           {!started && (
-            <Button onClick={() => setStarted(true)} data-testid="ad-play"
+            <Button onClick={startAd} data-testid="ad-play"
               className="bg-emerald-600 hover:bg-emerald-700">
               <Play className="w-4 h-4 me-1" /> Play Ad
             </Button>
           )}
           {complete && (
-            <Button onClick={() => { onReward(); }} data-testid="ad-claim"
+            <Button onClick={() => { onReward(adToken); }} data-testid="ad-claim"
               className="bg-[#1B4332] hover:bg-[#143225]">
               🎁 Claim Reward
             </Button>
